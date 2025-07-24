@@ -13,8 +13,6 @@ namespace WinFormsApp1.Model
         public string Nome;
         public int Impressoes { get; set; }
 
-        public List<int> ContasVinculadas { get; set; }
-
         public Aluno(int codigo, string nome, int impressoes)
         {
             Codigo = codigo;
