@@ -24,6 +24,16 @@ namespace WinFormsApp1.Controls
             this.service = service;
         }
 
+        public void ResetarConteudo() 
+        {
+            textBoxNome.Text = string.Empty;
+            textBoxEmail.Text = string.Empty;
+            textBoxMatricula.Text = string.Empty;
+            labelEmailErro.Text = string.Empty;
+            labelMatriculaErro.Text = string.Empty;
+            labelNomeErro.Text = string.Empty;
+        }
+
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
             try
