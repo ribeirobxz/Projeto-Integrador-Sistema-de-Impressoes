@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace WinFormsApp1.Controls
 {
     partial class CadastrarAluno
     {
@@ -39,6 +39,7 @@
             labelEmail = new Label();
             textBoxEmail = new TextBox();
             buttonCadastrar = new Button();
+            buttonCancelar = new Button();
             SuspendLayout();
             // 
             // textBoxNome
@@ -143,10 +144,22 @@
             buttonCadastrar.UseVisualStyleBackColor = true;
             buttonCadastrar.Click += buttonCadastrar_Click;
             // 
+            // buttonCancelar
+            // 
+            buttonCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonCancelar.Location = new Point(98, 245);
+            buttonCancelar.Name = "buttonCancelar";
+            buttonCancelar.Size = new Size(75, 23);
+            buttonCancelar.TabIndex = 11;
+            buttonCancelar.Text = "Cancelar";
+            buttonCancelar.UseVisualStyleBackColor = true;
+            buttonCancelar.Click += buttonCancelar_Click;
+            // 
             // CadastrarAluno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(buttonCancelar);
             Controls.Add(buttonCadastrar);
             Controls.Add(labelEmailErro);
             Controls.Add(labelEmail);
@@ -177,5 +190,6 @@
         private Label labelEmail;
         private TextBox textBoxEmail;
         private Button buttonCadastrar;
+        private Button buttonCancelar;
     }
 }

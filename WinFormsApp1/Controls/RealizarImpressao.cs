@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1
+namespace WinFormsApp1.Controls
 {
-    public partial class UserControl1 : UserControl
+    public partial class RealizarImpressao : UserControl
     {
-        public UserControl1()
+        public RealizarImpressao()
         {
             InitializeComponent();
         }
