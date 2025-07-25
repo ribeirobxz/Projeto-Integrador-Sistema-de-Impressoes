@@ -16,15 +16,15 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
         
-        private MockService service;
+        private readonly AlunoService _mockService;
 
-        internal CadastrarAluno(MockService service)
+        internal CadastrarAluno(AlunoService service)
         {
             InitializeComponent();
-            this.service = service;
+            this._mockService = service;
         }
 
-        public void ResetarConteudo() 
+        public void ResetarConteudo()
         {
             textBoxNome.Text = string.Empty;
             textBoxEmail.Text = string.Empty;
@@ -39,16 +39,30 @@ namespace WinFormsApp1.Controls
             try
             {
                 string nome = textBoxNome.Text;
-                // fazer validações aqui
-                string email = textBoxEmail.Text;
-                // fazer validações aqui
+                if(string.IsNullOrEmpty(nome))
+                {
+                    labelNomeErro.Text = "O nome não pode ser vazio.";
+                    return;
+                }
+
                 string matricula = textBoxMatricula.Text;
-                // fazer validações aqui
+                if (string.IsNullOrEmpty(matricula))
+                {
+                    labelMatriculaErro.Text = "A matrícula não pode ser vazia.";
+                    return;
+                }
+
+                string email = textBoxEmail.Text;
+                if (string.IsNullOrEmpty(email) || !email.Contains("@"))
+                {
+                    labelEmailErro.Text = "O email deve ser válido.";
+                    return;
+                }
+                
 
                 Aluno aluno = new Aluno(0, nome, matricula, email, 0);
-                service.AdicionarAluno(aluno);
+                _mockService.AdicionarAluno(aluno);
 
-                //se der tudo certo fecha isso, caso contrario cai no cath, ou dar return no metodo
                 FecharControl?.Invoke();
             }
             catch (Exception ex)

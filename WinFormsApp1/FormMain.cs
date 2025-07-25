@@ -19,15 +19,24 @@ namespace WinFormsApp1
         ConsutarSaldos consutarSaldos;
         ConsultarHistoricos consultarHistoricos;
 
-        internal FormMain(MockService service)
+        private readonly AlunoService _mockService;
+
+        public FormMain()
         {
             InitializeComponent();
+        }
+
+        public FormMain(AlunoService mockService) : this()
+        {
+
+            _mockService = mockService;
+
             telaInicial = new TelaInicial();
             telaInicial.Dock = DockStyle.Fill;
             telaInicial.Show();
             this.panelPrincipal.Controls.Add(telaInicial);
 
-            cadastrarAluno = new CadastrarAluno(service);
+            cadastrarAluno = new CadastrarAluno(_mockService);
             cadastrarAluno.Dock = DockStyle.Fill;
             cadastrarAluno.Hide();
             this.panelPrincipal.Controls.Add(cadastrarAluno);
@@ -105,9 +114,10 @@ namespace WinFormsApp1
             telaInicial._OnEditarAluno_Click += _OnEditarAluno_Click;
             telaInicial._OnEditarPacote_Click += _OnEditarPacote_Click;
             telaInicial._OnRealizarImpressao_Click += _OnRealizarImpressao_Click;
+
         }
 
-        private void EsconderTodos() 
+        private void EsconderTodos()
         {
             telaInicial.Hide();
             cadastrarAluno.Hide();
@@ -124,87 +134,86 @@ namespace WinFormsApp1
             consultarHistoricos.Hide();
         }
 
-        private void VoltaProPainelPrincipal() 
+        private void VoltaProPainelPrincipal()
         {
             EsconderTodos();
             telaInicial.Show();
         }
 
-        private void _OnCadastrarAluno_Click() 
+        private void _OnCadastrarAluno_Click()
         {
             EsconderTodos();
-            
+
             cadastrarAluno.ResetarConteudo();
-            cadastrarAluno.Show();           
+            cadastrarAluno.Show();
         }
 
-        private void _OnEditarAluno_Click() 
+        private void _OnEditarAluno_Click()
         {
             EsconderTodos();
             editarAluno.Show();
         }
 
-        private void _OnDeletarAluno_Click() 
+        private void _OnDeletarAluno_Click()
         {
             EsconderTodos();
             deletarAluno.Show();
         }
 
-        private void _OnConsultarAluno_Click() 
+        private void _OnConsultarAluno_Click()
         {
             EsconderTodos();
             consultarAluno.Show();
         }
 
 
-        private void _OnCadastrarPacote_Click() 
+        private void _OnCadastrarPacote_Click()
         {
             EsconderTodos();
             cadastrarPacote.Show();
         }
 
-        private void _OnEditarPacote_Click() 
+        private void _OnEditarPacote_Click()
         {
             EsconderTodos();
             editarPacote.Show();
         }
 
-        private void _OnDeletarPacote_Click() 
+        private void _OnDeletarPacote_Click()
         {
             EsconderTodos();
             deletarPacote.Show();
         }
 
 
-        private void _OnConsultarPacotes_Click() 
+        private void _OnConsultarPacotes_Click()
         {
             EsconderTodos();
             consultarPacotes.Show();
         }
 
-        private void _OnComprarImpressao_Click() 
+        private void _OnComprarImpressao_Click()
         {
             EsconderTodos();
             comprarImpressao.Show();
         }
 
-        private void _OnRealizarImpressao_Click() 
+        private void _OnRealizarImpressao_Click()
         {
             EsconderTodos();
             realizarImpressao.Show();
         }
 
-        private void _OnConsutarSaldos_Click() 
+        private void _OnConsutarSaldos_Click()
         {
             EsconderTodos();
             consutarSaldos.Show();
         }
 
-        private void _OnConsultarHistoricos_Click() 
+        private void _OnConsultarHistoricos_Click()
         {
             EsconderTodos();
             consultarHistoricos.Show();
         }
-
     }
 }
