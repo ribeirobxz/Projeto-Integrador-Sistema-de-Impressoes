@@ -8,17 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1
+namespace WinFormsApp1.Controls
 {
-    public partial class CadastrarAluno : UserControl
+    public partial class ConsultarHistoricos : UserControl
     {
-        public CadastrarAluno()
+        public ConsultarHistoricos()
         {
             InitializeComponent();
         }
-
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-        }   
     }
 }

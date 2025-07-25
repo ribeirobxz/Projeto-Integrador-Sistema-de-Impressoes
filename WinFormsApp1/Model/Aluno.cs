@@ -8,26 +8,19 @@ namespace WinFormsApp1.Model
 {
     internal class Aluno
     {
-
         public int Codigo { get; set; }
-        public string Nome;
-        public int Impressoes { get; set; }
+        public string Nome { get; set; }
+        public string Matricula { get; set; }
+        public string Email { get; set; }
+        public short QntdImpressao { get; set; }
 
-        public Aluno(int codigo, string nome, int impressoes)
+        public Aluno(int codigo, string nome, string matricula, string email, short qntdImpressao)
         {
             Codigo = codigo;
             Nome = nome;
-            Impressoes = impressoes;
-        }
-
-        public void AdicionarImpressao(int quantidade)
-        {
-            this.Impressoes += quantidade;
-        }
-
-        public void RemoverImpressao(int quantidade)
-        {
-            this.Impressoes -= quantidade;
+            Matricula = matricula;
+            Email = email;
+            QntdImpressao = qntdImpressao;
         }
     }
 }
