@@ -12,9 +12,16 @@ namespace WinFormsApp1.Controls
 {
     public partial class ConsutarSaldos : UserControl
     {
+        public Action? FecharControl;
+
         public ConsutarSaldos()
         {
             InitializeComponent();
+        }
+
+        public void ResetarConteudo()
+        {
+
         }
     }
 }

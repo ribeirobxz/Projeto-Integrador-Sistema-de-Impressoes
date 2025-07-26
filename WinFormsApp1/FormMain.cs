@@ -58,22 +58,22 @@ namespace WinFormsApp1
             consultarAluno.Hide();
             this.panelPrincipal.Controls.Add(consultarAluno);
 
-            cadastrarPacote = new CadastrarPacote();
+            cadastrarPacote = new CadastrarPacote(services.PacoteService);
             cadastrarPacote.Dock = DockStyle.Fill;
             cadastrarPacote.Hide();
             this.panelPrincipal.Controls.Add(cadastrarPacote);
 
-            editarPacote = new EditarPacote();
+            editarPacote = new EditarPacote(services.PacoteService);
             editarPacote.Dock = DockStyle.Fill;
             editarPacote.Hide();
             this.panelPrincipal.Controls.Add(editarPacote);
 
-            deletarPacote = new DeletarPacote();
+            deletarPacote = new DeletarPacote(services.PacoteService);
             deletarPacote.Dock = DockStyle.Fill;
             deletarPacote.Hide();
             this.panelPrincipal.Controls.Add(deletarPacote);
 
-            consultarPacotes = new ConsultarPacotes();
+            consultarPacotes = new ConsultarPacotes(services.PacoteService);
             consultarPacotes.Dock = DockStyle.Fill;
             consultarPacotes.Hide();
             this.panelPrincipal.Controls.Add(consultarPacotes);
@@ -113,6 +113,16 @@ namespace WinFormsApp1
             editarAluno.FecharControl += VoltaProPainelPrincipal;
             deletarAluno.FecharControl += VoltaProPainelPrincipal;
             consultarAluno.FecharControl += VoltaProPainelPrincipal;
+            cadastrarPacote.FecharControl += VoltaProPainelPrincipal;
+            editarPacote.FecharControl += VoltaProPainelPrincipal;
+            deletarPacote.FecharControl += VoltaProPainelPrincipal;
+            consultarPacotes.FecharControl += VoltaProPainelPrincipal;
+            comprarImpressao.FecharControl += VoltaProPainelPrincipal;
+            realizarImpressao.FecharControl += VoltaProPainelPrincipal;
+            consutarSaldos.FecharControl += VoltaProPainelPrincipal;
+            consultarHistoricos.FecharControl += VoltaProPainelPrincipal;
+            deletarUltimaCompra.FecharControl += VoltaProPainelPrincipal;
+            deletarUltimaImpressaoRealizada.FecharControl += VoltaProPainelPrincipal;
 
             telaInicial._OnSair_Click += () => { Close(); };
 
@@ -183,6 +193,7 @@ namespace WinFormsApp1
         private void _OnConsultarAluno_Click()
         {
             EsconderTodos();
+            consultarAluno.ResetarConteudo();
             consultarAluno.Show();
         }
 
@@ -190,18 +201,21 @@ namespace WinFormsApp1
         private void _OnCadastrarPacote_Click()
         {
             EsconderTodos();
+            cadastrarPacote.ResetarConteudo();
             cadastrarPacote.Show();
         }
 
         private void _OnEditarPacote_Click()
         {
             EsconderTodos();
+            editarPacote.ResetarConteudo();
             editarPacote.Show();
         }
 
         private void _OnDeletarPacote_Click()
         {
             EsconderTodos();
+            deletarPacote.ResetarConteudo();
             deletarPacote.Show();
         }
 
@@ -209,42 +223,49 @@ namespace WinFormsApp1
         private void _OnConsultarPacotes_Click()
         {
             EsconderTodos();
+            consultarPacotes.ResetarConteudo();
             consultarPacotes.Show();
         }
 
         private void _OnComprarImpressao_Click()
         {
             EsconderTodos();
+            comprarImpressao.ResetarConteudo();
             comprarImpressao.Show();
         }
 
         private void _OnRealizarImpressao_Click()
         {
             EsconderTodos();
+            realizarImpressao.ResetarConteudo();
             realizarImpressao.Show();
         }
 
         private void _OnConsutarSaldos_Click()
         {
             EsconderTodos();
+            consutarSaldos.ResetarConteudo();
             consutarSaldos.Show();
         }
 
         private void _OnConsultarHistoricos_Click()
         {
             EsconderTodos();
+            consultarHistoricos.ResetarConteudo();
             consultarHistoricos.Show();
         }
 
         private void _OnDeletarUltimaCompra_Click() 
         {
             EsconderTodos();
+            deletarUltimaCompra.ResetarConteudo();
             deletarUltimaCompra.Show();
         }
 
         private void _OnDeletarUltimaImpressaoRealizada_Click() 
         {
             EsconderTodos();
+            deletarUltimaImpressaoRealizada.ResetarConteudo();
             deletarUltimaImpressaoRealizada.Show();
         }
     }

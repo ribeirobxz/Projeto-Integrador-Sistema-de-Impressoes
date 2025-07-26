@@ -12,9 +12,15 @@ namespace WinFormsApp1.Controls
 {
     public partial class DeletarUltimaImpressaoRealizada : UserControl
     {
+        public Action? FecharControl;
         public DeletarUltimaImpressaoRealizada()
         {
             InitializeComponent();
+        }
+
+        public void ResetarConteudo()
+        {
+
         }
     }
 }

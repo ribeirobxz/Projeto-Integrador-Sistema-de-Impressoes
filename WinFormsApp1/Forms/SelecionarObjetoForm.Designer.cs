@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1.Forms
 {
-    partial class SelecionarAlunoForm
+    partial class SelecionarObjetoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxNomeAluno = new TextBox();
+            textBoxOqueProcurar = new TextBox();
             buttonProcurar = new Button();
             labelInfo = new Label();
             listBoxListagem = new ListBox();
             SuspendLayout();
             // 
-            // textBoxNomeAluno
+            // textBoxOqueProcurar
             // 
-            textBoxNomeAluno.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBoxNomeAluno.Location = new Point(6, 21);
-            textBoxNomeAluno.Name = "textBoxNomeAluno";
-            textBoxNomeAluno.Size = new Size(684, 23);
-            textBoxNomeAluno.TabIndex = 0;
-            textBoxNomeAluno.KeyDown += textBoxNomeAluno_KeyDown;
+            textBoxOqueProcurar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxOqueProcurar.Location = new Point(6, 21);
+            textBoxOqueProcurar.Name = "textBoxOqueProcurar";
+            textBoxOqueProcurar.Size = new Size(684, 23);
+            textBoxOqueProcurar.TabIndex = 0;
+            textBoxOqueProcurar.KeyDown += textBoxOqueProcurar_KeyDown;
             // 
             // buttonProcurar
             // 
@@ -61,9 +61,9 @@
             labelInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelInfo.Location = new Point(6, 2);
             labelInfo.Name = "labelInfo";
-            labelInfo.Size = new Size(537, 15);
+            labelInfo.Size = new Size(56, 15);
             labelInfo.TabIndex = 2;
-            labelInfo.Text = "Digite o nome do Aluno que você que deseja procurar e aperte \"Enter\" ou clique em \"Procurar\"";
+            labelInfo.Text = "labelInfo";
             // 
             // listBoxListagem
             // 
@@ -77,7 +77,7 @@
             listBoxListagem.DoubleClick += listBoxListagem_DoubleClick;
             listBoxListagem.KeyDown += listBoxListagem_KeyDown;
             // 
-            // SelecionarAlunoForm
+            // SelecionarObjetoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -85,16 +85,16 @@
             Controls.Add(listBoxListagem);
             Controls.Add(labelInfo);
             Controls.Add(buttonProcurar);
-            Controls.Add(textBoxNomeAluno);
-            Name = "SelecionarAlunoForm";
-            Text = "Escolha um aluno:";
+            Controls.Add(textBoxOqueProcurar);
+            Name = "SelecionarObjetoForm";
+            Text = "SelecionarObjetoForm";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBoxNomeAluno;
+        private TextBox textBoxOqueProcurar;
         private Button buttonProcurar;
         private Label labelInfo;
         private ListBox listBoxListagem;

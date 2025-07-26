@@ -16,6 +16,7 @@ namespace WinFormsApp1.Context
 
             CreatesIniciais();
             AlunoRepository = new AlunoRepository(_connection);
+            PacoteRepository = new PacoteRepository(_connection);
         }
 
         ~RepositoryContext()
@@ -24,7 +25,7 @@ namespace WinFormsApp1.Context
         }
 
         public AlunoRepository AlunoRepository { get; private init; }
-
+        public PacoteRepository PacoteRepository { get; private init; }
         // colocar os outros Repository aqui
 
         private void CreatesIniciais()

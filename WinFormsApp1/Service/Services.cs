@@ -11,10 +11,12 @@ namespace WinFormsApp1.Service
     {
         public Services(RepositoryContext repositoryContext) 
         {
-            AlunoService = new AlunoService(repositoryContext);
+            AlunoService = new AlunoService(repositoryContext.AlunoRepository);
+            PacoteService = new PacoteService(repositoryContext.PacoteRepository);
         }
 
         public AlunoService AlunoService { get; private init; }
+        public PacoteService PacoteService { get; private init; }
 
         // colocar os outros Services aqui
     }

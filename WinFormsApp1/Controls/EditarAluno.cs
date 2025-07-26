@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.SelecionarObjeto;
 using WinFormsApp1.Service;
 
 namespace WinFormsApp1.Controls
@@ -57,19 +58,19 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAlunoForm form = new SelecionarAlunoForm(_service);
-                form._RetornoDoAlunoEscolhido += _onReceberAlunoSelecionado;
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_service, _onReceberAlunoSelecionado);
+                SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
         }
 
-        private void _onReceberAlunoSelecionado(Aluno alunoSelecionado) 
+        private void _onReceberAlunoSelecionado(object alunoSelecionado) 
         {
-            _alunoSelecionado = alunoSelecionado;
+            _alunoSelecionado = (Aluno)alunoSelecionado;
             textBoxAlunoAEditar.Text = alunoSelecionado.ToString();
-            textBoxNome.Text = alunoSelecionado.Nome;
-            textBoxEmail.Text = alunoSelecionado.Email;
-            textBoxMatricula.Text = alunoSelecionado.Matricula;
+            textBoxNome.Text = _alunoSelecionado.Nome;
+            textBoxEmail.Text = _alunoSelecionado.Email;
+            textBoxMatricula.Text = _alunoSelecionado.Matricula;
             groupBoxAreaDeEdicao.Enabled = true;
             buttonEditarOK.Enabled = true;
         }

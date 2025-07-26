@@ -11,18 +11,18 @@ namespace WinFormsApp1.Service
 {
     internal class AlunoService
     {
-        private readonly RepositoryContext _repositoryContext;
+        private readonly AlunoRepository _alunoRepository;
 
-        public AlunoService(RepositoryContext repositoryContext)
+        public AlunoService(AlunoRepository alunoRepository)
         {
-            _repositoryContext = repositoryContext;
+            _alunoRepository = alunoRepository;
         }
 
         public bool AdicionarAluno(Aluno aluno)
         {
             try
             {
-               return _repositoryContext.AlunoRepository.AdicionarAluno(aluno);
+               return _alunoRepository.AdicionarAluno(aluno);
             }
             catch (Exception)
             {
@@ -34,7 +34,7 @@ namespace WinFormsApp1.Service
         {
             try
             {
-               return  _repositoryContext.AlunoRepository.AtualizarAluno(aluno);
+               return _alunoRepository.AtualizarAluno(aluno);
             }
             catch (Exception)
             {
@@ -46,7 +46,7 @@ namespace WinFormsApp1.Service
         {
             try
             {
-               return _repositoryContext.AlunoRepository.DeletarAluno(Codigo).deletado;
+               return _alunoRepository.DeletarAluno(Codigo).deletado;
             }
             catch (Exception)
             {
