@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WinFormsApp1.Context;
@@ -14,27 +13,43 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
+            string connectionString = GetConnectionString();
+
             ApplicationConfiguration.Initialize();
 
-            var host = CreateHostBuilder().Build();
+            var host = CreateHostBuilder(connectionString).Build();
             ServiceProvider = host.Services;
 
             Application.Run(ServiceProvider.GetRequiredService<FormMain>());
         }
 
-        static IHostBuilder CreateHostBuilder()
+        static IHostBuilder CreateHostBuilder(string connectionString)
         {
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
 
-                    services.AddTransient<AlunoService>();
-                    services.AddDbContext<AppDatabaseContext>(options =>
-                    {
-                        options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=MinhaAppDb;Trusted_Connection=True;");
-                    }, ServiceLifetime.Transient);
+                    services.AddTransient<Services>();
+                    services.AddSingleton<RepositoryContext>(new RepositoryContext(connectionString));
 
                     services.AddTransient<FormMain>();
                 });
         }
+
+        static string GetConnectionString() 
+        {
+            string filePath = Path.Combine(AppContext.BaseDirectory, "ConnectionString.txt");
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    return File.ReadAllText(filePath);
+                }
+                catch (Exception)
+                {
+                }
+            }
+            return $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={Path.Combine(AppContext.BaseDirectory, "ProjetoIntegrador.mdf")};Integrated Security=True;Connect Timeout=30";
+        }
+
     }
 }

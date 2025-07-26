@@ -40,13 +40,14 @@
             textBoxEmail = new TextBox();
             buttonCadastrar = new Button();
             buttonCancelar = new Button();
+            labelErroDiversos = new Label();
             SuspendLayout();
             // 
             // textBoxNome
             // 
-            textBoxNome.Location = new Point(4, 52);
+            textBoxNome.Location = new Point(10, 52);
             textBoxNome.Name = "textBoxNome";
-            textBoxNome.Size = new Size(394, 23);
+            textBoxNome.Size = new Size(762, 23);
             textBoxNome.TabIndex = 0;
             // 
             // labelTitulo
@@ -63,17 +64,17 @@
             // 
             labelNome.AutoSize = true;
             labelNome.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelNome.Location = new Point(4, 34);
+            labelNome.Location = new Point(12, 34);
             labelNome.Name = "labelNome";
-            labelNome.Size = new Size(41, 15);
+            labelNome.Size = new Size(44, 15);
             labelNome.TabIndex = 2;
-            labelNome.Text = "Nome";
+            labelNome.Text = "Nome:";
             // 
             // labelNomeErro
             // 
             labelNomeErro.AutoSize = true;
             labelNomeErro.ForeColor = Color.Brown;
-            labelNomeErro.Location = new Point(6, 79);
+            labelNomeErro.Location = new Point(64, 34);
             labelNomeErro.Name = "labelNomeErro";
             labelNomeErro.Size = new Size(28, 15);
             labelNomeErro.TabIndex = 3;
@@ -83,7 +84,7 @@
             // 
             labelMatriculaErro.AutoSize = true;
             labelMatriculaErro.ForeColor = Color.Brown;
-            labelMatriculaErro.Location = new Point(7, 148);
+            labelMatriculaErro.Location = new Point(81, 83);
             labelMatriculaErro.Name = "labelMatriculaErro";
             labelMatriculaErro.Size = new Size(28, 15);
             labelMatriculaErro.TabIndex = 6;
@@ -93,24 +94,24 @@
             // 
             labelMatricula.AutoSize = true;
             labelMatricula.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelMatricula.Location = new Point(5, 103);
+            labelMatricula.Location = new Point(12, 84);
             labelMatricula.Name = "labelMatricula";
-            labelMatricula.Size = new Size(59, 15);
+            labelMatricula.Size = new Size(62, 15);
             labelMatricula.TabIndex = 5;
-            labelMatricula.Text = "Matrícula";
+            labelMatricula.Text = "Matrícula:";
             // 
             // textBoxMatricula
             // 
-            textBoxMatricula.Location = new Point(5, 121);
+            textBoxMatricula.Location = new Point(10, 101);
             textBoxMatricula.Name = "textBoxMatricula";
-            textBoxMatricula.Size = new Size(394, 23);
+            textBoxMatricula.Size = new Size(762, 23);
             textBoxMatricula.TabIndex = 4;
             // 
             // labelEmailErro
             // 
             labelEmailErro.AutoSize = true;
             labelEmailErro.ForeColor = Color.Brown;
-            labelEmailErro.Location = new Point(8, 216);
+            labelEmailErro.Location = new Point(56, 130);
             labelEmailErro.Name = "labelEmailErro";
             labelEmailErro.Size = new Size(28, 15);
             labelEmailErro.TabIndex = 9;
@@ -120,23 +121,23 @@
             // 
             labelEmail.AutoSize = true;
             labelEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelEmail.Location = new Point(6, 171);
+            labelEmail.Location = new Point(13, 130);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(36, 15);
+            labelEmail.Size = new Size(39, 15);
             labelEmail.TabIndex = 8;
-            labelEmail.Text = "Email";
+            labelEmail.Text = "Email:";
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(6, 189);
+            textBoxEmail.Location = new Point(10, 148);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(394, 23);
+            textBoxEmail.Size = new Size(762, 23);
             textBoxEmail.TabIndex = 7;
             // 
             // buttonCadastrar
             // 
             buttonCadastrar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonCadastrar.Location = new Point(8, 245);
+            buttonCadastrar.Location = new Point(13, 180);
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(75, 23);
             buttonCadastrar.TabIndex = 10;
@@ -147,7 +148,7 @@
             // buttonCancelar
             // 
             buttonCancelar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonCancelar.Location = new Point(98, 245);
+            buttonCancelar.Location = new Point(103, 180);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
             buttonCancelar.TabIndex = 11;
@@ -155,10 +156,21 @@
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
             // 
+            // labelErroDiversos
+            // 
+            labelErroDiversos.AutoSize = true;
+            labelErroDiversos.ForeColor = Color.Brown;
+            labelErroDiversos.Location = new Point(197, 182);
+            labelErroDiversos.Name = "labelErroDiversos";
+            labelErroDiversos.Size = new Size(28, 15);
+            labelErroDiversos.TabIndex = 12;
+            labelErroDiversos.Text = "erro";
+            // 
             // CadastrarAluno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(labelErroDiversos);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonCadastrar);
             Controls.Add(labelEmailErro);
@@ -172,7 +184,7 @@
             Controls.Add(labelTitulo);
             Controls.Add(textBoxNome);
             Name = "CadastrarAluno";
-            Size = new Size(434, 292);
+            Size = new Size(800, 500);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,5 +203,6 @@
         private TextBox textBoxEmail;
         private Button buttonCadastrar;
         private Button buttonCancelar;
+        private Label labelErroDiversos;
     }
 }

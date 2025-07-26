@@ -27,5 +27,7 @@ namespace WinFormsApp1.Model
             Email = email;
             QntdImpressao = qntdImpressao;
         }
+
+        public Aluno() { }
     }
 }

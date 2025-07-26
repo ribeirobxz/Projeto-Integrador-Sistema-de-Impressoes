@@ -3,7 +3,7 @@ using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
-    public partial class FormMain : Form
+    internal partial class FormMain : Form
     {
         TelaInicial telaInicial;
         CadastrarAluno cadastrarAluno;
@@ -19,29 +19,29 @@ namespace WinFormsApp1
         ConsutarSaldos consutarSaldos;
         ConsultarHistoricos consultarHistoricos;
 
-        private readonly AlunoService _mockService;
+        private readonly Services _services;
 
         public FormMain()
         {
             InitializeComponent();
         }
 
-        public FormMain(AlunoService mockService) : this()
+        public FormMain(Services services) : this()
         {
 
-            _mockService = mockService;
+            _services = services;
 
             telaInicial = new TelaInicial();
             telaInicial.Dock = DockStyle.Fill;
             telaInicial.Show();
             this.panelPrincipal.Controls.Add(telaInicial);
 
-            cadastrarAluno = new CadastrarAluno(_mockService);
+            cadastrarAluno = new CadastrarAluno(services.AlunoService);
             cadastrarAluno.Dock = DockStyle.Fill;
             cadastrarAluno.Hide();
             this.panelPrincipal.Controls.Add(cadastrarAluno);
 
-            editarAluno = new EditarAluno();
+            editarAluno = new EditarAluno(services.AlunoService);
             editarAluno.Dock = DockStyle.Fill;
             editarAluno.Hide();
             this.panelPrincipal.Controls.Add(editarAluno);
@@ -99,8 +99,9 @@ namespace WinFormsApp1
             this.panelPrincipal.Controls.Add(consultarHistoricos);
 
             cadastrarAluno.FecharControl += VoltaProPainelPrincipal;
+            editarAluno.FecharControl += VoltaProPainelPrincipal;
 
-            telaInicial._OnSair_Click += () => { this.Close(); };
+            telaInicial._OnSair_Click += () => { Close(); };
 
             telaInicial._OnCadastrarAluno_Click += _OnCadastrarAluno_Click;
             telaInicial._OnCadastrarPacote_Click += _OnCadastrarPacote_Click;
@@ -151,6 +152,7 @@ namespace WinFormsApp1
         private void _OnEditarAluno_Click()
         {
             EsconderTodos();
+            editarAluno.ResetarConteudo();
             editarAluno.Show();
         }
 
