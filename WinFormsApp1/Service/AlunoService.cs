@@ -56,6 +56,7 @@ namespace WinFormsApp1.Service
 
         public Aluno? SelecionarAlunoPorCodigo(int codigo) 
         {
+            // a fazer
             Aluno aluno = null;
             if (aluno == null)
             {
@@ -67,6 +68,7 @@ namespace WinFormsApp1.Service
 
         public Aluno? SelecionarAlunoPorNome(string nome)
         {
+            // a fazer
             Aluno aluno = null;
             if (aluno == null)
             {

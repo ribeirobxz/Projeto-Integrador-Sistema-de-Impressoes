@@ -18,6 +18,8 @@ namespace WinFormsApp1
         RealizarImpressao realizarImpressao;
         ConsutarSaldos consutarSaldos;
         ConsultarHistoricos consultarHistoricos;
+        DeletarUltimaCompra deletarUltimaCompra;
+        DeletarUltimaImpressaoRealizada deletarUltimaImpressaoRealizada;
 
         private readonly Services _services;
 
@@ -46,12 +48,12 @@ namespace WinFormsApp1
             editarAluno.Hide();
             this.panelPrincipal.Controls.Add(editarAluno);
 
-            deletarAluno = new DeletarAluno();
+            deletarAluno = new DeletarAluno(services.AlunoService);
             deletarAluno.Dock = DockStyle.Fill;
             deletarAluno.Hide();
             this.panelPrincipal.Controls.Add(deletarAluno);
 
-            consultarAluno = new ConsultarAluno();
+            consultarAluno = new ConsultarAluno(services.AlunoService);
             consultarAluno.Dock = DockStyle.Fill;
             consultarAluno.Hide();
             this.panelPrincipal.Controls.Add(consultarAluno);
@@ -81,7 +83,6 @@ namespace WinFormsApp1
             comprarImpressao.Hide();
             this.panelPrincipal.Controls.Add(comprarImpressao);
 
-
             realizarImpressao = new RealizarImpressao();
             realizarImpressao.Dock = DockStyle.Fill;
             realizarImpressao.Hide();
@@ -92,14 +93,26 @@ namespace WinFormsApp1
             consutarSaldos.Hide();
             this.panelPrincipal.Controls.Add(consutarSaldos);
 
-
             consultarHistoricos = new ConsultarHistoricos();
             consultarHistoricos.Dock = DockStyle.Fill;
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);
 
+            deletarUltimaCompra = new DeletarUltimaCompra();
+            deletarUltimaCompra.Dock = DockStyle.Fill;
+            deletarUltimaCompra.Hide();
+            this.panelPrincipal.Controls.Add(deletarUltimaCompra);
+
+            deletarUltimaImpressaoRealizada = new DeletarUltimaImpressaoRealizada();
+            deletarUltimaImpressaoRealizada.Dock = DockStyle.Fill;
+            deletarUltimaImpressaoRealizada.Hide();
+            this.panelPrincipal.Controls.Add(deletarUltimaImpressaoRealizada);
+
+
             cadastrarAluno.FecharControl += VoltaProPainelPrincipal;
             editarAluno.FecharControl += VoltaProPainelPrincipal;
+            deletarAluno.FecharControl += VoltaProPainelPrincipal;
+            consultarAluno.FecharControl += VoltaProPainelPrincipal;
 
             telaInicial._OnSair_Click += () => { Close(); };
 
@@ -109,12 +122,14 @@ namespace WinFormsApp1
             telaInicial._OnConsultarAluno_Click += _OnConsultarAluno_Click;
             telaInicial._OnConsultarHistoricos_Click += _OnConsultarHistoricos_Click;
             telaInicial._OnConsultarPacotes_Click += _OnConsultarPacotes_Click;
-            telaInicial._OnConsutarSaldos_Click += _OnConsutarSaldos_Click;
+            telaInicial._OnConsultarSaldos_Click += _OnConsutarSaldos_Click;
             telaInicial._OnDeletarAluno_Click += _OnDeletarAluno_Click;
             telaInicial._OnDeletarPacote_Click += _OnDeletarPacote_Click;
             telaInicial._OnEditarAluno_Click += _OnEditarAluno_Click;
             telaInicial._OnEditarPacote_Click += _OnEditarPacote_Click;
             telaInicial._OnRealizarImpressao_Click += _OnRealizarImpressao_Click;
+            telaInicial._OnDeletarUltimaCompra_Click += _OnDeletarUltimaCompra_Click;
+            telaInicial._OnDeletarUltimaImpressaoRealizada_Click += _OnDeletarUltimaImpressaoRealizada_Click;
 
         }
 
@@ -133,6 +148,8 @@ namespace WinFormsApp1
             realizarImpressao.Hide();
             consutarSaldos.Hide();
             consultarHistoricos.Hide();
+            deletarUltimaCompra.Hide();
+            deletarUltimaImpressaoRealizada.Hide();
         }
 
         private void VoltaProPainelPrincipal()
@@ -159,6 +176,7 @@ namespace WinFormsApp1
         private void _OnDeletarAluno_Click()
         {
             EsconderTodos();
+            deletarAluno.ResetarConteudo();
             deletarAluno.Show();
         }
 
@@ -216,6 +234,18 @@ namespace WinFormsApp1
         {
             EsconderTodos();
             consultarHistoricos.Show();
+        }
+
+        private void _OnDeletarUltimaCompra_Click() 
+        {
+            EsconderTodos();
+            deletarUltimaCompra.Show();
+        }
+
+        private void _OnDeletarUltimaImpressaoRealizada_Click() 
+        {
+            EsconderTodos();
+            deletarUltimaImpressaoRealizada.Show();
         }
     }
 }

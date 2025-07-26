@@ -15,5 +15,7 @@ namespace WinFormsApp1.Service
         }
 
         public AlunoService AlunoService { get; private init; }
+
+        // colocar os outros Services aqui
     }
 }

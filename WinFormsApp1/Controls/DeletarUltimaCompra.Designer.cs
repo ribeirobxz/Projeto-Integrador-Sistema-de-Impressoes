@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1.Controls
 {
-    partial class RealizarImpressao
+    partial class DeletarUltimaCompra
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -30,11 +30,11 @@
         {
             SuspendLayout();
             // 
-            // RealizarImpressao
+            // DeletarUltimaCompra
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Name = "RealizarImpressao";
+            Name = "DeletarUltimaCompra";
             Size = new Size(800, 500);
             ResumeLayout(false);
         }

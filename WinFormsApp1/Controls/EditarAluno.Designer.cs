@@ -53,7 +53,7 @@
             buttonCancelar.Location = new Point(138, 267);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(88, 23);
-            buttonCancelar.TabIndex = 23;
+            buttonCancelar.TabIndex = 5;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -64,7 +64,7 @@
             buttonEditarOK.Location = new Point(12, 267);
             buttonEditarOK.Name = "buttonEditarOK";
             buttonEditarOK.Size = new Size(120, 23);
-            buttonEditarOK.TabIndex = 22;
+            buttonEditarOK.TabIndex = 4;
             buttonEditarOK.Text = "Confirmar Edição";
             buttonEditarOK.UseVisualStyleBackColor = true;
             buttonEditarOK.Click += buttonEditarOK_Click;
@@ -77,7 +77,7 @@
             labelEmailErro.Location = new Point(49, 114);
             labelEmailErro.Name = "labelEmailErro";
             labelEmailErro.Size = new Size(28, 15);
-            labelEmailErro.TabIndex = 21;
+            labelEmailErro.TabIndex = 7;
             labelEmailErro.Text = "erro";
             // 
             // labelEmail
@@ -87,7 +87,7 @@
             labelEmail.Location = new Point(7, 114);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(36, 15);
-            labelEmail.TabIndex = 20;
+            labelEmail.TabIndex = 6;
             labelEmail.Text = "Email";
             // 
             // textBoxEmail
@@ -96,7 +96,7 @@
             textBoxEmail.Location = new Point(7, 132);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(740, 23);
-            textBoxEmail.TabIndex = 19;
+            textBoxEmail.TabIndex = 8;
             // 
             // labelMatriculaErro
             // 
@@ -106,7 +106,7 @@
             labelMatriculaErro.Location = new Point(69, 68);
             labelMatriculaErro.Name = "labelMatriculaErro";
             labelMatriculaErro.Size = new Size(28, 15);
-            labelMatriculaErro.TabIndex = 18;
+            labelMatriculaErro.TabIndex = 4;
             labelMatriculaErro.Text = "erro";
             // 
             // labelMatricula
@@ -116,7 +116,7 @@
             labelMatricula.Location = new Point(4, 68);
             labelMatricula.Name = "labelMatricula";
             labelMatricula.Size = new Size(59, 15);
-            labelMatricula.TabIndex = 17;
+            labelMatricula.TabIndex = 3;
             labelMatricula.Text = "Matrícula";
             // 
             // textBoxMatricula
@@ -125,7 +125,7 @@
             textBoxMatricula.Location = new Point(6, 86);
             textBoxMatricula.Name = "textBoxMatricula";
             textBoxMatricula.Size = new Size(740, 23);
-            textBoxMatricula.TabIndex = 16;
+            textBoxMatricula.TabIndex = 5;
             // 
             // labelNomeErro
             // 
@@ -135,7 +135,7 @@
             labelNomeErro.Location = new Point(53, 22);
             labelNomeErro.Name = "labelNomeErro";
             labelNomeErro.Size = new Size(28, 15);
-            labelNomeErro.TabIndex = 15;
+            labelNomeErro.TabIndex = 1;
             labelNomeErro.Text = "erro";
             // 
             // labelNome
@@ -145,7 +145,7 @@
             labelNome.Location = new Point(6, 22);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(41, 15);
-            labelNome.TabIndex = 14;
+            labelNome.TabIndex = 0;
             labelNome.Text = "Nome";
             // 
             // labelTitulo
@@ -155,7 +155,7 @@
             labelTitulo.Location = new Point(10, 0);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(105, 21);
-            labelTitulo.TabIndex = 13;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Editar Aluno";
             // 
             // textBoxNome
@@ -164,7 +164,7 @@
             textBoxNome.Location = new Point(6, 40);
             textBoxNome.Name = "textBoxNome";
             textBoxNome.Size = new Size(740, 23);
-            textBoxNome.TabIndex = 12;
+            textBoxNome.TabIndex = 2;
             // 
             // labelInfo
             // 
@@ -173,7 +173,7 @@
             labelInfo.Location = new Point(15, 32);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(269, 15);
-            labelInfo.TabIndex = 24;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o aluno a ser Editado";
             // 
             // textBoxAlunoAEditar
@@ -184,7 +184,7 @@
             textBoxAlunoAEditar.Name = "textBoxAlunoAEditar";
             textBoxAlunoAEditar.ReadOnly = true;
             textBoxAlunoAEditar.Size = new Size(746, 23);
-            textBoxAlunoAEditar.TabIndex = 25;
+            textBoxAlunoAEditar.TabIndex = 2;
             textBoxAlunoAEditar.KeyDown += textBoxAlunoAEditar_KeyDown;
             // 
             // groupBoxAreaDeEdicao
@@ -202,7 +202,7 @@
             groupBoxAreaDeEdicao.Location = new Point(12, 94);
             groupBoxAreaDeEdicao.Name = "groupBoxAreaDeEdicao";
             groupBoxAreaDeEdicao.Size = new Size(766, 167);
-            groupBoxAreaDeEdicao.TabIndex = 26;
+            groupBoxAreaDeEdicao.TabIndex = 3;
             groupBoxAreaDeEdicao.TabStop = false;
             groupBoxAreaDeEdicao.Text = "Editar Aluno";
             // 
@@ -213,7 +213,7 @@
             labelErroDiversos.Location = new Point(234, 271);
             labelErroDiversos.Name = "labelErroDiversos";
             labelErroDiversos.Size = new Size(28, 15);
-            labelErroDiversos.TabIndex = 22;
+            labelErroDiversos.TabIndex = 6;
             labelErroDiversos.Text = "erro";
             // 
             // EditarAluno

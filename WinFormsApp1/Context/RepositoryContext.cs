@@ -25,6 +25,8 @@ namespace WinFormsApp1.Context
 
         public AlunoRepository AlunoRepository { get; private init; }
 
+        // colocar os outros Repository aqui
+
         private void CreatesIniciais()
         {
             {
@@ -47,6 +49,8 @@ namespace WinFormsApp1.Context
                 """;
                 command.ExecuteNonQuery();
             }
+
+            //colocar os outros Create aqui
         }
     }
 }

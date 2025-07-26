@@ -48,7 +48,7 @@
             textBoxNome.Location = new Point(10, 52);
             textBoxNome.Name = "textBoxNome";
             textBoxNome.Size = new Size(762, 23);
-            textBoxNome.TabIndex = 0;
+            textBoxNome.TabIndex = 3;
             // 
             // labelTitulo
             // 
@@ -57,7 +57,7 @@
             labelTitulo.Location = new Point(4, 1);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(178, 21);
-            labelTitulo.TabIndex = 1;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Cadastrar Novo Aluno";
             // 
             // labelNome
@@ -67,7 +67,7 @@
             labelNome.Location = new Point(12, 34);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(44, 15);
-            labelNome.TabIndex = 2;
+            labelNome.TabIndex = 1;
             labelNome.Text = "Nome:";
             // 
             // labelNomeErro
@@ -77,7 +77,7 @@
             labelNomeErro.Location = new Point(64, 34);
             labelNomeErro.Name = "labelNomeErro";
             labelNomeErro.Size = new Size(28, 15);
-            labelNomeErro.TabIndex = 3;
+            labelNomeErro.TabIndex = 2;
             labelNomeErro.Text = "erro";
             // 
             // labelMatriculaErro
@@ -87,7 +87,7 @@
             labelMatriculaErro.Location = new Point(81, 83);
             labelMatriculaErro.Name = "labelMatriculaErro";
             labelMatriculaErro.Size = new Size(28, 15);
-            labelMatriculaErro.TabIndex = 6;
+            labelMatriculaErro.TabIndex = 5;
             labelMatriculaErro.Text = "erro";
             // 
             // labelMatricula
@@ -97,7 +97,7 @@
             labelMatricula.Location = new Point(12, 84);
             labelMatricula.Name = "labelMatricula";
             labelMatricula.Size = new Size(62, 15);
-            labelMatricula.TabIndex = 5;
+            labelMatricula.TabIndex = 4;
             labelMatricula.Text = "Matrícula:";
             // 
             // textBoxMatricula
@@ -105,7 +105,7 @@
             textBoxMatricula.Location = new Point(10, 101);
             textBoxMatricula.Name = "textBoxMatricula";
             textBoxMatricula.Size = new Size(762, 23);
-            textBoxMatricula.TabIndex = 4;
+            textBoxMatricula.TabIndex = 6;
             // 
             // labelEmailErro
             // 
@@ -114,7 +114,7 @@
             labelEmailErro.Location = new Point(56, 130);
             labelEmailErro.Name = "labelEmailErro";
             labelEmailErro.Size = new Size(28, 15);
-            labelEmailErro.TabIndex = 9;
+            labelEmailErro.TabIndex = 8;
             labelEmailErro.Text = "erro";
             // 
             // labelEmail
@@ -124,7 +124,7 @@
             labelEmail.Location = new Point(13, 130);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(39, 15);
-            labelEmail.TabIndex = 8;
+            labelEmail.TabIndex = 7;
             labelEmail.Text = "Email:";
             // 
             // textBoxEmail
@@ -132,7 +132,7 @@
             textBoxEmail.Location = new Point(10, 148);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(762, 23);
-            textBoxEmail.TabIndex = 7;
+            textBoxEmail.TabIndex = 9;
             // 
             // buttonCadastrar
             // 
