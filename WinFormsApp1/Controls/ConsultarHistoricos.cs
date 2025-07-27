@@ -12,9 +12,16 @@ namespace WinFormsApp1.Controls
 {
     public partial class ConsultarHistoricos : UserControl
     {
+        public Action? FecharControl;
+
         public ConsultarHistoricos()
         {
             InitializeComponent();
+        }
+
+        public void ResetarConteudo()
+        {
+
         }
     }
 }

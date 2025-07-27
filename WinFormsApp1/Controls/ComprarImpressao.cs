@@ -12,9 +12,16 @@ namespace WinFormsApp1.Controls
 {
     public partial class ComprarImpressao : UserControl
     {
+        public Action? FecharControl;
+
         public ComprarImpressao()
         {
             InitializeComponent();
+        }
+
+        public void ResetarConteudo()
+        {
+
         }
     }
 }

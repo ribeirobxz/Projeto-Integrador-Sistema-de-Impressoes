@@ -10,11 +10,10 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1.Controls
 {
-    public partial class ConsutarSaldos : UserControl
+    public partial class DeletarUltimaImpressaoRealizada : UserControl
     {
         public Action? FecharControl;
-
-        public ConsutarSaldos()
+        public DeletarUltimaImpressaoRealizada()
         {
             InitializeComponent();
         }

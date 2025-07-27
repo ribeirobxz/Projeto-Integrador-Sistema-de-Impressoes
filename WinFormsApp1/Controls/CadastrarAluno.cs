@@ -16,12 +16,12 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
         
-        private readonly AlunoService _mockService;
+        private readonly AlunoService _service;
 
         internal CadastrarAluno(AlunoService service)
         {
             InitializeComponent();
-            this._mockService = service;
+            this._service = service;
         }
 
         public void ResetarConteudo()
@@ -29,6 +29,7 @@ namespace WinFormsApp1.Controls
             textBoxNome.Text = string.Empty;
             textBoxEmail.Text = string.Empty;
             textBoxMatricula.Text = string.Empty;
+            labelErroDiversos.Text = string.Empty;
             labelEmailErro.Text = string.Empty;
             labelMatriculaErro.Text = string.Empty;
             labelNomeErro.Text = string.Empty;
@@ -36,39 +37,59 @@ namespace WinFormsApp1.Controls
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
+            labelNomeErro.Text = string.Empty;
+            labelEmailErro.Text = string.Empty;
+            labelMatriculaErro.Text = string.Empty;
+            labelErroDiversos.Text = string.Empty;
+
+            string nome = textBoxNome.Text;
+            if (string.IsNullOrEmpty(nome))
+            {
+                labelNomeErro.Text = "O nome não pode ser vazio.";
+                return;
+            }
+
+            string matricula = textBoxMatricula.Text;
+            if (string.IsNullOrEmpty(matricula))
+            {
+                labelMatriculaErro.Text = "A matrícula não pode ser vazia.";
+                return;
+            }
+
+            string email = textBoxEmail.Text;
+            if (string.IsNullOrEmpty(email) || !email.Contains("@"))
+            {
+                labelEmailErro.Text = "O email deve ser válido.";
+                return;
+            }
+
             try
             {
-                string nome = textBoxNome.Text;
-                if(string.IsNullOrEmpty(nome))
-                {
-                    labelNomeErro.Text = "O nome não pode ser vazio.";
-                    return;
-                }
-
-                string matricula = textBoxMatricula.Text;
-                if (string.IsNullOrEmpty(matricula))
-                {
-                    labelMatriculaErro.Text = "A matrícula não pode ser vazia.";
-                    return;
-                }
-
-                string email = textBoxEmail.Text;
-                if (string.IsNullOrEmpty(email) || !email.Contains("@"))
-                {
-                    labelEmailErro.Text = "O email deve ser válido.";
-                    return;
-                }
-                
-
                 Aluno aluno = new Aluno(0, nome, matricula, email, 0);
-                _mockService.AdicionarAluno(aluno);
-
+                _service.AdicionarAluno(aluno);
                 FecharControl?.Invoke();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("mostrar mensagem de erro", "titulo");
-                // ou mudar os label de erro
+                if (ex.Message.Contains("Unique_Aluno_Nome"))
+                {
+                    labelNomeErro.Text = "Esse nome ja esta cadastrado.";
+                    return;
+                }
+                else if (ex.Message.Contains("Unique_Aluno_Matricula"))
+                {
+                    labelMatriculaErro.Text = "Essa matricula ja esta cadastrada.";
+                    return;
+                }
+                else if (ex.Message.Contains("Unique_Aluno_Email"))
+                {
+                    labelEmailErro.Text = "Esse email ja esta cadastrado.";
+                    return;
+                }
+                else
+                {
+                    labelErroDiversos.Text = "Um erro não esparado aconteceu: " + ex.Message;
+                }
             }
         }
 

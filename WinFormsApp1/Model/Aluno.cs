@@ -27,5 +27,12 @@ namespace WinFormsApp1.Model
             Email = email;
             QntdImpressao = qntdImpressao;
         }
+
+        public Aluno() { }
+
+        public override string ToString()
+        {
+            return $"Nome: {Nome}, Matricula: {Matricula}, E-mail: {Email}, Quantidade de impressão disponivel: {QntdImpressao}";
+        }
     }
 }

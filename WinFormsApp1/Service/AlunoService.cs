@@ -9,80 +9,55 @@ using WinFormsApp1.Model;
 
 namespace WinFormsApp1.Service
 {
-    public class AlunoService
+    internal class AlunoService
     {
-        private readonly AppDatabaseContext _appDatabaseContext;
+        private readonly AlunoRepository _alunoRepository;
 
-        public AlunoService(AppDatabaseContext appDatabaseContext)
+        public AlunoService(AlunoRepository alunoRepository)
         {
-            _appDatabaseContext = appDatabaseContext;
+            _alunoRepository = alunoRepository;
         }
 
-        public bool AdicionarAluno(Aluno aluno) 
+        public bool AdicionarAluno(Aluno aluno)
         {
-            if (_appDatabaseContext.Alunos.Where(x => x.Matricula == aluno.Matricula).Count() > 0)
+            try
             {
-                throw new ArgumentException("UNIQUE EXCEPTION Matricula");
+               return _alunoRepository.AdicionarAluno(aluno);
             }
-
-            if (_appDatabaseContext.Alunos.Where(x => x.Nome == aluno.Nome).Count() > 0)
+            catch (Exception)
             {
-                throw new ArgumentException("UNIQUE EXCEPTION Nome");
+                throw;
             }
-
-            if (_appDatabaseContext.Alunos.Where(x => x.Email == aluno.Email).Count() > 0)
-            {
-                throw new ArgumentException("UNIQUE EXCEPTION Email");
-            }
-
-            _appDatabaseContext.Alunos.Add(aluno);
-            _appDatabaseContext.SaveChanges();
-
-            return true;
         }
 
         public bool EditarAluno(Aluno aluno)
         {
-            var alunoParaEditar = _appDatabaseContext.Alunos.FirstOrDefault(x => x.Nome == aluno.Nome);
-            if (aluno == null)
+            try
             {
-                throw new ArgumentException("Não existe EXCEPTION");
+               return _alunoRepository.AtualizarAluno(aluno);
             }
-
-            if (_appDatabaseContext.Alunos.Where(x => x.Matricula == aluno.Matricula && x.Codigo != aluno.Codigo).Count() > 0)
+            catch (Exception)
             {
-                throw new ArgumentException("UNIQUE EXCEPTION Matricula");
+                throw;
             }
-
-            if (_appDatabaseContext.Alunos.Where(x => x.Nome == aluno.Nome && x.Codigo != aluno.Codigo).Count() > 0)
-            {
-                throw new ArgumentException("UNIQUE EXCEPTION Nome");
-            }
-
-            if (_appDatabaseContext.Alunos.Where(x => x.Email == aluno.Email && x.Codigo != aluno.Codigo).Count() > 0)
-            {
-                throw new ArgumentException("UNIQUE EXCEPTION Email");
-            }
-
-            alunoParaEditar.Nome = aluno.Nome;
-            alunoParaEditar.Matricula = aluno.Matricula;
-            alunoParaEditar.Email = aluno.Email;
-            alunoParaEditar.QntdImpressao = aluno.QntdImpressao;
-
-            _appDatabaseContext.SaveChanges();
-
-            return true;
         }
 
-        public bool DeletarAluno(Aluno aluno) 
+        public bool DeletarAluno(int Codigo) 
         {
-            _appDatabaseContext.Alunos.Remove(aluno);
-            return _appDatabaseContext.SaveChanges() > 0;
+            try
+            {
+               return _alunoRepository.DeletarAluno(Codigo).deletado;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public Aluno? SelecionarAlunoPorCodigo(int codigo) 
         {
-            var aluno = _appDatabaseContext.Alunos.FirstOrDefault(x => x.Codigo == codigo);
+            // a fazer
+            Aluno aluno = null;
             if (aluno == null)
             {
                 return null;
@@ -93,7 +68,8 @@ namespace WinFormsApp1.Service
 
         public Aluno? SelecionarAlunoPorNome(string nome)
         {
-            var aluno = _appDatabaseContext.Alunos.FirstOrDefault(x => x.Nome == nome);
+            // a fazer
+            Aluno aluno = null;
             if (aluno == null)
             {
                 return null;

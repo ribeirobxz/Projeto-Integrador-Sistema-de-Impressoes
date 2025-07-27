@@ -12,9 +12,15 @@ namespace WinFormsApp1.Controls
 {
     public partial class RealizarImpressao : UserControl
     {
+        public Action? FecharControl;
         public RealizarImpressao()
         {
             InitializeComponent();
+        }
+
+        public void ResetarConteudo()
+        {
+
         }
     }
 }
