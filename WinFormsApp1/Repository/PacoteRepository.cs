@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.Context
+namespace WinFormsApp1.Repository
 {
     internal class PacoteRepository
     {

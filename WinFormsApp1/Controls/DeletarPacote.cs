@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
-using WinFormsApp1.Service;
 
 namespace WinFormsApp1.Controls
 {
@@ -18,14 +18,14 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteService _service;
+        private readonly PacoteRepository _pacoteRepository;
 
         private Pacote? _pacoteSelecionado = null;
 
-        internal DeletarPacote(PacoteService service)
+        internal DeletarPacote(PacoteRepository pacoteRepository)
         {
             InitializeComponent();
-            _service = service;
+            _pacoteRepository = pacoteRepository;
         }
 
         public void ResetarConteudo()
@@ -41,7 +41,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarPacote selecionarAluno = new SelecionarPacote(_service, _onReceberpacoteSelecionado);
+                SelecionarPacote selecionarAluno = new SelecionarPacote(_pacoteRepository, _onReceberpacoteSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }

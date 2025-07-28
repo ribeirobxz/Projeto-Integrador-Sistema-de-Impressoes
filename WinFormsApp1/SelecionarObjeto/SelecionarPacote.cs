@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Model;
-using WinFormsApp1.Service;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.SelecionarObjeto
 {
@@ -12,11 +12,11 @@ namespace WinFormsApp1.SelecionarObjeto
     {
         private readonly Action<object> _RetornoDoEscolhido;
 
-        private readonly PacoteService _service;
+        private readonly PacoteRepository _pacoteRepository;
 
-        public SelecionarPacote(PacoteService service, Action<object> retornoDoEscolhido)
+        public SelecionarPacote(PacoteRepository pacoteRepository, Action<object> retornoDoEscolhido)
         {
-            _service = service;
+            _pacoteRepository = pacoteRepository;
             _RetornoDoEscolhido = retornoDoEscolhido;
         }
 

@@ -1,5 +1,5 @@
+using WinFormsApp1.Context;
 using WinFormsApp1.Controls;
-using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
@@ -21,59 +21,59 @@ namespace WinFormsApp1
         DeletarUltimaCompra deletarUltimaCompra;
         DeletarUltimaImpressaoRealizada deletarUltimaImpressaoRealizada;
 
-        private readonly Services _services;
+        private readonly RepositoryContext _repositoryContext;
 
         public FormMain()
         {
             InitializeComponent();
         }
 
-        public FormMain(Services services) : this()
+        public FormMain(RepositoryContext repositoryContext) : this()
         {
 
-            _services = services;
+            _repositoryContext = repositoryContext;
 
             telaInicial = new TelaInicial();
             telaInicial.Dock = DockStyle.Fill;
             telaInicial.Show();
             this.panelPrincipal.Controls.Add(telaInicial);
 
-            cadastrarAluno = new CadastrarAluno(services.AlunoService);
+            cadastrarAluno = new CadastrarAluno(_repositoryContext.AlunoRepository);
             cadastrarAluno.Dock = DockStyle.Fill;
             cadastrarAluno.Hide();
             this.panelPrincipal.Controls.Add(cadastrarAluno);
 
-            editarAluno = new EditarAluno(services.AlunoService);
+            editarAluno = new EditarAluno(_repositoryContext.AlunoRepository);
             editarAluno.Dock = DockStyle.Fill;
             editarAluno.Hide();
             this.panelPrincipal.Controls.Add(editarAluno);
 
-            deletarAluno = new DeletarAluno(services.AlunoService);
+            deletarAluno = new DeletarAluno(_repositoryContext.AlunoRepository);
             deletarAluno.Dock = DockStyle.Fill;
             deletarAluno.Hide();
             this.panelPrincipal.Controls.Add(deletarAluno);
 
-            consultarAluno = new ConsultarAluno(services.AlunoService);
+            consultarAluno = new ConsultarAluno(_repositoryContext.AlunoRepository);
             consultarAluno.Dock = DockStyle.Fill;
             consultarAluno.Hide();
             this.panelPrincipal.Controls.Add(consultarAluno);
 
-            cadastrarPacote = new CadastrarPacote(services.PacoteService);
+            cadastrarPacote = new CadastrarPacote(_repositoryContext.PacoteRepository);
             cadastrarPacote.Dock = DockStyle.Fill;
             cadastrarPacote.Hide();
             this.panelPrincipal.Controls.Add(cadastrarPacote);
 
-            editarPacote = new EditarPacote(services.PacoteService);
+            editarPacote = new EditarPacote(_repositoryContext.PacoteRepository);
             editarPacote.Dock = DockStyle.Fill;
             editarPacote.Hide();
             this.panelPrincipal.Controls.Add(editarPacote);
 
-            deletarPacote = new DeletarPacote(services.PacoteService);
+            deletarPacote = new DeletarPacote(_repositoryContext.PacoteRepository);
             deletarPacote.Dock = DockStyle.Fill;
             deletarPacote.Hide();
             this.panelPrincipal.Controls.Add(deletarPacote);
 
-            consultarPacotes = new ConsultarPacotes(services.PacoteService);
+            consultarPacotes = new ConsultarPacotes(_repositoryContext.PacoteRepository);
             consultarPacotes.Dock = DockStyle.Fill;
             consultarPacotes.Hide();
             this.panelPrincipal.Controls.Add(consultarPacotes);
@@ -140,7 +140,7 @@ namespace WinFormsApp1
             telaInicial._OnRealizarImpressao_Click += _OnRealizarImpressao_Click;
             telaInicial._OnDeletarUltimaCompra_Click += _OnDeletarUltimaCompra_Click;
             telaInicial._OnDeletarUltimaImpressaoRealizada_Click += _OnDeletarUltimaImpressaoRealizada_Click;
-
+            
         }
 
         private void EsconderTodos()

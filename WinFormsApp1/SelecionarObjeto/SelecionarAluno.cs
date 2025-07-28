@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.Model;
-using WinFormsApp1.Service;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.SelecionarObjeto
 {
@@ -12,11 +12,11 @@ namespace WinFormsApp1.SelecionarObjeto
     {
         private readonly Action<object> _RetornoDoEscolhido;
 
-        private readonly AlunoService _service;
+        private readonly AlunoRepository _alunoRepository;
 
-        public SelecionarAluno(AlunoService service, Action<object> retornoDoEscolhido)
+        public SelecionarAluno(AlunoRepository alunoRepository, Action<object> retornoDoEscolhido)
         {
-            _service = service;
+            _alunoRepository = alunoRepository;
             _RetornoDoEscolhido = retornoDoEscolhido;
         }
 
@@ -38,17 +38,12 @@ namespace WinFormsApp1.SelecionarObjeto
                 return Array.Empty<Aluno>();
             }
 
-            // colocar codigo aqui que lista os alunos
-            //_service.
 
-            // mock
-            var aa = new List<Aluno>();
-            aa.Add(new Aluno(1, "aaa", "aaaa", "aaa@aa.com", 22));
-            aa.Add(new Aluno(2, "BBB", "BB", "BB@aa.com", 23));
-            aa.Add(new Aluno(3, "CC", "CCC", "CC@aa.com", 242));
-            aa.Add(new Aluno(4, "DD", "DDD", "DD@aa.com", 26));
-            return aa.ToArray();
+            return _alunoRepository.SelecionarTodosAlunos().ToArray()
+                .Where(aluno => aluno.Nome.Contains(OqueProcurar, StringComparison.OrdinalIgnoreCase))
+                .ToArray();
         }
+
         public  Action<object> RetornarObjetoEscolhido()
         {
             return _RetornoDoEscolhido;

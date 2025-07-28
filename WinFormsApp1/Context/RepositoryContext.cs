@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Context
 {
@@ -15,6 +16,7 @@ namespace WinFormsApp1.Context
             _connection.Open();
 
             CreatesIniciais();
+
             AlunoRepository = new AlunoRepository(_connection);
             PacoteRepository = new PacoteRepository(_connection);
         }

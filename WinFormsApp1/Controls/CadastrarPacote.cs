@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Model;
-using WinFormsApp1.Service;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Controls
 {
@@ -16,12 +16,12 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteService _service;
+        private readonly PacoteRepository _pacoteRepository;
 
-        internal CadastrarPacote(PacoteService service)
+        internal CadastrarPacote(PacoteRepository pacoteRepository)
         {
             InitializeComponent();
-            _service = service;
+            _pacoteRepository = pacoteRepository;
         }
 
         public void ResetarConteudo()

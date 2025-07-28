@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
-using WinFormsApp1.Service;
 
 namespace WinFormsApp1.Controls
 {
@@ -18,14 +18,14 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoService _service;
+        private readonly AlunoRepository _alunoRepository;
 
         private Aluno? _alunoSelecionado = null;
 
-        internal EditarAluno(AlunoService service)
+        internal EditarAluno(AlunoRepository alunoRepository)
         {
             InitializeComponent();
-            _service = service;
+            _alunoRepository = alunoRepository;
         }
 
         public void ResetarConteudo()
@@ -58,7 +58,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAluno selecionarAluno = new SelecionarAluno(_service, _onReceberAlunoSelecionado);
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_alunoRepository, _onReceberAlunoSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
@@ -90,7 +90,11 @@ namespace WinFormsApp1.Controls
 
             try
             {
-                // a fazer ainda
+                _alunoSelecionado.Nome = textBoxNome.Text;
+                _alunoSelecionado.Email = textBoxEmail.Text;
+                _alunoSelecionado.Matricula = textBoxMatricula.Text;
+
+                _alunoRepository.AtualizarAluno(_alunoSelecionado);
 
                 FecharControl?.Invoke();
             }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Model;
-using WinFormsApp1.Service;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Controls
 {
@@ -16,12 +16,12 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
         
-        private readonly AlunoService _service;
+        private readonly AlunoRepository _alunoRepository;
 
-        internal CadastrarAluno(AlunoService service)
+        internal CadastrarAluno(AlunoRepository alunoRepository)
         {
             InitializeComponent();
-            this._service = service;
+            this._alunoRepository = alunoRepository;
         }
 
         public void ResetarConteudo()
@@ -65,8 +65,9 @@ namespace WinFormsApp1.Controls
 
             try
             {
-                Aluno aluno = new Aluno(0, nome, matricula, email, 0);
-                _service.AdicionarAluno(aluno);
+                var aluno = new Aluno(0, nome, matricula, email, 0);
+                _alunoRepository.AdicionarAluno(aluno);
+
                 FecharControl?.Invoke();
             }
             catch (Exception ex)

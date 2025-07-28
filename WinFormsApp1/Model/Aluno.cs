@@ -10,9 +10,6 @@ namespace WinFormsApp1.Model
 {
     public class Aluno
     {
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string Matricula { get; set; }

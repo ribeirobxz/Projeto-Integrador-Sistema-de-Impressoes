@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WinFormsApp1.Context;
-using WinFormsApp1.Service;
 
 namespace WinFormsApp1
 {
@@ -27,8 +26,6 @@ namespace WinFormsApp1
         {
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
-
-                    services.AddTransient<Services>();
                     services.AddSingleton<RepositoryContext>(new RepositoryContext(connectionString));
 
                     services.AddTransient<FormMain>();
@@ -48,7 +45,7 @@ namespace WinFormsApp1
                 {
                 }
             }
-            return $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={Path.Combine(AppContext.BaseDirectory, "ProjetoIntegrador.mdf")};Integrated Security=True;Connect Timeout=30";
+            return """Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ribei\OneDrive\Desktop\db\ProjetoIntegrador.mdf;Integrated Security=True;Connect Timeout=30""";
         }
 
     }
