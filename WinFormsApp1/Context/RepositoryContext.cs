@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dapper;
 using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Context
@@ -28,14 +29,11 @@ namespace WinFormsApp1.Context
 
         public AlunoRepository AlunoRepository { get; private init; }
         public PacoteRepository PacoteRepository { get; private init; }
-        // colocar os outros Repository aqui
 
         private void CreatesIniciais()
         {
             {
-                var command = _connection.CreateCommand();
-                command.CommandText =
-                """
+                var CREATE_ALUNO_TABLE_QUERY = """
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Aluno')
                 BEGIN
                     CREATE TABLE Aluno (
@@ -50,9 +48,23 @@ namespace WinFormsApp1.Context
                     );
                 END
                 """;
-                command.ExecuteNonQuery();
+                _connection.Execute(CREATE_ALUNO_TABLE_QUERY);
             }
 
+            {
+                var CREATE_PACOTES_TABLE_QUERY = """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Pacotes')
+                BEGIN
+                    CREATE TABLE Pacotes (
+                        Codigo INT IDENTITY PRIMARY KEY,
+                        Quantidade SMALLINT NOT NULL,
+                        Preco DECIMAL(6, 2) NOT NULL
+                    );
+                END
+                """;
+                _connection.Execute(CREATE_PACOTES_TABLE_QUERY);
+            }
+           
             //colocar os outros Create aqui
         }
     }
