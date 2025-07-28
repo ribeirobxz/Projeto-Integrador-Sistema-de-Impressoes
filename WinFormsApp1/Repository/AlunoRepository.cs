@@ -86,5 +86,11 @@ namespace WinFormsApp1.Repository
             return _connection.Query<Aluno>(sqlQuery);
         }
 
+        public IEnumerable<Aluno> SelecionarAlunosPorNome(string NomeQueContem)
+        {
+            var sqlQuery = "SELECT * FROM Aluno WHERE Nome LIKE @Nome;";
+            return _connection.Query<Aluno>(sqlQuery, new { Nome = "%" + NomeQueContem + "%" });
+        }
+
     }
 }

@@ -38,10 +38,7 @@ namespace WinFormsApp1.SelecionarObjeto
                 return Array.Empty<Aluno>();
             }
 
-
-            return _alunoRepository.SelecionarTodosAlunos().ToArray()
-                .Where(aluno => aluno.Nome.Contains(OqueProcurar, StringComparison.OrdinalIgnoreCase))
-                .ToArray();
+            return _alunoRepository.SelecionarAlunosPorNome(OqueProcurar).ToArray();
         }
 
         public  Action<object> RetornarObjetoEscolhido()
