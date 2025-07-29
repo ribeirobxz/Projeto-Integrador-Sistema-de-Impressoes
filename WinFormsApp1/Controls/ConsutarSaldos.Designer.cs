@@ -28,17 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            buttonVoltar = new Button();
             SuspendLayout();
+            // 
+            // buttonVoltar
+            // 
+            buttonVoltar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonVoltar.Location = new Point(3, 3);
+            buttonVoltar.Name = "buttonVoltar";
+            buttonVoltar.Size = new Size(152, 23);
+            buttonVoltar.TabIndex = 1;
+            buttonVoltar.Text = "Voltar";
+            buttonVoltar.UseVisualStyleBackColor = true;
+            buttonVoltar.Click += buttonVoltar_Click;
             // 
             // ConsutarSaldos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(buttonVoltar);
             Name = "ConsutarSaldos";
             Size = new Size(800, 500);
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button buttonVoltar;
     }
 }

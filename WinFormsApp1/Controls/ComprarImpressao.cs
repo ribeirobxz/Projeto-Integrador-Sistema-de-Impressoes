@@ -91,7 +91,7 @@ namespace WinFormsApp1.Controls
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
             _alunoSelecionado = (Aluno)alunoSelecionado;
-            textBoxAlunoEscolhido.Text = alunoSelecionado.ToString();
+            textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             if (_alunoSelecionado != null && listBoxPacotes.Items.Count > 0)
             {

@@ -23,5 +23,10 @@ namespace WinFormsApp1.Controls
         {
 
         }
+
+        private void buttonVoltar_Click(object sender, EventArgs e)
+        {
+            FecharControl?.Invoke();
+        }
     }
 }

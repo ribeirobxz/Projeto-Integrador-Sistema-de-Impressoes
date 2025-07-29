@@ -25,8 +25,7 @@ namespace WinFormsApp1.Controls
         public Action? _OnRealizarImpressao_Click;
         public Action? _OnConsultarSaldos_Click;
         public Action? _OnConsultarHistoricos_Click;
-        public Action? _OnDeletarUltimaCompra_Click;
-        public Action? _OnDeletarUltimaImpressaoRealizada_Click;
+        public Action? _OnDeletarUltimaCompraOuImpressao_Click;
 
         public TelaInicial()
         {
@@ -98,14 +97,10 @@ namespace WinFormsApp1.Controls
             _OnConsultarHistoricos_Click?.Invoke();
         }
 
-        private void buttonDeletarUltimaCompra_Click(object sender, EventArgs e)
+        private void buttondeletarUltimaCompraOuImpressao_Click(object sender, EventArgs e)
         {
-            _OnDeletarUltimaCompra_Click?.Invoke();
+            _OnDeletarUltimaCompraOuImpressao_Click?.Invoke();
         }
 
-        private void buttonDeletarUltimaImpressaoRealizada_Click(object sender, EventArgs e)
-        {
-            _OnDeletarUltimaImpressaoRealizada_Click?.Invoke();
-        }
     }
 }

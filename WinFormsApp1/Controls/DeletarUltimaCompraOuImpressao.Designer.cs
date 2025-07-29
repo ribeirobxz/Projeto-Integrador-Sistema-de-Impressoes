@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1.Controls
 {
-    partial class DeletarUltimaCompra
+    partial class DeletarUltimaCompraOuImpressao
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -56,9 +56,9 @@
             labelInfo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelInfo.Location = new Point(13, 31);
             labelInfo.Name = "labelInfo";
-            labelInfo.Size = new Size(503, 15);
+            labelInfo.Size = new Size(405, 15);
             labelInfo.TabIndex = 7;
-            labelInfo.Text = "Pressione F2 para escolher o aluno no qual vai ter a ultima compra de impressões deletada";
+            labelInfo.Text = "Pressione F2 para escolher o aluno no qual vai ser deletado a ultima ação";
             // 
             // labelTitulo
             // 
@@ -66,9 +66,9 @@
             labelTitulo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelTitulo.Location = new Point(8, -1);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(296, 21);
+            labelTitulo.Size = new Size(474, 21);
             labelTitulo.TabIndex = 6;
-            labelTitulo.Text = "Deletar Ultima compra de impressões";
+            labelTitulo.Text = "Deletar ultima compra de impressões ou impressão realizada";
             // 
             // labelInfoHistorico
             // 
@@ -76,9 +76,9 @@
             labelInfoHistorico.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelInfoHistorico.Location = new Point(13, 86);
             labelInfoHistorico.Name = "labelInfoHistorico";
-            labelInfoHistorico.Size = new Size(261, 15);
+            labelInfoHistorico.Size = new Size(243, 15);
             labelInfoHistorico.TabIndex = 9;
-            labelInfoHistorico.Text = "Historico da ultima Compra que será deletada:";
+            labelInfoHistorico.Text = "Historico da ultima ação que será deletada:";
             // 
             // textBoxUltimoHistorico
             // 
@@ -118,9 +118,9 @@
             labelMotivacao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelMotivacao.Location = new Point(12, 271);
             labelMotivacao.Name = "labelMotivacao";
-            labelMotivacao.Size = new Size(283, 15);
+            labelMotivacao.Size = new Size(266, 15);
             labelMotivacao.TabIndex = 13;
-            labelMotivacao.Text = "Escreva o motivo de estar deletando essa compra:";
+            labelMotivacao.Text = "Escreva o motivo de estar deletando essa ação:";
             // 
             // textBoxMotivo
             // 
@@ -132,7 +132,7 @@
             textBoxMotivo.Size = new Size(761, 163);
             textBoxMotivo.TabIndex = 14;
             // 
-            // DeletarUltimaCompra
+            // DeletarUltimaCompraOuImpressao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -145,7 +145,7 @@
             Controls.Add(textBoxAlunoEscolhido);
             Controls.Add(labelInfo);
             Controls.Add(labelTitulo);
-            Name = "DeletarUltimaCompra";
+            Name = "DeletarUltimaCompraOuImpressao";
             Size = new Size(800, 500);
             KeyDown += DeletarUltimaCompra_KeyDown;
             ResumeLayout(false);

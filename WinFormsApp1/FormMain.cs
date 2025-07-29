@@ -18,8 +18,7 @@ namespace WinFormsApp1
         RealizarImpressao realizarImpressao;
         ConsutarSaldos consutarSaldos;
         ConsultarHistoricos consultarHistoricos;
-        DeletarUltimaCompra deletarUltimaCompra;
-        DeletarUltimaImpressaoRealizada deletarUltimaImpressaoRealizada;
+        DeletarUltimaCompraOuImpressao deletarUltimaCompraOuImpressao;
 
         private readonly RepositoryContext _repositoryContext;
 
@@ -83,7 +82,7 @@ namespace WinFormsApp1
             comprarImpressao.Hide();
             this.panelPrincipal.Controls.Add(comprarImpressao);
 
-            realizarImpressao = new RealizarImpressao();
+            realizarImpressao = new RealizarImpressao(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
             realizarImpressao.Dock = DockStyle.Fill;
             realizarImpressao.Hide();
             this.panelPrincipal.Controls.Add(realizarImpressao);
@@ -98,15 +97,10 @@ namespace WinFormsApp1
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);
 
-            deletarUltimaCompra = new DeletarUltimaCompra(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
-            deletarUltimaCompra.Dock = DockStyle.Fill;
-            deletarUltimaCompra.Hide();
-            this.panelPrincipal.Controls.Add(deletarUltimaCompra);
-
-            deletarUltimaImpressaoRealizada = new DeletarUltimaImpressaoRealizada();
-            deletarUltimaImpressaoRealizada.Dock = DockStyle.Fill;
-            deletarUltimaImpressaoRealizada.Hide();
-            this.panelPrincipal.Controls.Add(deletarUltimaImpressaoRealizada);
+            deletarUltimaCompraOuImpressao = new DeletarUltimaCompraOuImpressao(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
+            deletarUltimaCompraOuImpressao.Dock = DockStyle.Fill;
+            deletarUltimaCompraOuImpressao.Hide();
+            this.panelPrincipal.Controls.Add(deletarUltimaCompraOuImpressao);
 
 
             cadastrarAluno.FecharControl += VoltaProPainelPrincipal;
@@ -121,8 +115,7 @@ namespace WinFormsApp1
             realizarImpressao.FecharControl += VoltaProPainelPrincipal;
             consutarSaldos.FecharControl += VoltaProPainelPrincipal;
             consultarHistoricos.FecharControl += VoltaProPainelPrincipal;
-            deletarUltimaCompra.FecharControl += VoltaProPainelPrincipal;
-            deletarUltimaImpressaoRealizada.FecharControl += VoltaProPainelPrincipal;
+            deletarUltimaCompraOuImpressao.FecharControl += VoltaProPainelPrincipal;
 
             telaInicial._OnSair_Click += () => { Close(); };
 
@@ -138,8 +131,7 @@ namespace WinFormsApp1
             telaInicial._OnEditarAluno_Click += _OnEditarAluno_Click;
             telaInicial._OnEditarPacote_Click += _OnEditarPacote_Click;
             telaInicial._OnRealizarImpressao_Click += _OnRealizarImpressao_Click;
-            telaInicial._OnDeletarUltimaCompra_Click += _OnDeletarUltimaCompra_Click;
-            telaInicial._OnDeletarUltimaImpressaoRealizada_Click += _OnDeletarUltimaImpressaoRealizada_Click;
+            telaInicial._OnDeletarUltimaCompraOuImpressao_Click += _OnDeletarUltimaCompraOuImpressao_Click;
             
         }
 
@@ -158,8 +150,7 @@ namespace WinFormsApp1
             realizarImpressao.Hide();
             consutarSaldos.Hide();
             consultarHistoricos.Hide();
-            deletarUltimaCompra.Hide();
-            deletarUltimaImpressaoRealizada.Hide();
+            deletarUltimaCompraOuImpressao.Hide();
         }
 
         private void VoltaProPainelPrincipal()
@@ -255,18 +246,12 @@ namespace WinFormsApp1
             consultarHistoricos.Show();
         }
 
-        private void _OnDeletarUltimaCompra_Click() 
+        private void _OnDeletarUltimaCompraOuImpressao_Click() 
         {
             EsconderTodos();
-            deletarUltimaCompra.ResetarConteudo();
-            deletarUltimaCompra.Show();
+            deletarUltimaCompraOuImpressao.ResetarConteudo();
+            deletarUltimaCompraOuImpressao.Show();
         }
 
-        private void _OnDeletarUltimaImpressaoRealizada_Click() 
-        {
-            EsconderTodos();
-            deletarUltimaImpressaoRealizada.ResetarConteudo();
-            deletarUltimaImpressaoRealizada.Show();
-        }
     }
 }

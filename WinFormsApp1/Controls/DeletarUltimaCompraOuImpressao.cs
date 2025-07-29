@@ -15,7 +15,7 @@ using WinFormsApp1.SelecionarObjeto;
 
 namespace WinFormsApp1.Controls
 {
-    public partial class DeletarUltimaCompra : UserControl
+    public partial class DeletarUltimaCompraOuImpressao : UserControl
     {
         public Action? FecharControl;
 
@@ -27,7 +27,7 @@ namespace WinFormsApp1.Controls
 
         private object? _compraDePacoteASerDeletada = null; //mudar para o tipo correto.
 
-        internal DeletarUltimaCompra(AlunoRepository alunoRepository, object comprarRepository)
+        internal DeletarUltimaCompraOuImpressao(AlunoRepository alunoRepository, object comprarRepository)
         {
             InitializeComponent();
             _comprarRepository = comprarRepository;
