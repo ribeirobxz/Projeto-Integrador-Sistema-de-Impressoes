@@ -46,6 +46,7 @@
             // textBoxNome
             // 
             textBoxNome.Location = new Point(10, 52);
+            textBoxNome.MaxLength = 200;
             textBoxNome.Name = "textBoxNome";
             textBoxNome.Size = new Size(762, 23);
             textBoxNome.TabIndex = 3;
@@ -103,6 +104,7 @@
             // textBoxMatricula
             // 
             textBoxMatricula.Location = new Point(10, 101);
+            textBoxMatricula.MaxLength = 20;
             textBoxMatricula.Name = "textBoxMatricula";
             textBoxMatricula.Size = new Size(762, 23);
             textBoxMatricula.TabIndex = 6;
@@ -130,6 +132,7 @@
             // textBoxEmail
             // 
             textBoxEmail.Location = new Point(10, 148);
+            textBoxEmail.MaxLength = 200;
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(762, 23);
             textBoxEmail.TabIndex = 9;

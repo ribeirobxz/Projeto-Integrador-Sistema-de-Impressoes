@@ -78,7 +78,7 @@ namespace WinFormsApp1
             consultarPacotes.Hide();
             this.panelPrincipal.Controls.Add(consultarPacotes);
 
-            comprarImpressao = new ComprarImpressao();
+            comprarImpressao = new ComprarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.PacoteRepository, null); // no lugar de null colocar o Repository que vc for usar
             comprarImpressao.Dock = DockStyle.Fill;
             comprarImpressao.Hide();
             this.panelPrincipal.Controls.Add(comprarImpressao);
@@ -98,7 +98,7 @@ namespace WinFormsApp1
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);
 
-            deletarUltimaCompra = new DeletarUltimaCompra();
+            deletarUltimaCompra = new DeletarUltimaCompra(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
             deletarUltimaCompra.Dock = DockStyle.Fill;
             deletarUltimaCompra.Hide();
             this.panelPrincipal.Controls.Add(deletarUltimaCompra);

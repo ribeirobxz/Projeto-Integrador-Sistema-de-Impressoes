@@ -13,7 +13,7 @@ namespace WinFormsApp1.Forms
 {
     public partial class SelecionarObjetoForm : Form
     {
-        internal SelecionarObjetoForm(ISelecionarObjeto selecionarObjeto)  
+        internal SelecionarObjetoForm(ISelecionarObjeto selecionarObjeto)
         {
             InitializeComponent();
             _selecionarObjeto = selecionarObjeto;
@@ -49,14 +49,14 @@ namespace WinFormsApp1.Forms
             }
         }
 
-        private void ListarobjetosComConteudoDigitado() 
+        private void ListarobjetosComConteudoDigitado()
         {
             string OqueProcurar = textBoxOqueProcurar.Text;
             listBoxListagem.Items.Clear();
             listBoxListagem.Items.AddRange(_selecionarObjeto.ObterConteudoPesquisado(OqueProcurar));
         }
 
-        private void RetornarobjetoEscolhido() 
+        private void RetornarobjetoEscolhido()
         {
             if (listBoxListagem.SelectedItem != null)
             {
@@ -65,5 +65,12 @@ namespace WinFormsApp1.Forms
             }
         }
 
+        private void SelecionarObjetoForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }
