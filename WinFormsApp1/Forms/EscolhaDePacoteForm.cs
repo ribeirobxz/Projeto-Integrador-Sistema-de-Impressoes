@@ -45,7 +45,7 @@ namespace WinFormsApp1.Forms
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            var obj = (_pacoteSelecionado, numericUpDownMultiplicador.Value); // so um exemplo, faça uma classe para quardar esses dados
+            var obj = new CompraImpressao(_pacoteSelecionado, (int) numericUpDownMultiplicador.Value);
 
             if (_conteudoEscolhido?.Invoke(obj) == true)
             {

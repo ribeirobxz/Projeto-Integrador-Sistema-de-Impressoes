@@ -32,8 +32,7 @@ namespace WinFormsApp1.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                throw;
             }
 
         }
@@ -63,8 +62,7 @@ namespace WinFormsApp1.Repository
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                throw;
             }
         }
 

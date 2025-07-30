@@ -13,10 +13,10 @@ namespace WinFormsApp1.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
-        public short Quantidade { get; set; }
+        public int Quantidade { get; set; }
         public decimal Preco { get; set; }
 
-        public Pacote(int codigo, short quantidade, decimal preco)
+        public Pacote(int codigo, int quantidade, decimal preco)
         {
             Codigo = codigo;
             Quantidade = quantidade;
@@ -27,7 +27,23 @@ namespace WinFormsApp1.Model
 
         public override string ToString()
         {
-            return $"Quantidade: {Quantidade}, Preco: R$: {Preco:F4}";
+            return $"Quantidade: {Quantidade}, Preco: R$: {Preco:F2}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Pacote pacote)
+            {
+                return Codigo == pacote.Codigo &&
+                       Quantidade == pacote.Quantidade &&
+                       Preco == pacote.Preco;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Codigo, Quantidade, Preco);
         }
     }
 }

@@ -64,10 +64,15 @@ namespace WinFormsApp1.Controls
         {
             labelErroDiversos.Text = string.Empty;
 
+            if (_pacoteSelecionado == null)
+            {
+                labelErroDiversos.Text = "Nenhum pacote selecionado.";
+                return;
+            }
+
             try
             {
-                // a fazer ainda
-
+                _pacoteRepository.RemoverPacote(_pacoteSelecionado.Codigo);
                 FecharControl?.Invoke();
             }
             catch (Exception)

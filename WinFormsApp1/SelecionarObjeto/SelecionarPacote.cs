@@ -32,14 +32,10 @@ namespace WinFormsApp1.SelecionarObjeto
 
         public object[] ObterConteudoPesquisado(string OqueProcurar)
         {
-            // colocar codigo aqui que lista os pacotes
-            //_service.
-
-            // mock
-            var aa = new List<Pacote>();
-            aa.Add(new Pacote(1, 25, 25));
-            aa.Add(new Pacote(2, 50, 50));
-            return aa.ToArray();
+            return _pacoteRepository
+                .SelecionarTodos()
+                .Where(pacote => pacote.Quantidade.ToString().Contains(OqueProcurar))
+                .ToArray();
         }
 
         public Action<object> RetornarObjetoEscolhido()

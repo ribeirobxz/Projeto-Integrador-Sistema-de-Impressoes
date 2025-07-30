@@ -27,7 +27,8 @@ namespace WinFormsApp1.Controls
         {
             listBoxListagem.Items.Clear();
 
-            listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos().ToArray());
+            listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos()
+                .Select(aluno => $"Nome: {aluno.Nome} - Saldo: {aluno.QntdImpressao}").ToArray());
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)

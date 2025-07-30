@@ -122,14 +122,16 @@ namespace WinFormsApp1.Controls
                 return false;
             }
 
-            listBoxPacotes.Items.Add(conteudo); // aqui tem que ser uma classe com o to string editado, e ter o equals feito para recolher conteudo com pacotes iguais como iquais
-
-
-            // calcular a quantidade total e o valor tool;
+            listBoxPacotes.Items.Add(conteudo);
+            
             int quantidadeTotal = 0; // calcular
             decimal valorTotal = 0; // calcular
 
-
+            foreach (var compraImpressao in listBoxPacotes.Items.Cast<CompraImpressao>())
+            {
+                quantidadeTotal = compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade;
+                valorTotal = compraImpressao.Pacote.Preco * compraImpressao.Quantidade;
+            }
 
             labelQuantidadeTotal.Text = $"Quantidade total: {quantidadeTotal} folhas";
             labelValorTotalCompra.Text = $"Valor total da compra: R$: {valorTotal:F2}";

@@ -70,9 +70,17 @@ namespace WinFormsApp1.Controls
             labelPrecoErro.Text = string.Empty;
             labelErroDiversos.Text = string.Empty;
 
-            try
+            if (_pacoteSelecionado == null)
             {
-                // a fazer ainda
+                labelErroDiversos.Text = "Nenhum pacote selecionado.";
+                return;
+            }
+
+            try 
+            {
+            
+                _pacoteSelecionado.Preco = numericUpDownPreço.Value;
+                _pacoteRepository.AtualizarPacote(_pacoteSelecionado);
 
                 FecharControl?.Invoke();
             }

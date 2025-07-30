@@ -39,13 +39,14 @@ namespace WinFormsApp1.Controls
             labelQuantidadeErro.Text = string.Empty;
             labelErroDiversos.Text = string.Empty;
 
-            decimal quantidade = numericUpDownQuantidade.Value;
+            int quantidade = (int) numericUpDownQuantidade.Value;
             decimal preco = numericUpDownPreço.Value;
 
             try
             {
-                // fazer criação aqui
-                
+                var pacote = new Pacote(0, quantidade, preco);
+                _pacoteRepository.AdicionarPacote(pacote);
+
                 FecharControl?.Invoke();
             }
             catch (Exception ex)
