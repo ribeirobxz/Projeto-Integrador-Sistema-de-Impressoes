@@ -94,6 +94,7 @@
             // 
             textBoxEmail.Font = new Font("Segoe UI", 9F);
             textBoxEmail.Location = new Point(7, 132);
+            textBoxEmail.MaxLength = 200;
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(740, 23);
             textBoxEmail.TabIndex = 8;
@@ -123,6 +124,7 @@
             // 
             textBoxMatricula.Font = new Font("Segoe UI", 9F);
             textBoxMatricula.Location = new Point(6, 86);
+            textBoxMatricula.MaxLength = 20;
             textBoxMatricula.Name = "textBoxMatricula";
             textBoxMatricula.Size = new Size(740, 23);
             textBoxMatricula.TabIndex = 5;
@@ -162,6 +164,7 @@
             // 
             textBoxNome.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBoxNome.Location = new Point(6, 40);
+            textBoxNome.MaxLength = 200;
             textBoxNome.Name = "textBoxNome";
             textBoxNome.Size = new Size(740, 23);
             textBoxNome.TabIndex = 2;
@@ -222,10 +225,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(labelErroDiversos);
             Controls.Add(groupBoxAreaDeEdicao);
-            Controls.Add(textBoxAlunoAEditar);
-            Controls.Add(labelInfo);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonEditarOK);
+            Controls.Add(textBoxAlunoAEditar);
+            Controls.Add(labelInfo);
             Controls.Add(labelTitulo);
             Name = "EditarAluno";
             Size = new Size(800, 500);

@@ -42,17 +42,16 @@
             buttonDeletarPacote = new Button();
             buttonEditarPacote = new Button();
             buttonCadastrarPacote = new Button();
-            buttonDeletarUltimaImpressaoRealizada = new Button();
-            buttonDeletarUltimaCompra = new Button();
+            buttondeletarUltimaCompraOuImpressao = new Button();
             SuspendLayout();
             // 
             // buttonSair
             // 
             buttonSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonSair.Location = new Point(166, 283);
+            buttonSair.Location = new Point(166, 310);
             buttonSair.Name = "buttonSair";
             buttonSair.Size = new Size(491, 23);
-            buttonSair.TabIndex = 15;
+            buttonSair.TabIndex = 14;
             buttonSair.Text = "Sair do sistema";
             buttonSair.UseVisualStyleBackColor = true;
             buttonSair.Click += buttonSair_Click;
@@ -60,10 +59,10 @@
             // buttonConsultarHistoricos
             // 
             buttonConsultarHistoricos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonConsultarHistoricos.Location = new Point(414, 241);
+            buttonConsultarHistoricos.Location = new Point(414, 210);
             buttonConsultarHistoricos.Name = "buttonConsultarHistoricos";
             buttonConsultarHistoricos.Size = new Size(243, 23);
-            buttonConsultarHistoricos.TabIndex = 14;
+            buttonConsultarHistoricos.TabIndex = 10;
             buttonConsultarHistoricos.Text = "Consultar histórico";
             buttonConsultarHistoricos.UseVisualStyleBackColor = true;
             buttonConsultarHistoricos.Click += buttonConsultarHistoricos_Click;
@@ -71,10 +70,10 @@
             // buttonConsultarSaldos
             // 
             buttonConsultarSaldos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonConsultarSaldos.Location = new Point(165, 241);
+            buttonConsultarSaldos.Location = new Point(166, 210);
             buttonConsultarSaldos.Name = "buttonConsultarSaldos";
             buttonConsultarSaldos.Size = new Size(243, 23);
-            buttonConsultarSaldos.TabIndex = 13;
+            buttonConsultarSaldos.TabIndex = 9;
             buttonConsultarSaldos.Text = "Consultar saldo de todos os alunos";
             buttonConsultarSaldos.UseVisualStyleBackColor = true;
             buttonConsultarSaldos.Click += buttonConsultarSaldos_Click;
@@ -82,10 +81,10 @@
             // buttonRealizarImpressao
             // 
             buttonRealizarImpressao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRealizarImpressao.Location = new Point(166, 212);
+            buttonRealizarImpressao.Location = new Point(415, 239);
             buttonRealizarImpressao.Name = "buttonRealizarImpressao";
             buttonRealizarImpressao.Size = new Size(242, 23);
-            buttonRealizarImpressao.TabIndex = 11;
+            buttonRealizarImpressao.TabIndex = 12;
             buttonRealizarImpressao.Text = " Realizar impressões";
             buttonRealizarImpressao.UseVisualStyleBackColor = true;
             buttonRealizarImpressao.Click += buttonRealizarImpressao_Click;
@@ -93,10 +92,10 @@
             // buttonComprarImpressao
             // 
             buttonComprarImpressao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonComprarImpressao.Location = new Point(165, 183);
+            buttonComprarImpressao.Location = new Point(166, 239);
             buttonComprarImpressao.Name = "buttonComprarImpressao";
             buttonComprarImpressao.Size = new Size(243, 23);
-            buttonComprarImpressao.TabIndex = 9;
+            buttonComprarImpressao.TabIndex = 11;
             buttonComprarImpressao.Text = "Comprar impressões";
             buttonComprarImpressao.UseVisualStyleBackColor = true;
             buttonComprarImpressao.Click += buttonComprarImpressao_Click;
@@ -104,7 +103,7 @@
             // buttonCadastrarAluno
             // 
             buttonCadastrarAluno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonCadastrarAluno.Location = new Point(186, 112);
+            buttonCadastrarAluno.Location = new Point(186, 139);
             buttonCadastrarAluno.Name = "buttonCadastrarAluno";
             buttonCadastrarAluno.Size = new Size(110, 23);
             buttonCadastrarAluno.TabIndex = 1;
@@ -116,7 +115,7 @@
             // 
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelTitulo.Location = new Point(16, 19);
+            labelTitulo.Location = new Point(16, 46);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(765, 45);
             labelTitulo.TabIndex = 0;
@@ -125,7 +124,7 @@
             // buttonEditarAluno
             // 
             buttonEditarAluno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonEditarAluno.Location = new Point(302, 112);
+            buttonEditarAluno.Location = new Point(302, 139);
             buttonEditarAluno.Name = "buttonEditarAluno";
             buttonEditarAluno.Size = new Size(106, 23);
             buttonEditarAluno.TabIndex = 2;
@@ -136,7 +135,7 @@
             // buttonDeletarAluno
             // 
             buttonDeletarAluno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDeletarAluno.Location = new Point(415, 112);
+            buttonDeletarAluno.Location = new Point(415, 139);
             buttonDeletarAluno.Name = "buttonDeletarAluno";
             buttonDeletarAluno.Size = new Size(106, 23);
             buttonDeletarAluno.TabIndex = 3;
@@ -147,7 +146,7 @@
             // buttonConsultarAluno
             // 
             buttonConsultarAluno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonConsultarAluno.Location = new Point(527, 112);
+            buttonConsultarAluno.Location = new Point(527, 139);
             buttonConsultarAluno.Name = "buttonConsultarAluno";
             buttonConsultarAluno.Size = new Size(116, 23);
             buttonConsultarAluno.TabIndex = 4;
@@ -158,7 +157,7 @@
             // buttonConsultarPacotes
             // 
             buttonConsultarPacotes.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonConsultarPacotes.Location = new Point(527, 141);
+            buttonConsultarPacotes.Location = new Point(527, 168);
             buttonConsultarPacotes.Name = "buttonConsultarPacotes";
             buttonConsultarPacotes.Size = new Size(116, 23);
             buttonConsultarPacotes.TabIndex = 8;
@@ -169,7 +168,7 @@
             // buttonDeletarPacote
             // 
             buttonDeletarPacote.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDeletarPacote.Location = new Point(415, 141);
+            buttonDeletarPacote.Location = new Point(415, 168);
             buttonDeletarPacote.Name = "buttonDeletarPacote";
             buttonDeletarPacote.Size = new Size(106, 23);
             buttonDeletarPacote.TabIndex = 7;
@@ -180,7 +179,7 @@
             // buttonEditarPacote
             // 
             buttonEditarPacote.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonEditarPacote.Location = new Point(302, 141);
+            buttonEditarPacote.Location = new Point(302, 168);
             buttonEditarPacote.Name = "buttonEditarPacote";
             buttonEditarPacote.Size = new Size(106, 23);
             buttonEditarPacote.TabIndex = 6;
@@ -191,7 +190,7 @@
             // buttonCadastrarPacote
             // 
             buttonCadastrarPacote.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonCadastrarPacote.Location = new Point(186, 141);
+            buttonCadastrarPacote.Location = new Point(186, 168);
             buttonCadastrarPacote.Name = "buttonCadastrarPacote";
             buttonCadastrarPacote.Size = new Size(110, 23);
             buttonCadastrarPacote.TabIndex = 5;
@@ -199,34 +198,22 @@
             buttonCadastrarPacote.UseVisualStyleBackColor = true;
             buttonCadastrarPacote.Click += buttonCadastrarPacote_Click;
             // 
-            // buttonDeletarUltimaImpressaoRealizada
+            // buttondeletarUltimaCompraOuImpressao
             // 
-            buttonDeletarUltimaImpressaoRealizada.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDeletarUltimaImpressaoRealizada.Location = new Point(415, 212);
-            buttonDeletarUltimaImpressaoRealizada.Name = "buttonDeletarUltimaImpressaoRealizada";
-            buttonDeletarUltimaImpressaoRealizada.Size = new Size(242, 23);
-            buttonDeletarUltimaImpressaoRealizada.TabIndex = 12;
-            buttonDeletarUltimaImpressaoRealizada.Text = "Deletar ultima impressão realizada";
-            buttonDeletarUltimaImpressaoRealizada.UseVisualStyleBackColor = true;
-            buttonDeletarUltimaImpressaoRealizada.Click += buttonDeletarUltimaImpressaoRealizada_Click;
-            // 
-            // buttonDeletarUltimaCompra
-            // 
-            buttonDeletarUltimaCompra.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDeletarUltimaCompra.Location = new Point(414, 183);
-            buttonDeletarUltimaCompra.Name = "buttonDeletarUltimaCompra";
-            buttonDeletarUltimaCompra.Size = new Size(243, 23);
-            buttonDeletarUltimaCompra.TabIndex = 10;
-            buttonDeletarUltimaCompra.Text = "Deletar ultima compra de impressão";
-            buttonDeletarUltimaCompra.UseVisualStyleBackColor = true;
-            buttonDeletarUltimaCompra.Click += buttonDeletarUltimaCompra_Click;
+            buttondeletarUltimaCompraOuImpressao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttondeletarUltimaCompraOuImpressao.Location = new Point(166, 268);
+            buttondeletarUltimaCompraOuImpressao.Name = "buttondeletarUltimaCompraOuImpressao";
+            buttondeletarUltimaCompraOuImpressao.Size = new Size(491, 23);
+            buttondeletarUltimaCompraOuImpressao.TabIndex = 13;
+            buttondeletarUltimaCompraOuImpressao.Text = "Deletar ultima compra de impressão ou impressão realizada";
+            buttondeletarUltimaCompraOuImpressao.UseVisualStyleBackColor = true;
+            buttondeletarUltimaCompraOuImpressao.Click += buttondeletarUltimaCompraOuImpressao_Click;
             // 
             // TelaInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(buttonDeletarUltimaImpressaoRealizada);
-            Controls.Add(buttonDeletarUltimaCompra);
+            Controls.Add(buttondeletarUltimaCompraOuImpressao);
             Controls.Add(buttonConsultarPacotes);
             Controls.Add(buttonDeletarPacote);
             Controls.Add(buttonEditarPacote);
@@ -264,6 +251,6 @@
         private Button buttonEditarPacote;
         private Button buttonCadastrarPacote;
         private Button buttonDeletarUltimaImpressaoRealizada;
-        private Button buttonDeletarUltimaCompra;
+        private Button buttondeletarUltimaCompraOuImpressao;
     }
 }

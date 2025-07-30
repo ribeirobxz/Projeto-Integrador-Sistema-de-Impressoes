@@ -88,6 +88,7 @@
             Controls.Add(textBoxOqueProcurar);
             Name = "SelecionarObjetoForm";
             Text = "SelecionarObjetoForm";
+            KeyDown += SelecionarObjetoForm_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

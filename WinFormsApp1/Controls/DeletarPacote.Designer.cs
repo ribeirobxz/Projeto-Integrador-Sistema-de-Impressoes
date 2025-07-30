@@ -43,7 +43,7 @@
             labelErroDiversos.Location = new Point(195, 102);
             labelErroDiversos.Name = "labelErroDiversos";
             labelErroDiversos.Size = new Size(28, 15);
-            labelErroDiversos.TabIndex = 11;
+            labelErroDiversos.TabIndex = 5;
             labelErroDiversos.Text = "erro";
             // 
             // buttonCancelar
@@ -52,7 +52,7 @@
             buttonCancelar.Location = new Point(103, 100);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
-            buttonCancelar.TabIndex = 10;
+            buttonCancelar.TabIndex = 4;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -63,7 +63,7 @@
             buttonDeletar.Location = new Point(13, 100);
             buttonDeletar.Name = "buttonDeletar";
             buttonDeletar.Size = new Size(75, 23);
-            buttonDeletar.TabIndex = 9;
+            buttonDeletar.TabIndex = 3;
             buttonDeletar.Text = "Deletar";
             buttonDeletar.UseVisualStyleBackColor = true;
             buttonDeletar.Click += buttonDeletar_Click;
@@ -76,7 +76,7 @@
             textBoxPacoteADeletar.Name = "textBoxPacoteADeletar";
             textBoxPacoteADeletar.ReadOnly = true;
             textBoxPacoteADeletar.Size = new Size(746, 23);
-            textBoxPacoteADeletar.TabIndex = 8;
+            textBoxPacoteADeletar.TabIndex = 2;
             textBoxPacoteADeletar.KeyDown += textBoxPacoteADeletar_KeyDown;
             // 
             // labelInfo
@@ -86,7 +86,7 @@
             labelInfo.Location = new Point(13, 40);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(287, 15);
-            labelInfo.TabIndex = 7;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o pacote a ser Deletado";
             // 
             // labelTitulo
@@ -96,7 +96,7 @@
             labelTitulo.Location = new Point(8, 8);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(122, 21);
-            labelTitulo.TabIndex = 6;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Deletar Pacote";
             // 
             // DeletarPacote
