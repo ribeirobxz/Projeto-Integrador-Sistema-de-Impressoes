@@ -47,7 +47,7 @@
             textBoxAlunoEscolhido.Name = "textBoxAlunoEscolhido";
             textBoxAlunoEscolhido.ReadOnly = true;
             textBoxAlunoEscolhido.Size = new Size(760, 23);
-            textBoxAlunoEscolhido.TabIndex = 8;
+            textBoxAlunoEscolhido.TabIndex = 2;
             textBoxAlunoEscolhido.KeyDown += textBoxAlunoEscolhido_KeyDown;
             // 
             // labelInfo
@@ -57,7 +57,7 @@
             labelInfo.Location = new Point(13, 31);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(405, 15);
-            labelInfo.TabIndex = 7;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o aluno no qual vai ser deletado a ultima ação";
             // 
             // labelTitulo
@@ -67,7 +67,7 @@
             labelTitulo.Location = new Point(8, -1);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(474, 21);
-            labelTitulo.TabIndex = 6;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Deletar ultima compra de impressões ou impressão realizada";
             // 
             // labelInfoHistorico
@@ -77,7 +77,7 @@
             labelInfoHistorico.Location = new Point(13, 86);
             labelInfoHistorico.Name = "labelInfoHistorico";
             labelInfoHistorico.Size = new Size(243, 15);
-            labelInfoHistorico.TabIndex = 9;
+            labelInfoHistorico.TabIndex = 3;
             labelInfoHistorico.Text = "Historico da ultima ação que será deletada:";
             // 
             // textBoxUltimoHistorico
@@ -88,7 +88,7 @@
             textBoxUltimoHistorico.Name = "textBoxUltimoHistorico";
             textBoxUltimoHistorico.ReadOnly = true;
             textBoxUltimoHistorico.Size = new Size(761, 146);
-            textBoxUltimoHistorico.TabIndex = 10;
+            textBoxUltimoHistorico.TabIndex = 4;
             // 
             // buttonDeletar
             // 
@@ -96,7 +96,7 @@
             buttonDeletar.Location = new Point(12, 462);
             buttonDeletar.Name = "buttonDeletar";
             buttonDeletar.Size = new Size(75, 23);
-            buttonDeletar.TabIndex = 11;
+            buttonDeletar.TabIndex = 7;
             buttonDeletar.Text = "Deletar";
             buttonDeletar.UseVisualStyleBackColor = true;
             buttonDeletar.Click += buttonDeletar_Click;
@@ -107,7 +107,7 @@
             buttonCancelar.Location = new Point(93, 462);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
-            buttonCancelar.TabIndex = 12;
+            buttonCancelar.TabIndex = 8;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -119,7 +119,7 @@
             labelMotivacao.Location = new Point(12, 271);
             labelMotivacao.Name = "labelMotivacao";
             labelMotivacao.Size = new Size(266, 15);
-            labelMotivacao.TabIndex = 13;
+            labelMotivacao.TabIndex = 5;
             labelMotivacao.Text = "Escreva o motivo de estar deletando essa ação:";
             // 
             // textBoxMotivo
@@ -130,7 +130,7 @@
             textBoxMotivo.Multiline = true;
             textBoxMotivo.Name = "textBoxMotivo";
             textBoxMotivo.Size = new Size(761, 163);
-            textBoxMotivo.TabIndex = 14;
+            textBoxMotivo.TabIndex = 6;
             // 
             // DeletarUltimaCompraOuImpressao
             // 

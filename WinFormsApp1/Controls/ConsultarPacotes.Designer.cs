@@ -52,7 +52,7 @@
             groupBoxArea.Location = new Point(15, 92);
             groupBoxArea.Name = "groupBoxArea";
             groupBoxArea.Size = new Size(758, 125);
-            groupBoxArea.TabIndex = 8;
+            groupBoxArea.TabIndex = 4;
             groupBoxArea.TabStop = false;
             groupBoxArea.Text = "Pacote";
             // 
@@ -60,12 +60,13 @@
             // 
             numericUpDownPreço.BackColor = SystemColors.Window;
             numericUpDownPreço.DecimalPlaces = 4;
+            numericUpDownPreço.Font = new Font("Segoe UI", 9F);
             numericUpDownPreço.Location = new Point(7, 92);
             numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numericUpDownPreço.Name = "numericUpDownPreço";
             numericUpDownPreço.ReadOnly = true;
             numericUpDownPreço.Size = new Size(745, 23);
-            numericUpDownPreço.TabIndex = 31;
+            numericUpDownPreço.TabIndex = 3;
             // 
             // labelQuantidade
             // 
@@ -74,18 +75,19 @@
             labelQuantidade.Location = new Point(6, 19);
             labelQuantidade.Name = "labelQuantidade";
             labelQuantidade.Size = new Size(74, 15);
-            labelQuantidade.TabIndex = 28;
+            labelQuantidade.TabIndex = 0;
             labelQuantidade.Text = "Quantidade:";
             // 
             // numericUpDownQuantidade
             // 
             numericUpDownQuantidade.BackColor = SystemColors.Window;
+            numericUpDownQuantidade.Font = new Font("Segoe UI", 9F);
             numericUpDownQuantidade.Location = new Point(7, 42);
             numericUpDownQuantidade.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numericUpDownQuantidade.Name = "numericUpDownQuantidade";
             numericUpDownQuantidade.ReadOnly = true;
             numericUpDownQuantidade.Size = new Size(745, 23);
-            numericUpDownQuantidade.TabIndex = 30;
+            numericUpDownQuantidade.TabIndex = 1;
             // 
             // labelPreco
             // 
@@ -94,7 +96,7 @@
             labelPreco.Location = new Point(6, 69);
             labelPreco.Name = "labelPreco";
             labelPreco.Size = new Size(42, 15);
-            labelPreco.TabIndex = 29;
+            labelPreco.TabIndex = 2;
             labelPreco.Text = "Preço:";
             // 
             // labelInfo
@@ -104,7 +106,7 @@
             labelInfo.Location = new Point(10, 34);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(296, 15);
-            labelInfo.TabIndex = 6;
+            labelInfo.TabIndex = 2;
             labelInfo.Text = "Pressione F2 para escolher o pacote a ser consultado";
             // 
             // buttonVoltar
@@ -113,7 +115,7 @@
             buttonVoltar.Location = new Point(15, 228);
             buttonVoltar.Name = "buttonVoltar";
             buttonVoltar.Size = new Size(88, 23);
-            buttonVoltar.TabIndex = 4;
+            buttonVoltar.TabIndex = 5;
             buttonVoltar.Text = "Voltar";
             buttonVoltar.UseVisualStyleBackColor = true;
             buttonVoltar.Click += buttonVoltar_Click;
@@ -125,7 +127,7 @@
             labelTitulo.Location = new Point(5, 2);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(139, 21);
-            labelTitulo.TabIndex = 5;
+            labelTitulo.TabIndex = 1;
             labelTitulo.Text = "Consultar Pacote";
             // 
             // textBoxPacoteAConsultar
@@ -136,7 +138,7 @@
             textBoxPacoteAConsultar.Name = "textBoxPacoteAConsultar";
             textBoxPacoteAConsultar.ReadOnly = true;
             textBoxPacoteAConsultar.Size = new Size(746, 23);
-            textBoxPacoteAConsultar.TabIndex = 7;
+            textBoxPacoteAConsultar.TabIndex = 3;
             textBoxPacoteAConsultar.KeyDown += textBoxPacoteAConsultar_KeyDown;
             // 
             // ConsultarPacotes

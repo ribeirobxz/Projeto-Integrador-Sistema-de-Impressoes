@@ -46,7 +46,7 @@
             textBoxAlunoEscolhido.Name = "textBoxAlunoEscolhido";
             textBoxAlunoEscolhido.ReadOnly = true;
             textBoxAlunoEscolhido.Size = new Size(760, 23);
-            textBoxAlunoEscolhido.TabIndex = 8;
+            textBoxAlunoEscolhido.TabIndex = 2;
             textBoxAlunoEscolhido.KeyDown += textBoxAlunoEscolhido_KeyDown;
             // 
             // labelInfo
@@ -56,7 +56,7 @@
             labelInfo.Location = new Point(8, 32);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(299, 15);
-            labelInfo.TabIndex = 7;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o aluno a que vai imprimir";
             // 
             // labelTitulo
@@ -66,7 +66,7 @@
             labelTitulo.Location = new Point(3, 0);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(164, 21);
-            labelTitulo.TabIndex = 6;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = " Realizar impressões";
             // 
             // labelInfoQuantidade
@@ -76,7 +76,7 @@
             labelInfoQuantidade.Location = new Point(8, 96);
             labelInfoQuantidade.Name = "labelInfoQuantidade";
             labelInfoQuantidade.Size = new Size(211, 15);
-            labelInfoQuantidade.TabIndex = 9;
+            labelInfoQuantidade.TabIndex = 3;
             labelInfoQuantidade.Text = "Informe a quantidade a ser impressa:";
             // 
             // numericUpDownQuantidade
@@ -86,7 +86,7 @@
             numericUpDownQuantidade.Maximum = new decimal(new int[] { 0, 0, 0, 0 });
             numericUpDownQuantidade.Name = "numericUpDownQuantidade";
             numericUpDownQuantidade.Size = new Size(759, 23);
-            numericUpDownQuantidade.TabIndex = 10;
+            numericUpDownQuantidade.TabIndex = 4;
             // 
             // buttonCancelar
             // 
@@ -94,7 +94,7 @@
             buttonCancelar.Location = new Point(89, 165);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
-            buttonCancelar.TabIndex = 15;
+            buttonCancelar.TabIndex = 6;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -105,7 +105,7 @@
             buttonImprimir.Location = new Point(8, 165);
             buttonImprimir.Name = "buttonImprimir";
             buttonImprimir.Size = new Size(75, 23);
-            buttonImprimir.TabIndex = 14;
+            buttonImprimir.TabIndex = 5;
             buttonImprimir.Text = "Imprimir";
             buttonImprimir.UseVisualStyleBackColor = true;
             buttonImprimir.Click += buttonImprimir_Click;

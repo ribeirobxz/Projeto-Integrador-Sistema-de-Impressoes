@@ -225,10 +225,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(labelErroDiversos);
             Controls.Add(groupBoxAreaDeEdicao);
-            Controls.Add(textBoxAlunoAEditar);
-            Controls.Add(labelInfo);
             Controls.Add(buttonCancelar);
             Controls.Add(buttonEditarOK);
+            Controls.Add(textBoxAlunoAEditar);
+            Controls.Add(labelInfo);
             Controls.Add(labelTitulo);
             Name = "EditarAluno";
             Size = new Size(800, 500);

@@ -49,7 +49,7 @@
             labelErroDiversos.Location = new Point(189, 138);
             labelErroDiversos.Name = "labelErroDiversos";
             labelErroDiversos.Size = new Size(28, 15);
-            labelErroDiversos.TabIndex = 25;
+            labelErroDiversos.TabIndex = 9;
             labelErroDiversos.Text = "erro";
             // 
             // buttonCancelar
@@ -58,7 +58,7 @@
             buttonCancelar.Location = new Point(102, 135);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
-            buttonCancelar.TabIndex = 24;
+            buttonCancelar.TabIndex = 8;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -69,7 +69,7 @@
             buttonCadastrar.Location = new Point(12, 135);
             buttonCadastrar.Name = "buttonCadastrar";
             buttonCadastrar.Size = new Size(75, 23);
-            buttonCadastrar.TabIndex = 23;
+            buttonCadastrar.TabIndex = 7;
             buttonCadastrar.Text = "Cadastrar";
             buttonCadastrar.UseVisualStyleBackColor = true;
             buttonCadastrar.Click += buttonCadastrar_Click;
@@ -81,7 +81,7 @@
             labelPrecoErro.Location = new Point(58, 82);
             labelPrecoErro.Name = "labelPrecoErro";
             labelPrecoErro.Size = new Size(28, 15);
-            labelPrecoErro.TabIndex = 18;
+            labelPrecoErro.TabIndex = 5;
             labelPrecoErro.Text = "erro";
             // 
             // labelPreco
@@ -91,7 +91,7 @@
             labelPreco.Location = new Point(11, 83);
             labelPreco.Name = "labelPreco";
             labelPreco.Size = new Size(42, 15);
-            labelPreco.TabIndex = 17;
+            labelPreco.TabIndex = 4;
             labelPreco.Text = "Preço:";
             // 
             // labelQuantidadeErro
@@ -101,7 +101,7 @@
             labelQuantidadeErro.Location = new Point(91, 33);
             labelQuantidadeErro.Name = "labelQuantidadeErro";
             labelQuantidadeErro.Size = new Size(28, 15);
-            labelQuantidadeErro.TabIndex = 15;
+            labelQuantidadeErro.TabIndex = 2;
             labelQuantidadeErro.Text = "erro";
             // 
             // labelQuantidade
@@ -111,7 +111,7 @@
             labelQuantidade.Location = new Point(11, 33);
             labelQuantidade.Name = "labelQuantidade";
             labelQuantidade.Size = new Size(74, 15);
-            labelQuantidade.TabIndex = 14;
+            labelQuantidade.TabIndex = 1;
             labelQuantidade.Text = "Quantidade:";
             // 
             // labelTitulo
@@ -121,16 +121,16 @@
             labelTitulo.Location = new Point(3, 0);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(184, 21);
-            labelTitulo.TabIndex = 13;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Cadastrar Novo Pacote";
             // 
-            // numericUpDownQunatidade
+            // numericUpDownQuantidade
             // 
             numericUpDownQuantidade.Location = new Point(12, 56);
             numericUpDownQuantidade.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
-            numericUpDownQuantidade.Name = "numericUpDownQunatidade";
+            numericUpDownQuantidade.Name = "numericUpDownQuantidade";
             numericUpDownQuantidade.Size = new Size(762, 23);
-            numericUpDownQuantidade.TabIndex = 26;
+            numericUpDownQuantidade.TabIndex = 3;
             // 
             // numericUpDownPreço
             // 
@@ -139,7 +139,7 @@
             numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numericUpDownPreço.Name = "numericUpDownPreço";
             numericUpDownPreço.Size = new Size(762, 23);
-            numericUpDownPreço.TabIndex = 27;
+            numericUpDownPreço.TabIndex = 6;
             // 
             // CadastrarPacote
             // 

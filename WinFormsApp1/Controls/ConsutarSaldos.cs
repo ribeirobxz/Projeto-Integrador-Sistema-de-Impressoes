@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Controls
 {
@@ -14,14 +15,19 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        public ConsutarSaldos()
+        private AlunoRepository _alunoRepository;
+
+        internal ConsutarSaldos(AlunoRepository alunoRepository)
         {
             InitializeComponent();
+            _alunoRepository = alunoRepository;
         }
 
         public void ResetarConteudo()
         {
+            listBoxListagem.Items.Clear();
 
+            listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos().ToArray());
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)

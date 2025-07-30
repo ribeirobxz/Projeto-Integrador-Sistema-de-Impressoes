@@ -87,12 +87,12 @@ namespace WinFormsApp1
             realizarImpressao.Hide();
             this.panelPrincipal.Controls.Add(realizarImpressao);
 
-            consutarSaldos = new ConsutarSaldos();
+            consutarSaldos = new ConsutarSaldos(_repositoryContext.AlunoRepository);
             consutarSaldos.Dock = DockStyle.Fill;
             consutarSaldos.Hide();
             this.panelPrincipal.Controls.Add(consutarSaldos);
 
-            consultarHistoricos = new ConsultarHistoricos();
+            consultarHistoricos = new ConsultarHistoricos(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
             consultarHistoricos.Dock = DockStyle.Fill;
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);

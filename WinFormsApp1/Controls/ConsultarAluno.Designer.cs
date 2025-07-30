@@ -169,7 +169,7 @@
             buttonVoltar.Location = new Point(13, 325);
             buttonVoltar.Name = "buttonVoltar";
             buttonVoltar.Size = new Size(88, 23);
-            buttonVoltar.TabIndex = 0;
+            buttonVoltar.TabIndex = 4;
             buttonVoltar.Text = "Voltar";
             buttonVoltar.UseVisualStyleBackColor = true;
             buttonVoltar.Click += buttonVoltar_Click;

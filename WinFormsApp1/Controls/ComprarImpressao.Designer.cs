@@ -49,7 +49,7 @@
             textBoxAlunoEscolhido.Name = "textBoxAlunoEscolhido";
             textBoxAlunoEscolhido.ReadOnly = true;
             textBoxAlunoEscolhido.Size = new Size(760, 23);
-            textBoxAlunoEscolhido.TabIndex = 5;
+            textBoxAlunoEscolhido.TabIndex = 2;
             textBoxAlunoEscolhido.KeyDown += textBoxAlunoEscolhido_KeyDown;
             // 
             // labelInfo
@@ -59,7 +59,7 @@
             labelInfo.Location = new Point(12, 33);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(377, 15);
-            labelInfo.TabIndex = 4;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o aluno a que vai comprar as impressões";
             // 
             // labelTitulo
@@ -69,7 +69,7 @@
             labelTitulo.Location = new Point(7, 1);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(165, 21);
-            labelTitulo.TabIndex = 3;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Comprar impressões";
             // 
             // labelInfoPacote
@@ -79,7 +79,7 @@
             labelInfoPacote.Location = new Point(12, 96);
             labelInfoPacote.Name = "labelInfoPacote";
             labelInfoPacote.Size = new Size(191, 15);
-            labelInfoPacote.TabIndex = 6;
+            labelInfoPacote.TabIndex = 3;
             labelInfoPacote.Text = "Lista de pacotes a ser comprados:";
             // 
             // buttonAdicionarPacote
@@ -88,7 +88,7 @@
             buttonAdicionarPacote.Location = new Point(12, 114);
             buttonAdicionarPacote.Name = "buttonAdicionarPacote";
             buttonAdicionarPacote.Size = new Size(160, 23);
-            buttonAdicionarPacote.TabIndex = 7;
+            buttonAdicionarPacote.TabIndex = 4;
             buttonAdicionarPacote.Text = "Adicionar pacote na lista";
             buttonAdicionarPacote.UseVisualStyleBackColor = true;
             buttonAdicionarPacote.Click += buttonAdicionarPacote_Click;
@@ -99,7 +99,7 @@
             buttonRemoverPacoteSelecionado.Location = new Point(178, 114);
             buttonRemoverPacoteSelecionado.Name = "buttonRemoverPacoteSelecionado";
             buttonRemoverPacoteSelecionado.Size = new Size(223, 23);
-            buttonRemoverPacoteSelecionado.TabIndex = 8;
+            buttonRemoverPacoteSelecionado.TabIndex = 5;
             buttonRemoverPacoteSelecionado.Text = "Remover pacote selecionado da lista";
             buttonRemoverPacoteSelecionado.UseVisualStyleBackColor = true;
             buttonRemoverPacoteSelecionado.Click += buttonRemoverPacoteSelecionado_Click;
@@ -111,7 +111,7 @@
             listBoxPacotes.Location = new Point(12, 143);
             listBoxPacotes.Name = "listBoxPacotes";
             listBoxPacotes.Size = new Size(759, 154);
-            listBoxPacotes.TabIndex = 9;
+            listBoxPacotes.TabIndex = 6;
             listBoxPacotes.SelectedIndexChanged += listBoxPacotes_SelectedIndexChanged;
             // 
             // labelValorTotalCompra
@@ -121,7 +121,7 @@
             labelValorTotalCompra.Location = new Point(15, 320);
             labelValorTotalCompra.Name = "labelValorTotalCompra";
             labelValorTotalCompra.Size = new Size(176, 15);
-            labelValorTotalCompra.TabIndex = 10;
+            labelValorTotalCompra.TabIndex = 8;
             labelValorTotalCompra.Text = "Valor total da compra: R$: 0,00";
             // 
             // labelQuantidadeTotal
@@ -131,7 +131,7 @@
             labelQuantidadeTotal.Location = new Point(15, 301);
             labelQuantidadeTotal.Name = "labelQuantidadeTotal";
             labelQuantidadeTotal.Size = new Size(149, 15);
-            labelQuantidadeTotal.TabIndex = 11;
+            labelQuantidadeTotal.TabIndex = 7;
             labelQuantidadeTotal.Text = "Quantidade total: 0 folhas";
             // 
             // buttonComprar
@@ -140,7 +140,7 @@
             buttonComprar.Location = new Point(15, 350);
             buttonComprar.Name = "buttonComprar";
             buttonComprar.Size = new Size(75, 23);
-            buttonComprar.TabIndex = 12;
+            buttonComprar.TabIndex = 9;
             buttonComprar.Text = "Comprar";
             buttonComprar.UseVisualStyleBackColor = true;
             buttonComprar.Click += buttonComprar_Click;
@@ -151,7 +151,7 @@
             buttonCancelar.Location = new Point(96, 350);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(75, 23);
-            buttonCancelar.TabIndex = 13;
+            buttonCancelar.TabIndex = 10;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;

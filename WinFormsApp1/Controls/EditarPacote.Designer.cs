@@ -30,14 +30,14 @@
         {
             labelErroDiversos = new Label();
             groupBoxAreaDeEdicao = new GroupBox();
+            numericUpDownPreço = new NumericUpDown();
+            labelPrecoErro = new Label();
+            labelPreco = new Label();
             textBoxPacoteAEditar = new TextBox();
             labelInfo = new Label();
             buttonCancelar = new Button();
             buttonEditarOK = new Button();
             labelTitulo = new Label();
-            numericUpDownPreço = new NumericUpDown();
-            labelPrecoErro = new Label();
-            labelPreco = new Label();
             groupBoxAreaDeEdicao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPreço).BeginInit();
             SuspendLayout();
@@ -49,7 +49,7 @@
             labelErroDiversos.Location = new Point(229, 193);
             labelErroDiversos.Name = "labelErroDiversos";
             labelErroDiversos.Size = new Size(28, 15);
-            labelErroDiversos.TabIndex = 13;
+            labelErroDiversos.TabIndex = 6;
             labelErroDiversos.Text = "erro";
             // 
             // groupBoxAreaDeEdicao
@@ -61,9 +61,40 @@
             groupBoxAreaDeEdicao.Location = new Point(7, 96);
             groupBoxAreaDeEdicao.Name = "groupBoxAreaDeEdicao";
             groupBoxAreaDeEdicao.Size = new Size(766, 83);
-            groupBoxAreaDeEdicao.TabIndex = 10;
+            groupBoxAreaDeEdicao.TabIndex = 3;
             groupBoxAreaDeEdicao.TabStop = false;
             groupBoxAreaDeEdicao.Text = "Editar Pacote";
+            // 
+            // numericUpDownPreço
+            // 
+            numericUpDownPreço.DecimalPlaces = 4;
+            numericUpDownPreço.Font = new Font("Segoe UI", 9F);
+            numericUpDownPreço.Location = new Point(7, 42);
+            numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            numericUpDownPreço.Name = "numericUpDownPreço";
+            numericUpDownPreço.Size = new Size(741, 23);
+            numericUpDownPreço.TabIndex = 2;
+            // 
+            // labelPrecoErro
+            // 
+            labelPrecoErro.AutoSize = true;
+            labelPrecoErro.Font = new Font("Segoe UI", 9F);
+            labelPrecoErro.ForeColor = Color.Brown;
+            labelPrecoErro.Location = new Point(53, 18);
+            labelPrecoErro.Name = "labelPrecoErro";
+            labelPrecoErro.Size = new Size(28, 15);
+            labelPrecoErro.TabIndex = 1;
+            labelPrecoErro.Text = "erro";
+            // 
+            // labelPreco
+            // 
+            labelPreco.AutoSize = true;
+            labelPreco.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelPreco.Location = new Point(6, 19);
+            labelPreco.Name = "labelPreco";
+            labelPreco.Size = new Size(42, 15);
+            labelPreco.TabIndex = 0;
+            labelPreco.Text = "Preço:";
             // 
             // textBoxPacoteAEditar
             // 
@@ -73,7 +104,7 @@
             textBoxPacoteAEditar.Name = "textBoxPacoteAEditar";
             textBoxPacoteAEditar.ReadOnly = true;
             textBoxPacoteAEditar.Size = new Size(746, 23);
-            textBoxPacoteAEditar.TabIndex = 9;
+            textBoxPacoteAEditar.TabIndex = 2;
             textBoxPacoteAEditar.KeyDown += textBoxPacoteAEditar_KeyDown;
             // 
             // labelInfo
@@ -83,7 +114,7 @@
             labelInfo.Location = new Point(10, 34);
             labelInfo.Name = "labelInfo";
             labelInfo.Size = new Size(277, 15);
-            labelInfo.TabIndex = 8;
+            labelInfo.TabIndex = 1;
             labelInfo.Text = "Pressione F2 para escolher o pacote a ser Editado";
             // 
             // buttonCancelar
@@ -92,7 +123,7 @@
             buttonCancelar.Location = new Point(133, 189);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(88, 23);
-            buttonCancelar.TabIndex = 12;
+            buttonCancelar.TabIndex = 5;
             buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             buttonCancelar.Click += buttonCancelar_Click;
@@ -103,7 +134,7 @@
             buttonEditarOK.Location = new Point(7, 189);
             buttonEditarOK.Name = "buttonEditarOK";
             buttonEditarOK.Size = new Size(120, 23);
-            buttonEditarOK.TabIndex = 11;
+            buttonEditarOK.TabIndex = 4;
             buttonEditarOK.Text = "Confirmar Edição";
             buttonEditarOK.UseVisualStyleBackColor = true;
             buttonEditarOK.Click += buttonEditarOK_Click;
@@ -115,38 +146,8 @@
             labelTitulo.Location = new Point(5, 2);
             labelTitulo.Name = "labelTitulo";
             labelTitulo.Size = new Size(111, 21);
-            labelTitulo.TabIndex = 7;
+            labelTitulo.TabIndex = 0;
             labelTitulo.Text = "Editar Pacote";
-            // 
-            // numericUpDownPreço
-            // 
-            numericUpDownPreço.DecimalPlaces = 4;
-            numericUpDownPreço.Location = new Point(7, 42);
-            numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
-            numericUpDownPreço.Name = "numericUpDownPreço";
-            numericUpDownPreço.Size = new Size(741, 23);
-            numericUpDownPreço.TabIndex = 30;
-            // 
-            // labelPrecoErro
-            // 
-            labelPrecoErro.AutoSize = true;
-            labelPrecoErro.Font = new Font("Segoe UI", 9F);
-            labelPrecoErro.ForeColor = Color.Brown;
-            labelPrecoErro.Location = new Point(53, 18);
-            labelPrecoErro.Name = "labelPrecoErro";
-            labelPrecoErro.Size = new Size(28, 15);
-            labelPrecoErro.TabIndex = 29;
-            labelPrecoErro.Text = "erro";
-            // 
-            // labelPreco
-            // 
-            labelPreco.AutoSize = true;
-            labelPreco.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelPreco.Location = new Point(6, 19);
-            labelPreco.Name = "labelPreco";
-            labelPreco.Size = new Size(42, 15);
-            labelPreco.TabIndex = 28;
-            labelPreco.Text = "Preço:";
             // 
             // EditarPacote
             // 
