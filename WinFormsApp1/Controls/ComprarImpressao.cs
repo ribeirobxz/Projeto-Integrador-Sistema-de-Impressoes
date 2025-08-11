@@ -117,10 +117,13 @@ namespace WinFormsApp1.Controls
 
         private bool PacoteConteudoEscolhido(object conteudo) 
         {
-            if (listBoxPacotes.Items.Contains(conteudo))
+            if (listBoxPacotes.Items.Contains(conteudo)) // deixar assim, pois mudei o equal do objeto so para consideral a quantidade dentro do pacote
+            // ou fazer listBoxPacotes.Items.Cast<CompraImpressao>().Where(x => x.Pacote.Quantidade == ((CompraImpressao)conteudo).Pacote.Quantidade) > 0
+            // que não usa o equal do objeto
             {
                 return false;
             }
+            
 
             listBoxPacotes.Items.Add(conteudo);
             

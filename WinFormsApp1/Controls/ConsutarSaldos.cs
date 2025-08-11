@@ -29,11 +29,31 @@ namespace WinFormsApp1.Controls
 
             listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos()
                 .Select(aluno => $"Nome: {aluno.Nome} - Saldo: {aluno.QntdImpressao}").ToArray());
+
+            splitContainerInfo.Panel2Collapsed = true;
+            textBoxInfo.Text = string.Empty;
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)
         {
             FecharControl?.Invoke();
+        }
+
+        private void listBoxListagem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxListagem.SelectedItem != null)
+            {
+                var objetoPraTerOquePreencherNoTextBox = listBoxListagem.SelectedItem;
+
+                textBoxInfo.Text = "você vai colocar os textos informacionais adicional aqui"; // fazer oque esta escrito no texto.
+
+                splitContainerInfo.Panel2Collapsed = false;
+            }
+            else 
+            {
+                splitContainerInfo.Panel2Collapsed = true;
+                textBoxInfo.Text = string.Empty;
+            }
         }
     }
 }

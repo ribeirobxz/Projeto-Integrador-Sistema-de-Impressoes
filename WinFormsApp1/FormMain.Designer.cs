@@ -36,18 +36,18 @@
             panelPrincipal.Dock = DockStyle.Fill;
             panelPrincipal.Location = new Point(0, 0);
             panelPrincipal.Name = "panelPrincipal";
-            panelPrincipal.Size = new Size(784, 501);
+            panelPrincipal.Size = new Size(794, 501);
             panelPrincipal.TabIndex = 0;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 501);
+            ClientSize = new Size(794, 501);
             Controls.Add(panelPrincipal);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            MinimumSize = new Size(800, 540);
+            MinimumSize = new Size(810, 540);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " SISTEMA DE IMPRESSÕES SENAC";

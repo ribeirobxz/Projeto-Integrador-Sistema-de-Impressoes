@@ -27,15 +27,14 @@ namespace WinFormsApp1.Model
         {
             if (obj is CompraImpressao compraImpressao)
             {
-                return Pacote.Equals(compraImpressao.Pacote) &&
-                       Quantidade == compraImpressao.Quantidade;
+                return Pacote.Quantidade == compraImpressao.Pacote.Quantidade;
             }
             return false;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Pacote, Quantidade);
+            return Pacote.Quantidade;
         }
     }
 }
