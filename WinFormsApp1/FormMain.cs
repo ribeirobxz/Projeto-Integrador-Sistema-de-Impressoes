@@ -77,12 +77,12 @@ namespace WinFormsApp1
             consultarPacotes.Hide();
             this.panelPrincipal.Controls.Add(consultarPacotes);
 
-            comprarImpressao = new ComprarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.PacoteRepository, null); // no lugar de null colocar o Repository que vc for usar
+            comprarImpressao = new ComprarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.PacoteRepository, _repositoryContext.TipoDeMovimentacaoRepository, _repositoryContext.HistoricoRepository, _repositoryContext.CompraRepository, _repositoryContext.ComprasPacoteRepository);
             comprarImpressao.Dock = DockStyle.Fill;
             comprarImpressao.Hide();
             this.panelPrincipal.Controls.Add(comprarImpressao);
 
-            realizarImpressao = new RealizarImpressao(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
+            realizarImpressao = new RealizarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.HistoricoRepository, _repositoryContext.TipoDeMovimentacaoRepository, _repositoryContext.ImpressaoRepository);// no lugar de null colocar o Repository que vc for usar
             realizarImpressao.Dock = DockStyle.Fill;
             realizarImpressao.Hide();
             this.panelPrincipal.Controls.Add(realizarImpressao);
@@ -92,7 +92,7 @@ namespace WinFormsApp1
             consutarSaldos.Hide();
             this.panelPrincipal.Controls.Add(consutarSaldos);
 
-            consultarHistoricos = new ConsultarHistoricos(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
+            consultarHistoricos = new ConsultarHistoricos(_repositoryContext);// no lugar de null colocar o Repository que vc for usar
             consultarHistoricos.Dock = DockStyle.Fill;
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);

@@ -14,9 +14,9 @@ namespace WinFormsApp1.Model
         public string Nome { get; set; }
         public string Matricula { get; set; }
         public string Email { get; set; }
-        public short QntdImpressao { get; set; }
+        public int QntdImpressao { get; set; }
 
-        public Aluno(int codigo, string nome, string matricula, string email, short qntdImpressao)
+        public Aluno(int codigo, string nome, string matricula, string email, int qntdImpressao)
         {
             Codigo = codigo;
             Nome = nome;

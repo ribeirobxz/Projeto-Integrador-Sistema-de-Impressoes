@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.Model.Historic;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -22,17 +23,23 @@ namespace WinFormsApp1.Controls
         private readonly AlunoRepository _alunoRepository;
 
         private readonly PacoteRepository _pacoteRepository;
-
-        private readonly object _comprarRepository; // mudar para o type correto
+        private readonly TipoDeMovimentacaoRepository _tipoDeMovimentacaoRepository;
+        private readonly HistoricoRepository _historicoRepository;
+        private readonly CompraRepository _compraRepository;
+        private readonly ComprasPacoteRepository _comprasPacoteRepository;
 
         private Aluno? _alunoSelecionado = null;
 
-        internal ComprarImpressao(AlunoRepository alunoRepository, PacoteRepository pacoteRepository, object comprarRepository)
+        internal ComprarImpressao(AlunoRepository alunoRepository, PacoteRepository pacoteRepository, TipoDeMovimentacaoRepository tipoDeMovimentacaoRepository, HistoricoRepository historicoRepository, 
+            CompraRepository compraRepository, ComprasPacoteRepository comprasPacoteRepository)
         {
             InitializeComponent();
-            _comprarRepository = comprarRepository;
             _alunoRepository = alunoRepository;
             _pacoteRepository = pacoteRepository;
+            _tipoDeMovimentacaoRepository = tipoDeMovimentacaoRepository;
+            _historicoRepository = historicoRepository;
+            _compraRepository = compraRepository;
+            _comprasPacoteRepository = comprasPacoteRepository;
         }
 
         public void ResetarConteudo()
@@ -51,21 +58,42 @@ namespace WinFormsApp1.Controls
 
         private void buttonComprar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // aluno em _alunoSelecionado
-                // e os pacotes estão em listBoxPacotes.Items
+            /*try
+            {*/
+                var tipoDeMovimentacao = _tipoDeMovimentacaoRepository.SelecionarPorNome("Compra");
+                var historico = new Historico(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
+                
+                var comprasPacote = new List<CompraPacote>();
+                foreach (var compraImpressao in listBoxPacotes.Items.Cast<CompraImpressao>())
+                {
+                    _alunoSelecionado.QntdImpressao += compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade;
+                    historico.QntdTotal = compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade;
 
-                // fazer a inserção no banco de dados aqui
-                //_comprarRepository.
-                // nas tabelas Compras / Historico / PacotesCompras 
+                    historico.SaldoDepois = _alunoSelecionado.QntdImpressao;
+                    historico.ValorTotalPago = compraImpressao.Pacote.Preco * compraImpressao.Quantidade;
+
+                    comprasPacote.Add(new CompraPacote(0, compraImpressao.Pacote.Codigo, compraImpressao.Quantidade, compraImpressao.Pacote.Preco));
+
+                }
+                _historicoRepository.AdicionarHistorico(historico);
+
+                var compra = new Compra(0, _alunoSelecionado.Codigo, historico.Codigo, historico.DataHistorico, (decimal) historico.ValorTotalPago);
+                _compraRepository.AdicionarCompra(compra);
+
+                _alunoRepository.AtualizarAluno(_alunoSelecionado);
+
+                foreach (var compraPacote in comprasPacote)
+                {
+                    compraPacote.CodigoCompra = compra.Codigo;
+                    _comprasPacoteRepository.AdicionarCompraPacote(compraPacote);
+                }
 
                 FecharControl?.Invoke();
-            }
-            catch (Exception)
+            /*}
+            catch (Exception ex)
             {
-                // colocar erros de inserção aqui
-            }
+                MessageBox.Show(ex.Message, "Erro");
+            }*/
         }
 
         private void ComprarImpressao_KeyDown(object sender, KeyEventArgs e)
@@ -127,8 +155,8 @@ namespace WinFormsApp1.Controls
 
             listBoxPacotes.Items.Add(conteudo);
             
-            int quantidadeTotal = 0; // calcular
-            decimal valorTotal = 0; // calcular
+            int quantidadeTotal = 0;
+            decimal valorTotal = 0;
 
             foreach (var compraImpressao in listBoxPacotes.Items.Cast<CompraImpressao>())
             {

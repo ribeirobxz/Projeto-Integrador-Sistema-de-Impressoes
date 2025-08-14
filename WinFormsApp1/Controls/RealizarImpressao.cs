@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.Model.Historic;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -20,15 +21,20 @@ namespace WinFormsApp1.Controls
 
         private readonly AlunoRepository _alunoRepository;
 
-        private readonly object _imprimirRepository; // mudar para o type correto
+        private readonly HistoricoRepository _historicoRepository;
+        private readonly TipoDeMovimentacaoRepository _tipoDeMovimentacaoRepository;
+        private readonly ImpressaoRepository _impressaoRepository;
 
         private Aluno? _alunoSelecionado = null;
 
-        internal RealizarImpressao(AlunoRepository alunoRepository, object imprimirRepository)
+        internal RealizarImpressao(AlunoRepository alunoRepository, HistoricoRepository historicoRepository, TipoDeMovimentacaoRepository tipoDeMovimentacaoRepository,
+            ImpressaoRepository impressaoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
-            _imprimirRepository = imprimirRepository;
+            _historicoRepository = historicoRepository;
+            _tipoDeMovimentacaoRepository = tipoDeMovimentacaoRepository;
+            _impressaoRepository = impressaoRepository;
         }
 
         public void ResetarConteudo()
@@ -51,17 +57,28 @@ namespace WinFormsApp1.Controls
         {
             try
             {
-                // aluno em _alunoSelecionado
+                var tipoDeMovimentacao = _tipoDeMovimentacaoRepository.SelecionarPorNome("Impressão");
+                var historico = new Historico(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
 
-                // fazer a inserção no banco de dados aqui
-                //_imprimirRepository.
-                // nas tabelas Compras / Historico / PacotesCompras 
+                int quantidade = (int) numericUpDownQuantidade.Value;
+
+                _alunoSelecionado.QntdImpressao -= quantidade;
+                _alunoRepository.AtualizarAluno(_alunoSelecionado);
+
+                historico.QntdTotal = quantidade;
+                historico.SaldoDepois = _alunoSelecionado.QntdImpressao;
+                historico.ValorTotalPago = null;
+
+                _historicoRepository.AdicionarHistorico(historico);
+
+                var impressao = new Impressao(0, _alunoSelecionado.Codigo, historico.Codigo, DateTime.Now, quantidade);
+                _impressaoRepository.AdicionarImpressao(impressao);
 
                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // colocar erros de inserção aqui
+                MessageBox.Show(ex.Message, "erro");
             }
         }
 
@@ -92,17 +109,17 @@ namespace WinFormsApp1.Controls
 
             if (_alunoSelecionado.QntdImpressao > 0)
             {
-                numericUpDownQuantidade.Value = 1;
                 numericUpDownQuantidade.Minimum = 1;
                 numericUpDownQuantidade.Maximum = _alunoSelecionado.QntdImpressao; // não vai conseguir colocar um valor maior do que tem disponivel
+                numericUpDownQuantidade.Value = 1;
                 numericUpDownQuantidade.Enabled = true;
                 buttonImprimir.Enabled = true;
             }
             else
-            {
-                numericUpDownQuantidade.Value = 0;
+            { 
                 numericUpDownQuantidade.Minimum = 0;
                 numericUpDownQuantidade.Maximum = 0;
+                numericUpDownQuantidade.Value = 0;
                 numericUpDownQuantidade.Enabled = false;
                 buttonImprimir.Enabled = false;
             }

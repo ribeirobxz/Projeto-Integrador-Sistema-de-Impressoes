@@ -45,7 +45,7 @@ namespace WinFormsApp1
                 {
                 }
             }
-            return """Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ribei\OneDrive\Desktop\db\ProjetoIntegrador.mdf;Integrated Security=True;Connect Timeout=30""";
+            return """Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kaua.neto\banco\banco.mdf;Integrated Security=True;Connect Timeout=30""";
         }
 
     }
