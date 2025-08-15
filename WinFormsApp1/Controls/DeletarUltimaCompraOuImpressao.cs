@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Context;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
 using WinFormsApp1.Repository;
@@ -19,19 +20,16 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly RepositoryContext _repositoryContext;
 
-        private readonly object _comprarRepository; // mudar para o type correto
-
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
         private object? _compraDePacoteASerDeletada = null; //mudar para o tipo correto.
 
-        internal DeletarUltimaCompraOuImpressao(AlunoRepository alunoRepository, object comprarRepository)
+        internal DeletarUltimaCompraOuImpressao(RepositoryContext repositoryContext)
         {
             InitializeComponent();
-            _comprarRepository = comprarRepository;
-            _alunoRepository = alunoRepository;
+            _repositoryContext = repositoryContext;
         }
 
         public void ResetarConteudo()
@@ -80,7 +78,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAluno selecionarAluno = new SelecionarAluno(_alunoRepository, _onReceberAlunoSelecionado);
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunosRepository, _onReceberAlunoSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
@@ -88,8 +86,8 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
-            textBoxAlunoEscolhido.Text = alunoSelecionado.ToString();
+            _alunoSelecionado = (Alunos)alunoSelecionado;
+            textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             // com o aluno consulta o historico valido, verificar se é do tipo compra, caso sim preencher o texto de historico
             // caso não for do tipo compra (for do tipo realizar impressão), não abalitar o botão de deletar, e colocar um aviso no historio, dizendo que não da pra deletar.

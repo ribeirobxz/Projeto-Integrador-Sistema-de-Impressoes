@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsApp1.Model;
 
-namespace WinFormsApp1.Model
+namespace WinFormsApp1.ModelView
 {
     internal class CompraImpressao
     {
 
-        public Pacote Pacote { get; set; }
-        public int Quantidade { get; set; }
+        public Pacotes Pacote { get; set; }
+        public short Quantidade { get; set; }
 
-        public CompraImpressao(Pacote pacote, int quantidade)
+        public CompraImpressao(Pacotes pacote, short quantidade)
         {
             Pacote = pacote;
             Quantidade = quantidade;

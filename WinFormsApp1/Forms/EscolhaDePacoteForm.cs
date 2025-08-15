@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -15,13 +16,13 @@ namespace WinFormsApp1.Forms
 {
     public partial class EscolhaDePacoteForm : Form
     {
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
   
-        private Func<object, bool>? _conteudoEscolhido; // mude o obj pela classe que representa o objeto
+        private Func<CompraImpressao, bool>? _conteudoEscolhido;
 
-        private Pacote? _pacoteSelecionado = null;
+        private Pacotes? _pacoteSelecionado = null;
 
-        internal EscolhaDePacoteForm(PacoteRepository pacoteRepository, Func<object, bool> conteudoEscolhido)
+        internal EscolhaDePacoteForm(PacotesRepository pacoteRepository, Func<CompraImpressao, bool> conteudoEscolhido)
         {
             InitializeComponent();
             _pacoteRepository = pacoteRepository;
@@ -45,7 +46,7 @@ namespace WinFormsApp1.Forms
 
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            var obj = new CompraImpressao(_pacoteSelecionado, (int) numericUpDownMultiplicador.Value);
+            var obj = new CompraImpressao(_pacoteSelecionado, (short)numericUpDownMultiplicador.Value);
 
             if (_conteudoEscolhido?.Invoke(obj) == true)
             {
@@ -74,7 +75,7 @@ namespace WinFormsApp1.Forms
 
         private void _onReceberPacoteSelecionado(object pacoteSelecionado)
         {
-            _pacoteSelecionado = (Pacote)pacoteSelecionado;
+            _pacoteSelecionado = (Pacotes)pacoteSelecionado;
             textBoxPacoteEscolhido.Text = _pacoteSelecionado.ToString();
             buttonAdicionar.Enabled = true;
         }

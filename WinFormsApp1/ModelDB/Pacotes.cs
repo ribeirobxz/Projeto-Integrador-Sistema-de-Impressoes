@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinFormsApp1.Model
+﻿namespace WinFormsApp1.Model
 {
-    internal class Pacote
+    internal class Pacotes
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
-        public int Quantidade { get; set; }
+        public short Quantidade { get; set; }
         public decimal Preco { get; set; }
 
-        public Pacote(int codigo, int quantidade, decimal preco)
+        public Pacotes(int codigo, short quantidade, decimal preco)
         {
             Codigo = codigo;
             Quantidade = quantidade;
             Preco = preco;
         }
 
-        public Pacote() { }
+        public Pacotes() { }
 
         public override string ToString()
         {
@@ -32,7 +22,7 @@ namespace WinFormsApp1.Model
 
         public override bool Equals(object obj)
         {
-            if (obj is Pacote pacote)
+            if (obj is Pacotes pacote)
             {
                 return Codigo == pacote.Codigo &&
                        Quantidade == pacote.Quantidade &&

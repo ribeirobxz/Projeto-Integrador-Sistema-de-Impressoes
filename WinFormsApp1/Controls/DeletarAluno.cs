@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
-        internal DeletarAluno(AlunoRepository alunoRepository)
+        internal DeletarAluno(AlunosRepository alunoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -49,7 +49,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
+            _alunoSelecionado = (Alunos)alunoSelecionado;
             textBoxAlunoADeletar.Text = _alunoSelecionado.ToString();
             buttonDeletar.Enabled = true;
         }
@@ -69,9 +69,9 @@ namespace WinFormsApp1.Controls
                 _alunoRepository.RemoverAluno(_alunoSelecionado.Codigo);
                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                labelErroDiversos.Text = "Erro: " + ex.Message;
             }
         }
 

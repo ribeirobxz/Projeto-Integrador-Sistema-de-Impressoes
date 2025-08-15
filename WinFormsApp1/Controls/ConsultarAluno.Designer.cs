@@ -35,8 +35,8 @@
             labelNome = new Label();
             textBoxMatricula = new TextBox();
             labelMatricula = new Label();
-            labelEmail = new Label();
-            textBoxEmail = new TextBox();
+            labelTelefone = new Label();
+            textBoxTelefone = new TextBox();
             textBoxAlunoAConsultar = new TextBox();
             labelInfo = new Label();
             buttonVoltar = new Button();
@@ -52,8 +52,8 @@
             groupBoxArea.Controls.Add(labelNome);
             groupBoxArea.Controls.Add(textBoxMatricula);
             groupBoxArea.Controls.Add(labelMatricula);
-            groupBoxArea.Controls.Add(labelEmail);
-            groupBoxArea.Controls.Add(textBoxEmail);
+            groupBoxArea.Controls.Add(labelTelefone);
+            groupBoxArea.Controls.Add(textBoxTelefone);
             groupBoxArea.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBoxArea.Location = new Point(11, 97);
             groupBoxArea.Name = "groupBoxArea";
@@ -122,25 +122,25 @@
             labelMatricula.TabIndex = 2;
             labelMatricula.Text = "Matrícula:";
             // 
-            // labelEmail
+            // labelTelefone
             // 
-            labelEmail.AutoSize = true;
-            labelEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelEmail.Location = new Point(7, 114);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(39, 15);
-            labelEmail.TabIndex = 4;
-            labelEmail.Text = "Email:";
+            labelTelefone.AutoSize = true;
+            labelTelefone.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTelefone.Location = new Point(7, 114);
+            labelTelefone.Name = "labelTelefone";
+            labelTelefone.Size = new Size(59, 15);
+            labelTelefone.TabIndex = 4;
+            labelTelefone.Text = "Telefone:";
             // 
-            // textBoxEmail
+            // textBoxTelefone
             // 
-            textBoxEmail.BackColor = SystemColors.Window;
-            textBoxEmail.Font = new Font("Segoe UI", 9F);
-            textBoxEmail.Location = new Point(7, 132);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.ReadOnly = true;
-            textBoxEmail.Size = new Size(747, 23);
-            textBoxEmail.TabIndex = 5;
+            textBoxTelefone.BackColor = SystemColors.Window;
+            textBoxTelefone.Font = new Font("Segoe UI", 9F);
+            textBoxTelefone.Location = new Point(7, 132);
+            textBoxTelefone.Name = "textBoxTelefone";
+            textBoxTelefone.ReadOnly = true;
+            textBoxTelefone.Size = new Size(747, 23);
+            textBoxTelefone.TabIndex = 5;
             // 
             // textBoxAlunoAConsultar
             // 
@@ -209,8 +209,8 @@
         private Label labelNome;
         private TextBox textBoxMatricula;
         private Label labelMatricula;
-        private Label labelEmail;
-        private TextBox textBoxEmail;
+        private Label labelTelefone;
+        private TextBox textBoxTelefone;
         private TextBox textBoxAlunoAConsultar;
         private Label labelInfo;
         private Button buttonVoltar;

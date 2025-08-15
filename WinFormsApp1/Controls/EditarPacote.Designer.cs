@@ -67,10 +67,10 @@
             // 
             // numericUpDownPreço
             // 
-            numericUpDownPreço.DecimalPlaces = 4;
+            numericUpDownPreço.DecimalPlaces = 2;
             numericUpDownPreço.Font = new Font("Segoe UI", 9F);
             numericUpDownPreço.Location = new Point(7, 42);
-            numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            numericUpDownPreço.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numericUpDownPreço.Name = "numericUpDownPreço";
             numericUpDownPreço.Size = new Size(741, 23);
             numericUpDownPreço.TabIndex = 2;

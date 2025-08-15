@@ -16,9 +16,9 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
 
-        internal CadastrarPacote(PacoteRepository pacoteRepository)
+        internal CadastrarPacote(PacotesRepository pacoteRepository)
         {
             InitializeComponent();
             _pacoteRepository = pacoteRepository;
@@ -39,12 +39,12 @@ namespace WinFormsApp1.Controls
             labelQuantidadeErro.Text = string.Empty;
             labelErroDiversos.Text = string.Empty;
 
-            int quantidade = (int) numericUpDownQuantidade.Value;
+            short quantidade = (short)numericUpDownQuantidade.Value;
             decimal preco = numericUpDownPreço.Value;
 
             try
             {
-                var pacote = new Pacote(0, quantidade, preco);
+                var pacote = new Pacotes(0, quantidade, preco);
                 _pacoteRepository.AdicionarPacote(pacote);
 
                 FecharControl?.Invoke();
@@ -56,9 +56,9 @@ namespace WinFormsApp1.Controls
                     labelPrecoErro.Text = "????.";
                     return;
                 }
-                else if (ex.Message.Contains("???"))
+                else if (ex.Message.Contains("Unique_Pacotes_Quantidade"))
                 {
-                    labelQuantidadeErro.Text = "?????.";
+                    labelQuantidadeErro.Text = "Já existe um pacote cadastrado com essa quantidade.";
                     return;
                 }
                 else

@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
 
-        private Pacote? _pacoteSelecionado = null;
+        private Pacotes? _pacoteSelecionado = null;
 
-        internal DeletarPacote(PacoteRepository pacoteRepository)
+        internal DeletarPacote(PacotesRepository pacoteRepository)
         {
             InitializeComponent();
             _pacoteRepository = pacoteRepository;
@@ -49,7 +49,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberpacoteSelecionado(object pacoteSelecionado)
         {
-            _pacoteSelecionado = (Pacote)pacoteSelecionado;
+            _pacoteSelecionado = (Pacotes)pacoteSelecionado;
             textBoxPacoteADeletar.Text = _pacoteSelecionado.ToString();
             buttonDeletar.Enabled = true;
         }

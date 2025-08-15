@@ -11,6 +11,7 @@ using WinFormsApp1.Context;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
 using WinFormsApp1.Model.Historic;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -22,7 +23,7 @@ namespace WinFormsApp1.Controls
 
         private readonly RepositoryContext _repositoryContext;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
         internal ConsultarHistoricos(RepositoryContext repositoryContext)
         {
@@ -58,7 +59,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunoRepository, _onReceberAlunoSelecionado);
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunosRepository, _onReceberAlunoSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
@@ -66,7 +67,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
+            _alunoSelecionado = (Alunos)alunoSelecionado;
             textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             PrencheListagem();
@@ -128,11 +129,11 @@ namespace WinFormsApp1.Controls
 
             if (ehTodos)
             {
-                listBoxListagem.Items.AddRange(_repositoryContext.HistoricoRepository.SelecionarTodosPorAluno(_alunoSelecionado.Codigo)
+                listBoxListagem.Items.AddRange(_repositoryContext.HistoricosRepository.SelecionarTodosPorAluno(_alunoSelecionado.Codigo)
                     .Select(x =>
                     {
-                        var tipoDeMovimentacao = _repositoryContext.TipoDeMovimentacaoRepository.SelecionarPorCodigo(x.CodigoTipoDeMovimentacao);
-                        return new VisualizarHistorico(x.Codigo, x.CodigoTipoDeMovimentacao, x.CodigoAluno, x.DataHistorico, x.QntdTotal, x.SaldoAntes, x.SaldoDepois, (decimal?) x.ValorTotalPago, tipoDeMovimentacao);
+                        var tipoDeMovimentacao = _repositoryContext.TipoMovimentacoesRepository.SelecionarPorCodigo(x.CodigoTipoMovimentacao);
+                        return new VisualizarHistorico(x.Codigo, x.CodigoTipoMovimentacao, x.CodigoAluno, x.DataHistorico, x.QntdTotal, x.SaldoAntes, x.SaldoDepois, (decimal?) x.ValorTotalPago, tipoDeMovimentacao, null);
                     }).ToArray());
             }
             else if (ehSoCompras)

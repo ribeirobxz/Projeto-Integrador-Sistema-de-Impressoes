@@ -12,9 +12,9 @@ namespace WinFormsApp1.SelecionarObjeto
     {
         private readonly Action<object> _RetornoDoEscolhido;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        public SelecionarAluno(AlunoRepository alunoRepository, Action<object> retornoDoEscolhido)
+        public SelecionarAluno(AlunosRepository alunoRepository, Action<object> retornoDoEscolhido)
         {
             _alunoRepository = alunoRepository;
             _RetornoDoEscolhido = retornoDoEscolhido;
@@ -35,7 +35,7 @@ namespace WinFormsApp1.SelecionarObjeto
             if (OqueProcurar.Length < 3)
             {
                 MessageBox.Show("Você deve digitar um nome com mais de duas letras!", "Aviso:");
-                return Array.Empty<Aluno>();
+                return Array.Empty<Alunos>();
             }
 
             return _alunoRepository.SelecionarAlunosPorNome(OqueProcurar).ToArray();

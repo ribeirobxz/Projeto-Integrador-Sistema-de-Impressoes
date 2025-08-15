@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
 
-        private Pacote? _pacoteSelecionado;
+        private Pacotes? _pacoteSelecionado;
 
-        internal EditarPacote(PacoteRepository pacoteRepository)
+        internal EditarPacote(PacotesRepository pacoteRepository)
         {
             InitializeComponent();
             _pacoteRepository = pacoteRepository;
@@ -52,7 +52,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberPacoteSelecionado(object pacoteSelecionado)
         {
-            _pacoteSelecionado = (Pacote)pacoteSelecionado;
+            _pacoteSelecionado = (Pacotes)pacoteSelecionado;
             textBoxPacoteAEditar.Text = _pacoteSelecionado.ToString();
             numericUpDownPreço.Value = _pacoteSelecionado.Preco;
             groupBoxAreaDeEdicao.Enabled = true;

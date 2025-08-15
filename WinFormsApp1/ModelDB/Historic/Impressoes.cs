@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinFormsApp1.Model.Historic
+﻿namespace WinFormsApp1.Model.Historic
 {
-    public class Impressao
+    public class Impressoes
     {
-
         public int Codigo {  get; set; }
         public int CodigoAluno { get; set; }
         public int CodigoHistorico { get; set; }
         public DateTime DataImpressao { get; set; }
-        public int QntdImpressao { get; set; }
+        public short QntdImpressao { get; set; }
 
-        public Impressao() { }
+        public Impressoes() { }
 
-        public Impressao(int codigo, int codigoAluno, int codigoHistorico, DateTime dataImpressao, int qntdImpressao)
+        public Impressoes(int codigo, int codigoAluno, int codigoHistorico, DateTime dataImpressao, short qntdImpressao)
         {
             Codigo = codigo;
             CodigoAluno = codigoAluno;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 
 namespace WinFormsApp1.Controls
@@ -15,9 +16,9 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private AlunoRepository _alunoRepository;
+        private AlunosRepository _alunoRepository;
 
-        internal ConsutarSaldos(AlunoRepository alunoRepository)
+        internal ConsutarSaldos(AlunosRepository alunoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -27,8 +28,7 @@ namespace WinFormsApp1.Controls
         {
             listBoxListagem.Items.Clear();
 
-            listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos()
-                .Select(aluno => $"Nome: {aluno.Nome} - Saldo: {aluno.QntdImpressao}").ToArray());
+            listBoxListagem.Items.AddRange(_alunoRepository.SelecionarTodosAlunos().Select(aluno => new VisualizarAluno(aluno)).ToArray());
 
             splitContainerInfo.Panel2Collapsed = true;
             textBoxInfo.Text = string.Empty;
@@ -43,9 +43,9 @@ namespace WinFormsApp1.Controls
         {
             if (listBoxListagem.SelectedItem != null)
             {
-                var objetoPraTerOquePreencherNoTextBox = listBoxListagem.SelectedItem;
+                var aluno = ((VisualizarAluno)listBoxListagem.SelectedItem).aluno; //objetoPraTerOquePreencherNoTextBox
 
-                textBoxInfo.Text = "você vai colocar os textos informacionais adicional aqui"; // fazer oque esta escrito no texto.
+                textBoxInfo.Text = $"Nome: {aluno.Nome} {Environment.NewLine}Matrícula: {aluno.Matricula} {Environment.NewLine}Telefone: {aluno.NunTelefone} {Environment.NewLine}Saldo: {aluno.QntdImpressao}";
 
                 splitContainerInfo.Panel2Collapsed = false;
             }

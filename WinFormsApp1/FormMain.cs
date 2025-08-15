@@ -37,67 +37,67 @@ namespace WinFormsApp1
             telaInicial.Show();
             this.panelPrincipal.Controls.Add(telaInicial);
 
-            cadastrarAluno = new CadastrarAluno(_repositoryContext.AlunoRepository);
+            cadastrarAluno = new CadastrarAluno(_repositoryContext.AlunosRepository);
             cadastrarAluno.Dock = DockStyle.Fill;
             cadastrarAluno.Hide();
             this.panelPrincipal.Controls.Add(cadastrarAluno);
 
-            editarAluno = new EditarAluno(_repositoryContext.AlunoRepository);
+            editarAluno = new EditarAluno(_repositoryContext.AlunosRepository);
             editarAluno.Dock = DockStyle.Fill;
             editarAluno.Hide();
             this.panelPrincipal.Controls.Add(editarAluno);
 
-            deletarAluno = new DeletarAluno(_repositoryContext.AlunoRepository);
+            deletarAluno = new DeletarAluno(_repositoryContext.AlunosRepository);
             deletarAluno.Dock = DockStyle.Fill;
             deletarAluno.Hide();
             this.panelPrincipal.Controls.Add(deletarAluno);
 
-            consultarAluno = new ConsultarAluno(_repositoryContext.AlunoRepository);
+            consultarAluno = new ConsultarAluno(_repositoryContext.AlunosRepository);
             consultarAluno.Dock = DockStyle.Fill;
             consultarAluno.Hide();
             this.panelPrincipal.Controls.Add(consultarAluno);
 
-            cadastrarPacote = new CadastrarPacote(_repositoryContext.PacoteRepository);
+            cadastrarPacote = new CadastrarPacote(_repositoryContext.PacotesRepository);
             cadastrarPacote.Dock = DockStyle.Fill;
             cadastrarPacote.Hide();
             this.panelPrincipal.Controls.Add(cadastrarPacote);
 
-            editarPacote = new EditarPacote(_repositoryContext.PacoteRepository);
+            editarPacote = new EditarPacote(_repositoryContext.PacotesRepository);
             editarPacote.Dock = DockStyle.Fill;
             editarPacote.Hide();
             this.panelPrincipal.Controls.Add(editarPacote);
 
-            deletarPacote = new DeletarPacote(_repositoryContext.PacoteRepository);
+            deletarPacote = new DeletarPacote(_repositoryContext.PacotesRepository);
             deletarPacote.Dock = DockStyle.Fill;
             deletarPacote.Hide();
             this.panelPrincipal.Controls.Add(deletarPacote);
 
-            consultarPacotes = new ConsultarPacotes(_repositoryContext.PacoteRepository);
+            consultarPacotes = new ConsultarPacotes(_repositoryContext.PacotesRepository);
             consultarPacotes.Dock = DockStyle.Fill;
             consultarPacotes.Hide();
             this.panelPrincipal.Controls.Add(consultarPacotes);
 
-            comprarImpressao = new ComprarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.PacoteRepository, _repositoryContext.TipoDeMovimentacaoRepository, _repositoryContext.HistoricoRepository, _repositoryContext.CompraRepository, _repositoryContext.ComprasPacoteRepository);
+            comprarImpressao = new ComprarImpressao(_repositoryContext.AlunosRepository, _repositoryContext.PacotesRepository, _repositoryContext.TipoMovimentacoesRepository, _repositoryContext.HistoricosRepository, _repositoryContext.ComprasRepository, _repositoryContext.PacotesCompradosRepository);
             comprarImpressao.Dock = DockStyle.Fill;
             comprarImpressao.Hide();
             this.panelPrincipal.Controls.Add(comprarImpressao);
 
-            realizarImpressao = new RealizarImpressao(_repositoryContext.AlunoRepository, _repositoryContext.HistoricoRepository, _repositoryContext.TipoDeMovimentacaoRepository, _repositoryContext.ImpressaoRepository);// no lugar de null colocar o Repository que vc for usar
+            realizarImpressao = new RealizarImpressao(_repositoryContext.AlunosRepository, _repositoryContext.HistoricosRepository, _repositoryContext.TipoMovimentacoesRepository, _repositoryContext.ImpressoesRepository);
             realizarImpressao.Dock = DockStyle.Fill;
             realizarImpressao.Hide();
             this.panelPrincipal.Controls.Add(realizarImpressao);
 
-            consutarSaldos = new ConsutarSaldos(_repositoryContext.AlunoRepository);
+            consutarSaldos = new ConsutarSaldos(_repositoryContext.AlunosRepository);
             consutarSaldos.Dock = DockStyle.Fill;
             consutarSaldos.Hide();
             this.panelPrincipal.Controls.Add(consutarSaldos);
 
-            consultarHistoricos = new ConsultarHistoricos(_repositoryContext);// no lugar de null colocar o Repository que vc for usar
+            consultarHistoricos = new ConsultarHistoricos(_repositoryContext);
             consultarHistoricos.Dock = DockStyle.Fill;
             consultarHistoricos.Hide();
             this.panelPrincipal.Controls.Add(consultarHistoricos);
 
-            deletarUltimaCompraOuImpressao = new DeletarUltimaCompraOuImpressao(_repositoryContext.AlunoRepository, null);// no lugar de null colocar o Repository que vc for usar
+            deletarUltimaCompraOuImpressao = new DeletarUltimaCompraOuImpressao(_repositoryContext);
             deletarUltimaCompraOuImpressao.Dock = DockStyle.Fill;
             deletarUltimaCompraOuImpressao.Hide();
             this.panelPrincipal.Controls.Add(deletarUltimaCompraOuImpressao);
