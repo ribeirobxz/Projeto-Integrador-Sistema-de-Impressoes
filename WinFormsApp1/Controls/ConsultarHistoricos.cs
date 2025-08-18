@@ -11,6 +11,7 @@ using WinFormsApp1.Context;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
 using WinFormsApp1.Model.Historic;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -22,7 +23,7 @@ namespace WinFormsApp1.Controls
 
         private readonly RepositoryContext _repositoryContext;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
         internal ConsultarHistoricos(RepositoryContext repositoryContext)
         {
@@ -58,7 +59,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunoRepository, _onReceberAlunoSelecionado);
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunosRepository, _onReceberAlunoSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
@@ -66,7 +67,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
+            _alunoSelecionado = (Alunos)alunoSelecionado;
             textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             PrencheListagem();
@@ -79,6 +80,8 @@ namespace WinFormsApp1.Controls
                 var objetoPraTerOquePreencherNoTextBox = listBoxListagem.SelectedItem;
 
                 textBoxHistoricoInfo.Text = "você vai colocar os textos informacionais adicional aqui"; // fazer oque esta escrito no texto.
+
+                // -------- TEM QUE FAZER ISSO AINDA
 
                 splitContainerInfo.Panel2Collapsed = false;
             }
@@ -113,7 +116,7 @@ namespace WinFormsApp1.Controls
             }
         }
 
-        private void PrencheListagem()
+        private void PrencheListagem() // --FEITO
         {
             // a listagem muda ao selecionar o aluno ou mudar os check box, para mudar isso, (fazer algo diferente)
             // no lugar podemos colocar um botão "consultar", dai so muda o conteudo da listagem quando clicar no botão
@@ -122,26 +125,21 @@ namespace WinFormsApp1.Controls
             bool ehSoCompras = radioButtonCompras.Checked;
             bool ehSoImpressoes = radioButtonImpressoes.Checked;
 
-            // fazer consulta da listagem de historico e colocar no list box
+            // fazer consulta da listagem de historico e colocar no list box -- FEITO
 
             listBoxListagem.Items.Clear();
 
             if (ehTodos)
             {
-                listBoxListagem.Items.AddRange(_repositoryContext.HistoricoRepository.SelecionarTodosPorAluno(_alunoSelecionado.Codigo)
-                    .Select(x =>
-                    {
-                        var tipoDeMovimentacao = _repositoryContext.TipoDeMovimentacaoRepository.SelecionarPorCodigo(x.CodigoTipoDeMovimentacao);
-                        return new VisualizarHistorico(x.Codigo, x.CodigoTipoDeMovimentacao, x.CodigoAluno, x.DataHistorico, x.QntdTotal, x.SaldoAntes, x.SaldoDepois, (decimal?) x.ValorTotalPago, tipoDeMovimentacao);
-                    }).ToArray());
+                listBoxListagem.Items.AddRange(_repositoryContext.HistoricosRepository.ObterListaDeHistoricoVisualizacaoTodos(_alunoSelecionado.Codigo)?.ToArray() ?? new object[0]);
             }
             else if (ehSoCompras)
             {
-                listBoxListagem.Items.AddRange(new string[] { "apagar isso e colar o conteudo consulta aqui (ehSoCompras)" });
+                listBoxListagem.Items.AddRange(_repositoryContext.HistoricosRepository.ObterListaDeHistoricoVisualizacaoCompras(_alunoSelecionado.Codigo)?.ToArray() ?? new object[0]);
             }
             else if (ehSoImpressoes)
             {
-                listBoxListagem.Items.AddRange(new string[] { "apagar isso e colar o conteudo consulta aqui (ehSoImpressoes)" });
+                listBoxListagem.Items.AddRange(_repositoryContext.HistoricosRepository.ObterListaDeHistoricoVisualizacaoImpressões(_alunoSelecionado.Codigo)?.ToArray() ?? new object[0]);
             }
         }
     }

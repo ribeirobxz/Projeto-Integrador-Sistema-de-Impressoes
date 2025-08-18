@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
 using WinFormsApp1.Model.Historic;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -20,18 +21,18 @@ namespace WinFormsApp1.Controls
         public Action? FecharControl;
 
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        private readonly PacoteRepository _pacoteRepository;
-        private readonly TipoDeMovimentacaoRepository _tipoDeMovimentacaoRepository;
-        private readonly HistoricoRepository _historicoRepository;
-        private readonly CompraRepository _compraRepository;
-        private readonly ComprasPacoteRepository _comprasPacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
+        private readonly TipoMovimentacoesRepository _tipoDeMovimentacaoRepository;
+        private readonly HistoricosRepository _historicoRepository;
+        private readonly ComprasRepository _compraRepository;
+        private readonly PacotesCompradosRepository _comprasPacoteRepository;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
-        internal ComprarImpressao(AlunoRepository alunoRepository, PacoteRepository pacoteRepository, TipoDeMovimentacaoRepository tipoDeMovimentacaoRepository, HistoricoRepository historicoRepository, 
-            CompraRepository compraRepository, ComprasPacoteRepository comprasPacoteRepository)
+        internal ComprarImpressao(AlunosRepository alunoRepository, PacotesRepository pacoteRepository, TipoMovimentacoesRepository tipoDeMovimentacaoRepository, HistoricosRepository historicoRepository, 
+            ComprasRepository compraRepository, PacotesCompradosRepository comprasPacoteRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -58,26 +59,27 @@ namespace WinFormsApp1.Controls
 
         private void buttonComprar_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
                 var tipoDeMovimentacao = _tipoDeMovimentacaoRepository.SelecionarPorNome("Compra");
-                var historico = new Historico(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
+                var historico = new Historicos(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
                 
-                var comprasPacote = new List<CompraPacote>();
+                var comprasPacote = new List<PacotesComprados>();
                 foreach (var compraImpressao in listBoxPacotes.Items.Cast<CompraImpressao>())
                 {
-                    _alunoSelecionado.QntdImpressao += compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade;
-                    historico.QntdTotal = compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade;
+                short calc = (short)(compraImpressao.Pacote.Quantidade * compraImpressao.Quantidade);
+                    _alunoSelecionado.QntdImpressao += calc;
+                    historico.QntdTotal = calc;
 
                     historico.SaldoDepois = _alunoSelecionado.QntdImpressao;
                     historico.ValorTotalPago = compraImpressao.Pacote.Preco * compraImpressao.Quantidade;
 
-                    comprasPacote.Add(new CompraPacote(0, compraImpressao.Pacote.Codigo, compraImpressao.Quantidade, compraImpressao.Pacote.Preco));
+                    comprasPacote.Add(new PacotesComprados(0, compraImpressao.Pacote.Codigo, compraImpressao.Quantidade, compraImpressao.Pacote.Preco));
 
                 }
                 _historicoRepository.AdicionarHistorico(historico);
 
-                var compra = new Compra(0, _alunoSelecionado.Codigo, historico.Codigo, historico.DataHistorico, (decimal) historico.ValorTotalPago);
+                var compra = new Compras(0, _alunoSelecionado.Codigo, historico.Codigo, historico.DataHistorico, (decimal)historico.ValorTotalPago);
                 _compraRepository.AdicionarCompra(compra);
 
                 _alunoRepository.AtualizarAluno(_alunoSelecionado);
@@ -85,15 +87,15 @@ namespace WinFormsApp1.Controls
                 foreach (var compraPacote in comprasPacote)
                 {
                     compraPacote.CodigoCompra = compra.Codigo;
-                    _comprasPacoteRepository.AdicionarCompraPacote(compraPacote);
+                    _comprasPacoteRepository.AdicionarPacoteComprado(compraPacote);
                 }
 
                 FecharControl?.Invoke();
-            /*}
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro");
-            }*/
+                MessageBox.Show(ex.Message, "Erro:");
+            }
         }
 
         private void ComprarImpressao_KeyDown(object sender, KeyEventArgs e)
@@ -118,7 +120,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
+            _alunoSelecionado = (Alunos)alunoSelecionado;
             textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             if (_alunoSelecionado != null && listBoxPacotes.Items.Count > 0)

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging.Abstractions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1.Context;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
+using WinFormsApp1.Model.Historic;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -19,19 +20,16 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly RepositoryContext _repositoryContext;
 
-        private readonly object _comprarRepository; // mudar para o type correto
+        private Alunos? _alunoSelecionado = null;
 
-        private Aluno? _alunoSelecionado = null;
+        private Historicos? ObjReferencia = null;
 
-        private object? _compraDePacoteASerDeletada = null; //mudar para o tipo correto.
-
-        internal DeletarUltimaCompraOuImpressao(AlunoRepository alunoRepository, object comprarRepository)
+        internal DeletarUltimaCompraOuImpressao(RepositoryContext repositoryContext)
         {
             InitializeComponent();
-            _comprarRepository = comprarRepository;
-            _alunoRepository = alunoRepository;
+            _repositoryContext = repositoryContext;
         }
 
         public void ResetarConteudo()
@@ -52,6 +50,8 @@ namespace WinFormsApp1.Controls
         {
             try
             {
+                // ------- TEM QUE FAZER AINDA
+
 
                 // fazer as coisas do banco de dados aqui
                 //remover da tabela compras e adicionar a justificativa em motivodeExclusão
@@ -80,7 +80,7 @@ namespace WinFormsApp1.Controls
         {
             if (e.KeyCode == Keys.F2)
             {
-                SelecionarAluno selecionarAluno = new SelecionarAluno(_alunoRepository, _onReceberAlunoSelecionado);
+                SelecionarAluno selecionarAluno = new SelecionarAluno(_repositoryContext.AlunosRepository, _onReceberAlunoSelecionado);
                 SelecionarObjetoForm form = new SelecionarObjetoForm(selecionarAluno);
                 form.ShowDialog();
             }
@@ -88,24 +88,22 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
-            textBoxAlunoEscolhido.Text = alunoSelecionado.ToString();
+            _alunoSelecionado = (Alunos)alunoSelecionado;
+            textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
-            // com o aluno consulta o historico valido, verificar se é do tipo compra, caso sim preencher o texto de historico
-            // caso não for do tipo compra (for do tipo realizar impressão), não abalitar o botão de deletar, e colocar um aviso no historio, dizendo que não da pra deletar.
+            // com o aluno consulta o historico valido, verificar se é do tipo compra ou impressão, caso sim preencher o texto de historico
+            // caso não for do tipo compra ou impressão, não habilitar o botão de deletar, e colocar um aviso no historio, dizendo que não da pra deletar.
 
-            _compraDePacoteASerDeletada = null;// aqui no lugar de null preencher com o objeto que vai ser excluido.
+            ObjReferencia = _repositoryContext.HistoricosRepository.UltimoHistoricoValido();
 
-            bool podeDeletar = true; // se não poder deletar colocar como false;
-
-            if (podeDeletar)
+            if (ObjReferencia != null)
             {
-                textBoxUltimoHistorico.Text = "coloque aqui a informação do ultimo historico existente, aque que vai ser excluido";// fazer oque esta no texto
+                textBoxUltimoHistorico.Text = ObjReferencia.ToString();
                 buttonDeletar.Enabled = true;
             }
             else 
             {
-                textBoxUltimoHistorico.Text = "Não pode ser excluido a compra pois existe a realização de impressão cadastrado após a compra!"; // aqui é pra ser esse texto
+                textBoxUltimoHistorico.Text = "Não existe mais registros para serem deletados!";
                 buttonDeletar.Enabled = false;
             }
         }

@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
-        internal EditarAluno(AlunoRepository alunoRepository)
+        internal EditarAluno(AlunosRepository alunoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -33,9 +33,9 @@ namespace WinFormsApp1.Controls
             _alunoSelecionado = null;
             textBoxAlunoAEditar.Text = string.Empty;
             textBoxNome.Text = string.Empty;
-            textBoxEmail.Text = string.Empty;
+            textBoxTelefone.Text = string.Empty;
             textBoxMatricula.Text = string.Empty;
-            labelEmailErro.Text = string.Empty;
+            labelTelefoneErro.Text = string.Empty;
             labelMatriculaErro.Text = string.Empty;
             labelNomeErro.Text = string.Empty;
             labelErroDiversos.Text = string.Empty;
@@ -66,10 +66,10 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado) 
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
-            textBoxAlunoAEditar.Text = alunoSelecionado.ToString();
+            _alunoSelecionado = (Alunos)alunoSelecionado;
+            textBoxAlunoAEditar.Text = _alunoSelecionado.ToString();
             textBoxNome.Text = _alunoSelecionado.Nome;
-            textBoxEmail.Text = _alunoSelecionado.Email;
+            textBoxTelefone.Text = _alunoSelecionado.NunTelefone;
             textBoxMatricula.Text = _alunoSelecionado.Matricula;
             groupBoxAreaDeEdicao.Enabled = true;
             buttonEditarOK.Enabled = true;
@@ -83,24 +83,69 @@ namespace WinFormsApp1.Controls
 
         private void buttonEditarOK_Click(object sender, EventArgs e)
         {
-            labelEmailErro.Text = string.Empty;
-            labelMatriculaErro.Text = string.Empty;
             labelNomeErro.Text = string.Empty;
+            labelTelefoneErro.Text = string.Empty;
+            labelMatriculaErro.Text = string.Empty;
             labelErroDiversos.Text = string.Empty;
+
+            string nome = textBoxNome.Text;
+            if (string.IsNullOrEmpty(nome) || nome.Length < 2)
+            {
+                labelNomeErro.Text = "O nome tem que ter pelo menos 3 letras.";
+                return;
+            }
+
+            string matricula = textBoxMatricula.Text;
+            if (string.IsNullOrEmpty(matricula))
+            {
+                labelMatriculaErro.Text = "A matrícula não pode ser vazia.";
+                return;
+            }
+
+            string telefone = textBoxTelefone.Text;
+            var telefoneArr = telefone.ToCharArray();
+            if (telefoneArr.Length >= 15)
+            {
+                telefoneArr[4] = '_';
+            }
+            string telefoneTest = String.Concat(telefoneArr);
+            if (string.IsNullOrEmpty(telefone) || telefoneTest.Contains(' '))
+            {
+                labelTelefoneErro.Text = "O telefone deve ser válido.";
+                return;
+            }
 
             try
             {
                 _alunoSelecionado.Nome = textBoxNome.Text;
-                _alunoSelecionado.Email = textBoxEmail.Text;
+                _alunoSelecionado.NunTelefone = textBoxTelefone.Text;
                 _alunoSelecionado.Matricula = textBoxMatricula.Text;
 
                 _alunoRepository.AtualizarAluno(_alunoSelecionado);
 
                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                if (ex.Message.Contains("Unique_Alunos_Nome"))
+                {
+                    labelNomeErro.Text = "Esse nome ja esta cadastrado.";
+                    return;
+                }
+                else if (ex.Message.Contains("Unique_Alunos_Matricula"))
+                {
+                    labelMatriculaErro.Text = "Essa matricula ja esta cadastrada.";
+                    return;
+                }
+                else if (ex.Message.Contains("Unique_Alunos_NunTelefone"))
+                {
+                    labelTelefoneErro.Text = "Esse telefone ja esta cadastrado.";
+                    return;
+                }
+                else
+                {
+                    labelErroDiversos.Text = "Um erro não esparado aconteceu: " + ex.Message;
+                }
             }
         }
 

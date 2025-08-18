@@ -12,9 +12,9 @@ namespace WinFormsApp1.SelecionarObjeto
     {
         private readonly Action<object> _RetornoDoEscolhido;
 
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
 
-        public SelecionarPacote(PacoteRepository pacoteRepository, Action<object> retornoDoEscolhido)
+        public SelecionarPacote(PacotesRepository pacoteRepository, Action<object> retornoDoEscolhido)
         {
             _pacoteRepository = pacoteRepository;
             _RetornoDoEscolhido = retornoDoEscolhido;

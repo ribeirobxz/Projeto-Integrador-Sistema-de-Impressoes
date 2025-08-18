@@ -12,6 +12,23 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
+            // agora se a conectionString estiver errada, o programa vai dar um aviso
+            try
+            {
+                Start();
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Houve um erro com o banco de dados:");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Houve um erro na aplicação:");
+            }
+        }
+
+        static void Start() 
+        {
             string connectionString = GetConnectionString();
 
             ApplicationConfiguration.Initialize();
@@ -45,7 +62,9 @@ namespace WinFormsApp1
                 {
                 }
             }
-            return """Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kaua.neto\banco\banco.mdf;Integrated Security=True;Connect Timeout=30""";
+
+            //deixar assim e coloque o arquivo mdf dentro da pasta que tem o programa com o nome ProjetoIntegrador.mdf
+            return @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Path.Combine(AppContext.BaseDirectory, "ProjetoIntegrador.mdf")};Integrated Security=True;Connect Timeout=30";
         }
 
     }

@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
-        internal ConsultarAluno(AlunoRepository alunoRepository)
+        internal ConsultarAluno(AlunosRepository alunoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -33,7 +33,7 @@ namespace WinFormsApp1.Controls
             _alunoSelecionado = null;
             textBoxAlunoAConsultar.Text = string.Empty;
             textBoxNome.Text = string.Empty;
-            textBoxEmail.Text = string.Empty;
+            textBoxTelefone.Text = string.Empty;
             textBoxMatricula.Text = string.Empty;
             textBoxQuantidade.Text = string.Empty;
         }
@@ -51,10 +51,10 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
-            textBoxAlunoAConsultar.Text = alunoSelecionado.ToString();
+            _alunoSelecionado = (Alunos)alunoSelecionado;
+            textBoxAlunoAConsultar.Text = _alunoSelecionado.ToString();
             textBoxNome.Text = _alunoSelecionado.Nome;
-            textBoxEmail.Text = _alunoSelecionado.Email;
+            textBoxTelefone.Text = _alunoSelecionado.NunTelefone;
             textBoxMatricula.Text = _alunoSelecionado.Matricula;
             textBoxQuantidade.Text = _alunoSelecionado.QntdImpressao.ToString();
         }

@@ -30,9 +30,8 @@
         {
             buttonCancelar = new Button();
             buttonEditarOK = new Button();
-            labelEmailErro = new Label();
+            labelTelefoneErro = new Label();
             labelEmail = new Label();
-            textBoxEmail = new TextBox();
             labelMatriculaErro = new Label();
             labelMatricula = new Label();
             textBoxMatricula = new TextBox();
@@ -44,6 +43,7 @@
             textBoxAlunoAEditar = new TextBox();
             groupBoxAreaDeEdicao = new GroupBox();
             labelErroDiversos = new Label();
+            textBoxTelefone = new MaskedTextBox();
             groupBoxAreaDeEdicao.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,16 +69,16 @@
             buttonEditarOK.UseVisualStyleBackColor = true;
             buttonEditarOK.Click += buttonEditarOK_Click;
             // 
-            // labelEmailErro
+            // labelTelefoneErro
             // 
-            labelEmailErro.AutoSize = true;
-            labelEmailErro.Font = new Font("Segoe UI", 9F);
-            labelEmailErro.ForeColor = Color.Brown;
-            labelEmailErro.Location = new Point(49, 114);
-            labelEmailErro.Name = "labelEmailErro";
-            labelEmailErro.Size = new Size(28, 15);
-            labelEmailErro.TabIndex = 7;
-            labelEmailErro.Text = "erro";
+            labelTelefoneErro.AutoSize = true;
+            labelTelefoneErro.Font = new Font("Segoe UI", 9F);
+            labelTelefoneErro.ForeColor = Color.Brown;
+            labelTelefoneErro.Location = new Point(66, 114);
+            labelTelefoneErro.Name = "labelTelefoneErro";
+            labelTelefoneErro.Size = new Size(28, 15);
+            labelTelefoneErro.TabIndex = 7;
+            labelTelefoneErro.Text = "erro";
             // 
             // labelEmail
             // 
@@ -86,18 +86,9 @@
             labelEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelEmail.Location = new Point(7, 114);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(36, 15);
+            labelEmail.Size = new Size(59, 15);
             labelEmail.TabIndex = 6;
-            labelEmail.Text = "Email";
-            // 
-            // textBoxEmail
-            // 
-            textBoxEmail.Font = new Font("Segoe UI", 9F);
-            textBoxEmail.Location = new Point(7, 132);
-            textBoxEmail.MaxLength = 200;
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(740, 23);
-            textBoxEmail.TabIndex = 8;
+            labelEmail.Text = "Telefone:";
             // 
             // labelMatriculaErro
             // 
@@ -116,9 +107,9 @@
             labelMatricula.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelMatricula.Location = new Point(4, 68);
             labelMatricula.Name = "labelMatricula";
-            labelMatricula.Size = new Size(59, 15);
+            labelMatricula.Size = new Size(62, 15);
             labelMatricula.TabIndex = 3;
-            labelMatricula.Text = "Matrícula";
+            labelMatricula.Text = "Matrícula:";
             // 
             // textBoxMatricula
             // 
@@ -146,9 +137,9 @@
             labelNome.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelNome.Location = new Point(6, 22);
             labelNome.Name = "labelNome";
-            labelNome.Size = new Size(41, 15);
+            labelNome.Size = new Size(44, 15);
             labelNome.TabIndex = 0;
-            labelNome.Text = "Nome";
+            labelNome.Text = "Nome:";
             // 
             // labelTitulo
             // 
@@ -192,15 +183,15 @@
             // 
             // groupBoxAreaDeEdicao
             // 
+            groupBoxAreaDeEdicao.Controls.Add(textBoxTelefone);
             groupBoxAreaDeEdicao.Controls.Add(textBoxNome);
             groupBoxAreaDeEdicao.Controls.Add(labelNome);
             groupBoxAreaDeEdicao.Controls.Add(labelNomeErro);
             groupBoxAreaDeEdicao.Controls.Add(textBoxMatricula);
             groupBoxAreaDeEdicao.Controls.Add(labelMatricula);
-            groupBoxAreaDeEdicao.Controls.Add(labelEmailErro);
+            groupBoxAreaDeEdicao.Controls.Add(labelTelefoneErro);
             groupBoxAreaDeEdicao.Controls.Add(labelMatriculaErro);
             groupBoxAreaDeEdicao.Controls.Add(labelEmail);
-            groupBoxAreaDeEdicao.Controls.Add(textBoxEmail);
             groupBoxAreaDeEdicao.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBoxAreaDeEdicao.Location = new Point(12, 94);
             groupBoxAreaDeEdicao.Name = "groupBoxAreaDeEdicao";
@@ -218,6 +209,15 @@
             labelErroDiversos.Size = new Size(28, 15);
             labelErroDiversos.TabIndex = 6;
             labelErroDiversos.Text = "erro";
+            // 
+            // textBoxTelefone
+            // 
+            textBoxTelefone.Font = new Font("Segoe UI", 9F);
+            textBoxTelefone.Location = new Point(6, 132);
+            textBoxTelefone.Mask = "(00) 00000-0000";
+            textBoxTelefone.Name = "textBoxTelefone";
+            textBoxTelefone.Size = new Size(738, 23);
+            textBoxTelefone.TabIndex = 8;
             // 
             // EditarAluno
             // 
@@ -243,9 +243,8 @@
 
         private Button buttonCancelar;
         private Button buttonEditarOK;
-        private Label labelEmailErro;
+        private Label labelTelefoneErro;
         private Label labelEmail;
-        private TextBox textBoxEmail;
         private Label labelMatriculaErro;
         private Label labelMatricula;
         private TextBox textBoxMatricula;
@@ -257,5 +256,6 @@
         private TextBox textBoxAlunoAEditar;
         private GroupBox groupBoxAreaDeEdicao;
         private Label labelErroDiversos;
+        private MaskedTextBox textBoxTelefone;
     }
 }

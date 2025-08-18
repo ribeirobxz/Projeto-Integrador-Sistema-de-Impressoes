@@ -18,11 +18,11 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly PacoteRepository _pacoteRepository;
+        private readonly PacotesRepository _pacoteRepository;
 
-        private Pacote? _pacoteSelecionado = null;
+        private Pacotes? _pacoteSelecionado = null;
 
-        internal DeletarPacote(PacoteRepository pacoteRepository)
+        internal DeletarPacote(PacotesRepository pacoteRepository)
         {
             InitializeComponent();
             _pacoteRepository = pacoteRepository;
@@ -49,7 +49,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberpacoteSelecionado(object pacoteSelecionado)
         {
-            _pacoteSelecionado = (Pacote)pacoteSelecionado;
+            _pacoteSelecionado = (Pacotes)pacoteSelecionado;
             textBoxPacoteADeletar.Text = _pacoteSelecionado.ToString();
             buttonDeletar.Enabled = true;
         }
@@ -75,9 +75,17 @@ namespace WinFormsApp1.Controls
                 _pacoteRepository.RemoverPacote(_pacoteSelecionado.Codigo);
                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                if (ex.Message.Contains("PctFK_CodigoPacote"))
+                {
+                    labelErroDiversos.Text = "Erro: Esse pacote não pode ser deletado, pois está sendo usado!";
+                }
+                else 
+                {
+                    labelErroDiversos.Text = "Erro: " + ex.Message;
+                }
+                
             }
         }
 

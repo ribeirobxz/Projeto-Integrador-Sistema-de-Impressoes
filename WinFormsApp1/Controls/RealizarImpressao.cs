@@ -19,16 +19,16 @@ namespace WinFormsApp1.Controls
     {
         public Action? FecharControl;
 
-        private readonly AlunoRepository _alunoRepository;
+        private readonly AlunosRepository _alunoRepository;
 
-        private readonly HistoricoRepository _historicoRepository;
-        private readonly TipoDeMovimentacaoRepository _tipoDeMovimentacaoRepository;
-        private readonly ImpressaoRepository _impressaoRepository;
+        private readonly HistoricosRepository _historicoRepository;
+        private readonly TipoMovimentacoesRepository _tipoDeMovimentacaoRepository;
+        private readonly ImpressoesRepository _impressaoRepository;
 
-        private Aluno? _alunoSelecionado = null;
+        private Alunos? _alunoSelecionado = null;
 
-        internal RealizarImpressao(AlunoRepository alunoRepository, HistoricoRepository historicoRepository, TipoDeMovimentacaoRepository tipoDeMovimentacaoRepository,
-            ImpressaoRepository impressaoRepository)
+        internal RealizarImpressao(AlunosRepository alunoRepository, HistoricosRepository historicoRepository, TipoMovimentacoesRepository tipoDeMovimentacaoRepository,
+            ImpressoesRepository impressaoRepository)
         {
             InitializeComponent();
             _alunoRepository = alunoRepository;
@@ -41,10 +41,10 @@ namespace WinFormsApp1.Controls
         {
             _alunoSelecionado = null;
             buttonImprimir.Enabled = false;
-            textBoxAlunoEscolhido.Text = string.Empty;
-            numericUpDownQuantidade.Value = 0;
+            textBoxAlunoEscolhido.Text = string.Empty;       
             numericUpDownQuantidade.Minimum = 0;
             numericUpDownQuantidade.Maximum = 0;
+            numericUpDownQuantidade.Value = 0;
             numericUpDownQuantidade.Enabled = false;
         }
 
@@ -58,9 +58,9 @@ namespace WinFormsApp1.Controls
             try
             {
                 var tipoDeMovimentacao = _tipoDeMovimentacaoRepository.SelecionarPorNome("Impressão");
-                var historico = new Historico(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
+                var historico = new Historicos(0, tipoDeMovimentacao.Codigo, _alunoSelecionado.Codigo, DateTime.Now, _alunoSelecionado.QntdImpressao);
 
-                int quantidade = (int) numericUpDownQuantidade.Value;
+                short quantidade = (short) numericUpDownQuantidade.Value;
 
                 _alunoSelecionado.QntdImpressao -= quantidade;
                 _alunoRepository.AtualizarAluno(_alunoSelecionado);
@@ -71,7 +71,7 @@ namespace WinFormsApp1.Controls
 
                 _historicoRepository.AdicionarHistorico(historico);
 
-                var impressao = new Impressao(0, _alunoSelecionado.Codigo, historico.Codigo, DateTime.Now, quantidade);
+                var impressao = new Impressoes(0, _alunoSelecionado.Codigo, historico.Codigo, DateTime.Now, quantidade);
                 _impressaoRepository.AdicionarImpressao(impressao);
 
                 FecharControl?.Invoke();
@@ -104,7 +104,7 @@ namespace WinFormsApp1.Controls
 
         private void _onReceberAlunoSelecionado(object alunoSelecionado)
         {
-            _alunoSelecionado = (Aluno)alunoSelecionado;
+            _alunoSelecionado = (Alunos)alunoSelecionado;
             textBoxAlunoEscolhido.Text = _alunoSelecionado.ToString();
 
             if (_alunoSelecionado.QntdImpressao > 0)

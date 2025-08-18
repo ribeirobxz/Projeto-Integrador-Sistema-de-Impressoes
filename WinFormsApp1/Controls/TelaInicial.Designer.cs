@@ -115,11 +115,11 @@
             // 
             labelTitulo.AutoSize = true;
             labelTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelTitulo.Location = new Point(16, 46);
+            labelTitulo.Location = new Point(15, 46);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(765, 45);
+            labelTitulo.Size = new Size(773, 45);
             labelTitulo.TabIndex = 0;
-            labelTitulo.Text = "Seja bem vindo ao sistema de impressão do senac";
+            labelTitulo.Text = "Seja bem-vindo ao sistema de impressão do Senac";
             // 
             // buttonEditarAluno
             // 

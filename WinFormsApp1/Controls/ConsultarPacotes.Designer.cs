@@ -59,10 +59,10 @@
             // numericUpDownPreço
             // 
             numericUpDownPreço.BackColor = SystemColors.Window;
-            numericUpDownPreço.DecimalPlaces = 4;
+            numericUpDownPreço.DecimalPlaces = 2;
             numericUpDownPreço.Font = new Font("Segoe UI", 9F);
             numericUpDownPreço.Location = new Point(7, 92);
-            numericUpDownPreço.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            numericUpDownPreço.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numericUpDownPreço.Name = "numericUpDownPreço";
             numericUpDownPreço.ReadOnly = true;
             numericUpDownPreço.Size = new Size(745, 23);

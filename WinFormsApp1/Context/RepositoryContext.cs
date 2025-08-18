@@ -19,13 +19,14 @@ namespace WinFormsApp1.Context
             CreatesIniciais();
             InsertsIniciais();
 
-            AlunoRepository = new AlunoRepository(_connection);
-            PacoteRepository = new PacoteRepository(_connection);
-            TipoDeMovimentacaoRepository = new TipoDeMovimentacaoRepository(_connection);
-            HistoricoRepository = new HistoricoRepository(_connection);
-            CompraRepository = new CompraRepository(_connection);
-            ComprasPacoteRepository = new ComprasPacoteRepository(_connection);
-            ImpressaoRepository = new ImpressaoRepository(_connection);
+            AlunosRepository = new AlunosRepository(_connection);
+            PacotesRepository = new PacotesRepository(_connection);
+            TipoMovimentacoesRepository = new TipoMovimentacoesRepository(_connection);
+            HistoricosRepository = new HistoricosRepository(_connection);
+            ComprasRepository = new ComprasRepository(_connection);
+            PacotesCompradosRepository = new PacotesCompradosRepository(_connection);
+            ImpressoesRepository = new ImpressoesRepository(_connection);
+            ExcluidosRepository = new ExcluidosRepository(_connection);
         }
 
         ~RepositoryContext()
@@ -33,179 +34,205 @@ namespace WinFormsApp1.Context
             _connection?.CloseAsync().Wait();
         }
 
-        public AlunoRepository AlunoRepository { get; private init; }
-        public PacoteRepository PacoteRepository { get; private init; }
-        public TipoDeMovimentacaoRepository TipoDeMovimentacaoRepository { get; private init; }
-        public HistoricoRepository HistoricoRepository { get; private init; }
-        public CompraRepository CompraRepository { get; private init; }
-        public ComprasPacoteRepository ComprasPacoteRepository { get; private init; }
-        public ImpressaoRepository ImpressaoRepository { get; private init; }
+        public AlunosRepository AlunosRepository { get; private init; }
+        public PacotesRepository PacotesRepository { get; private init; }
+        public TipoMovimentacoesRepository TipoMovimentacoesRepository { get; private init; }
+        public HistoricosRepository HistoricosRepository { get; private init; }
+        public ComprasRepository ComprasRepository { get; private init; }
+        public PacotesCompradosRepository PacotesCompradosRepository { get; private init; }
+        public ImpressoesRepository ImpressoesRepository { get; private init; }
+        public ExcluidosRepository ExcluidosRepository { get; private init; }
 
         private void CreatesIniciais()
         {
             {
-                var CREATE_ALUNO_TABLE_QUERY = """
-                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Aluno')
+                var CREATE_ALUNOS_TABLE_QUERY = 
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Alunos')
                 BEGIN
-                    CREATE TABLE Aluno (
-                        Codigo INT IDENTITY PRIMARY KEY,
-                        Nome VARCHAR(200) NOT NULL,
-                        Matricula VARCHAR(20) NOT NULL,
-                        Email VARCHAR(200) NOT NULL,
-                        QntdImpressao SMALLINT NOT NULL,
-                        CONSTRAINT Unique_Aluno_Nome UNIQUE (Nome),
-                        CONSTRAINT Unique_Aluno_Matricula UNIQUE (Matricula),
-                        CONSTRAINT Unique_Aluno_Email UNIQUE (Email)
-                    );
+                CREATE TABLE Alunos (
+                Codigo int identity not null,
+                Nome varchar(200) not null,
+                Matricula Varchar(20) not null,
+                NunTelefone Varchar(20) not null,
+                QntdImpressao smallint not null,
+                CONSTRAINT AlunosPK Primary key (Codigo),
+                CONSTRAINT Unique_Alunos_Nome UNIQUE (Nome),
+                CONSTRAINT Unique_Alunos_Matricula UNIQUE (Matricula),
+                CONSTRAINT Unique_Alunos_NunTelefone UNIQUE (NunTelefone)
+                );
                 END
                 """;
-                _connection.Execute(CREATE_ALUNO_TABLE_QUERY);
+                _connection.Execute(CREATE_ALUNOS_TABLE_QUERY);
             }
 
             {
-                var CREATE_PACOTES_TABLE_QUERY = """
+                var CREATE_PACOTES_TABLE_QUERY = 
+                """
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Pacotes')
                 BEGIN
-                    CREATE TABLE Pacotes (
-                        Codigo INT IDENTITY PRIMARY KEY,
-                        Quantidade SMALLINT NOT NULL,
-                        Preco DECIMAL(6, 2) NOT NULL
-                    );
+                CREATE TABLE Pacotes (
+                Codigo int identity not null,
+                Quantidade smallint not null,
+                Preco decimal(9,2) not null,
+                Constraint PacotesPK Primary key (Codigo),
+                Constraint Unique_Pacotes_Quantidade Unique (Quantidade)
+                );
                 END
                 """;
                 _connection.Execute(CREATE_PACOTES_TABLE_QUERY);
             }
 
             {
-                var CREATE_TIPOS_DE_MOVIMENTACOES_TABLE_QUERY = """
+                var CREATE_TIPOS_DE_MOVIMENTACOES_TABLE_QUERY = 
+                """
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TipoMovimentacoes')
                 BEGIN
-                  CREATE TABLE TipoMovimentacoes(
-                        Codigo Tinyint identity not null,
-                        Nome Varchar(20) not null,
-                        Constraint TipoMovimentacoesPK
-                        Primary key (codigo)
-                  );
+                CREATE TABLE TipoMovimentacoes (
+                Codigo Tinyint identity not null,
+                Nome Varchar(20) not null,
+                CONSTRAINT TipoMovimentacoesPK Primary key (Codigo),
+                CONSTRAINT Unique_TipoMovimentacoes_Nome UNIQUE (Nome)
+                );
                 END
                 """;
                 _connection.Execute(CREATE_TIPOS_DE_MOVIMENTACOES_TABLE_QUERY);
             }
 
             {
-                var CREATE_HISTORICO_TABLE_QUERY = """
-                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Historicos')
-                    BEGIN
-                        CREATE TABLE Historicos(
-                            Codigo int identity not null,
-                            CodigoTipoDeMovimentacao tinyint,
-                            CodigoAluno int,
-                            DataHistorico datetime not null,
-                            QntdTotal Smallint not null,
-                            SaldoAntes smallint not null,
-                            SaldoDepois smallint not null,
-                            ValorTotalPago decimal(12,4),
-                            Constraint HitoricosPK
-                            Primary key (codigo),
-                            Constraint Codigo_Alunos
-                            Foreign key (CodigoAluno)
-                            References Aluno(codigo),
-                            Constraint CodigoTipoDeMovimentacao
-                            Foreign key (CodigoTipoDeMovimentacao)
-                            References TipoMovimentacoes(codigo),
-                        );
-                    END
-                    """;
-                _connection.Execute(CREATE_HISTORICO_TABLE_QUERY);
+                var CREATE_HISTORICOS_TABLE_QUERY =
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Historicos')
+                BEGIN
+                CREATE TABLE Historicos (
+                Codigo int identity not null,
+                CodigoTipoMovimentacao tinyint not null,
+                CodigoAluno int not null,
+                DataHistorico datetime not null,
+                QntdTotal Smallint not null,
+                SaldoAntes smallint not null,
+                SaldoDepois smallint not null,
+                ValorTotalPago decimal(12,2) null,
+                Constraint HistoricosPK Primary key (Codigo),
+                Constraint HistoricosFK_CodigoAluno Foreign key (CodigoAluno) References Alunos(Codigo),
+                Constraint HistoricosFK_CodigoTipoMovimentacao Foreign key (CodigoTipoMovimentacao) References TipoMovimentacoes(Codigo)
+                );
+                END
+                """;
+                _connection.Execute(CREATE_HISTORICOS_TABLE_QUERY);
             }
 
             {
-                var CREATE_COMPRAS_TABLE_QUERY = """
-                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Compras')
-                    BEGIN
-                        CREATE TABLE Compras(
-                            Codigo INT IDENTITY NOT NULL,
-                            CodigoAluno int not null,
-                            CodigoHistorico int not null,
-                            DataCompra datetime not null,
-                            ValorTotalPago Decimal(12,4),
-                            Constraint ComprasPK
-                            Primary key (codigo),
-                             Constraint Compras_CodigoAlunos
-                            Foreign key (CodigoAluno)
-                            References Aluno(codigo),
-                             Constraint Compra_CodigoHistoricos
-                            Foreign key(CodigoHistorico)
-                            References Historicos(codigo),
-                            Constraint Unique_Compras_CodigoHistoricos Unique (CodigoHistorico)
-                        )
-                    END
-                    """;
+                var CREATE_COMPRAS_TABLE_QUERY = 
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Compras')
+                BEGIN
+                CREATE TABLE Compras (
+                Codigo int identity not null,
+                CodigoAluno int not null,
+                CodigoHistorico int not null,
+                DataCompra datetime not null,
+                ValorTotalPago Decimal(12,2) not null,
+                Constraint ComprasPK Primary key (Codigo),
+                Constraint ComprasFK_CodigoAluno Foreign key (CodigoAluno) References Alunos(Codigo),
+                Constraint ComprasFK_CodigoHistorico Foreign key(CodigoHistorico) References Historicos(Codigo),
+                Constraint Unique_Compras_CodigoHistorico Unique (CodigoHistorico)
+                );
+                END
+                """;
                 _connection.Execute(CREATE_COMPRAS_TABLE_QUERY);
             }
 
             {
-                var CREATE_COMPRAS_PACOTES_TABLE_QUERY = """
-                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'ComprasPacotes')
-                    BEGIN
-                       CREATE TABLE ComprasPacotes(
-                            Codigo int identity,
-                            CodigoCompra int,
-                            CodigoPacote int,
-                            Multiplicador smallint,
-                            PrecoPacote decimal(9,4)
-                            Constraint PacotesComprasPK
-                            Primary key (Codigo)
-                            Constraint Pct_CodigoCompras
-                            Foreign key (CodigoCompra)
-                            References Compras(Codigo),
-                            Constraint Pct_CodigoPacotes
-                            Foreign key (CodigoPacote)
-                            References Pacotes(codigo),
-                            Constraint Unique_PacotesCompras unique(CodigoCompra,CodigoPacote)
-                        )
-                    END
-                    """;
-                _connection.Execute(CREATE_COMPRAS_PACOTES_TABLE_QUERY);
+                var CREATE_PACOTES_COMPRADOS_TABLE_QUERY = 
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'PacotesComprados')
+                BEGIN
+                CREATE TABLE PacotesComprados (
+                Codigo int identity not null,
+                CodigoCompra int not null,
+                CodigoPacote int not null,
+                Multiplicador smallint not null,
+                PrecoPacote decimal(9,2) not null,
+                Constraint PacotesCompradosPK Primary key (Codigo),
+                Constraint PctFK_CodigoCompra Foreign key (CodigoCompra) References Compras(Codigo),
+                Constraint PctFK_CodigoPacote Foreign key (CodigoPacote) References Pacotes(Codigo),
+                Constraint Unique_PacotesComprados unique(CodigoCompra, CodigoPacote)
+                );
+                END
+                """;
+                _connection.Execute(CREATE_PACOTES_COMPRADOS_TABLE_QUERY);
             }
 
             {
-                var CREATE_IMPRESAO_TABLE_QUERY = """
-                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Impressoes')
-                    BEGIN
-                        CREATE TABLE Impressoes(
-                            Codigo int identity not null,
-                            CodigoAluno int not null,
-                            CodigoHistorico int not null,
-                            DataImpressao datetime not null,
-                            QntdImpressao Smallint not null,
-                            Constraint ImpressoesPK
-                            Primary key (codigo),
-                             Constraint ImpCodigo_Aluno
-                            Foreign key (CodigoAluno)
-                            References Aluno(codigo),
-                             Constraint ImpCodigo_Historico
-                            Foreign key(CodigoHistorico)
-                            References Historicos(codigo),
-                            Constraint Unique_Impressoes_CodigoHistorico Unique (CodigoHistorico)
-                         )
-                    END
-                    """;
-                _connection.Execute(CREATE_IMPRESAO_TABLE_QUERY);
+                var CREATE_IMPRESOES_TABLE_QUERY =
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Impressoes')
+                BEGIN
+                CREATE TABLE Impressoes (
+                Codigo int identity not null,
+                CodigoAluno int not null,
+                CodigoHistorico int not null,
+                DataImpressao datetime not null,
+                QntdImpressao Smallint not null,
+                Constraint ImpressoesPK Primary key (Codigo),
+                Constraint ImpressoesFK_CodigoAluno Foreign key (CodigoAluno) References Alunos(Codigo),
+                Constraint ImpressoesFK_CodigoHistorico Foreign key (CodigoHistorico) References Historicos(Codigo),
+                Constraint Unique_Impressoes_CodigoHistorico Unique (CodigoHistorico)
+                );
+                END
+                """;
+                _connection.Execute(CREATE_IMPRESOES_TABLE_QUERY);
             }
-           
-            //colocar os outros Create aqui
+
+            {
+                var CREATE_EXCLUIDOS_TABLE_QUERY =
+                """
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Excluidos')
+                BEGIN
+                CREATE TABLE Excluidos (
+                Codigo int identity not null,
+                Motivo Varchar(800) not null,
+                CodigoHistorico int not null,
+                DataExclusao datetime not null,
+                Constraint ExcluidosPK Primary key (codigo),
+                Constraint ExcluidosFK_CodigoHistorico Foreign key (CodigoHistorico) References Historicos(Codigo),
+                Constraint Unique_Excluidos_CodigoHistorico unique (CodigoHistorico)
+                );
+                END
+                """;
+                _connection.Execute(CREATE_EXCLUIDOS_TABLE_QUERY);
+            }
         }
 
         private void InsertsIniciais()
         {
-            var INSERT_TIPOS_DE_MOVIMENTACOES_QUERY = """
+            {
+                var INSERT_TIPOS_DE_MOVIMENTACOES_QUERY =
+                """
                 IF NOT EXISTS (SELECT * FROM TipoMovimentacoes)
                 BEGIN
-                    INSERT INTO TipoMovimentacoes (Nome) VALUES ('Compra');
-                    INSERT INTO TipoMovimentacoes (Nome) VALUES ('Impressão');
+                INSERT INTO TipoMovimentacoes (Nome) VALUES ('Compra');
+                INSERT INTO TipoMovimentacoes (Nome) VALUES ('Impressão');
+                INSERT INTO TipoMovimentacoes (Nome) VALUES ('CompraExcluida');
+                INSERT INTO TipoMovimentacoes (Nome) VALUES ('ImpressãoExcluida');
                 END
                 """;
-            _connection.Execute(INSERT_TIPOS_DE_MOVIMENTACOES_QUERY);
+                _connection.Execute(INSERT_TIPOS_DE_MOVIMENTACOES_QUERY);
+            }
+
+            {
+                var INSERT_PACOTES_QUERY =
+                """
+                IF NOT EXISTS (SELECT * FROM Pacotes)
+                BEGIN
+                INSERT INTO Pacotes (Quantidade, Preco) VALUES (25, 5.00);
+                INSERT INTO Pacotes (Quantidade, Preco) VALUES (50, 10.00);
+                END
+                """;
+                _connection.Execute(INSERT_PACOTES_QUERY);
+            }
+
         }
     }
 }
