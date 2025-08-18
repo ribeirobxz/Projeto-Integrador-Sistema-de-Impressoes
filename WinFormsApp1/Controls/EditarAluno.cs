@@ -104,7 +104,7 @@ namespace WinFormsApp1.Controls
 
             string telefone = textBoxTelefone.Text;
             var telefoneArr = telefone.ToCharArray();
-            if (telefoneArr.Length > 5)
+            if (telefoneArr.Length >= 15)
             {
                 telefoneArr[4] = '_';
             }

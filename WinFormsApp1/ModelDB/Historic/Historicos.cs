@@ -21,7 +21,10 @@
             DataHistorico = dataHistorico;
             SaldoAntes = saldoAntes;
         }
+        public override string ToString()
+        {
+            return "Data: " + DataHistorico.ToString("dd/MM/yyyy") + ", Tipo de movimentação: "  + ", Quantidade total: " + QntdTotal + ", Saldo antes: R$ " + SaldoAntes.ToString("F2") + ", Saldo depois: R$ " + SaldoDepois.ToString("F2") + (ValorTotalPago.HasValue ? ", Valor total pago: R$ " + ValorTotalPago.Value.ToString("F2") : "");
+        }
 
-       
     }
 }

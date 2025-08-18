@@ -71,7 +71,15 @@ namespace WinFormsApp1.Controls
             }
             catch (Exception ex)
             {
-                labelErroDiversos.Text = "Erro: " + ex.Message;
+                if (ex.Message.Contains("HistoricosFK_CodigoAluno"))
+                {
+                    labelErroDiversos.Text = "Erro: Esse aluno não pode ser deletado, pois está sendo usado!";
+                }
+                else 
+                {
+                    labelErroDiversos.Text = "Erro: " + ex.Message;
+                }
+                   
             }
         }
 

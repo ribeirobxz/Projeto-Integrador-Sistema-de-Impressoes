@@ -75,9 +75,17 @@ namespace WinFormsApp1.Controls
                 _pacoteRepository.RemoverPacote(_pacoteSelecionado.Codigo);
                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                if (ex.Message.Contains("PctFK_CodigoPacote"))
+                {
+                    labelErroDiversos.Text = "Erro: Esse pacote não pode ser deletado, pois está sendo usado!";
+                }
+                else 
+                {
+                    labelErroDiversos.Text = "Erro: " + ex.Message;
+                }
+                
             }
         }
 
