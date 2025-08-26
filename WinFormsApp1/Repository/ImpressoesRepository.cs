@@ -52,10 +52,23 @@ namespace WinFormsApp1.Repository
             return true;
         }
 
+        public bool RemoverImpressaoPorCodigoHistorico(long codigoHistorico)
+        {
+            var sql = "DELETE FROM Impressoes WHERE CodigoHistorico = @CodigoHistorico;";
+            _connection.Execute(sql, new { CodigoHistorico = codigoHistorico });
+
+            return true;
+        }
         public Compras? SelecionarPorCodigo(long codigo)
         {
             var sql = "SELECT * FROM Impressoes WHERE Codigo = @Codigo;";
             return _connection.QueryFirstOrDefault<Compras>(sql, new { Codigo = codigo });
+        }
+
+        public Compras? SelecionarPorCodigoHistorico(long codigoHistorico)
+        {
+            var sql = "SELECT * FROM Impressoes WHERE CodigoHistorico = @CodigoHistorico;";
+            return _connection.QueryFirstOrDefault<Compras>(sql, new { CodigoHistorico = codigoHistorico });
         }
     }
 }

@@ -11,6 +11,7 @@ using WinFormsApp1.Context;
 using WinFormsApp1.Forms;
 using WinFormsApp1.Model;
 using WinFormsApp1.Model.Historic;
+using WinFormsApp1.ModelView;
 using WinFormsApp1.Repository;
 using WinFormsApp1.SelecionarObjeto;
 
@@ -50,19 +51,56 @@ namespace WinFormsApp1.Controls
         {
             try
             {
-                // ------- TEM QUE FAZER AINDA
+                if (textBoxMotivo.Text.Length <= 3)
+                {
+                    MessageBox.Show("O texto do motivo tem que ter mais de 3 caracteres!", "Aviso");
+                    return;
+                }
+                //consuta impressão
+                var impressao = _repositoryContext.ImpressoesRepository.SelecionarPorCodigoHistorico(ObjReferencia?.Codigo ?? 0);
 
+                //deleta impressão se tiver
+                _repositoryContext.ImpressoesRepository.RemoverImpressaoPorCodigoHistorico(ObjReferencia?.Codigo ?? 0);
 
-                // fazer as coisas do banco de dados aqui
-                //remover da tabela compras e adicionar a justificativa em motivodeExclusão
+                //consulta impressão
+                var compra = _repositoryContext.ComprasRepository.SelecionarPorCodigoHistorico(ObjReferencia?.Codigo ?? 0);
 
-                //voce vai usar a variavel _compraDePacoteASerDeletada aqui.
+                //deleta pacote comprados
+                _repositoryContext.PacotesCompradosRepository.RemoverPacoteCompradoPorCodigoCompra(compra?.Codigo ?? 0);
 
-                FecharControl?.Invoke();
+                //deleta compra
+                _repositoryContext.ComprasRepository.RemoverCompraPorCodigoHistorico(ObjReferencia?.Codigo ?? 0);
+
+                Excluidos excluidos = new Excluidos(0, ObjReferencia?.Codigo ?? 0, textBoxMotivo.Text, DateTime.Now);
+
+                if (impressao != null)
+                {
+                    ObjReferencia.CodigoTipoMovimentacao = _repositoryContext.TipoMovimentacoesRepository.SelecionarPorNome("ImpressãoExcluida")?.Codigo ?? 0;
+                }
+                else if (compra != null)
+                {
+
+                    ObjReferencia.CodigoTipoMovimentacao = _repositoryContext.TipoMovimentacoesRepository.SelecionarPorNome("CompraExcluida")?.Codigo ?? 0;
+                }
+                else 
+                {
+                    ObjReferencia.CodigoTipoMovimentacao = _repositoryContext.TipoMovimentacoesRepository.SelecionarPorNome("Excluido")?.Codigo ?? 0;
+                }
+
+                var aluno = _repositoryContext.AlunosRepository.SelecionarAlunoPorCodigo(ObjReferencia.CodigoAluno);
+                aluno.QntdImpressao = ObjReferencia.SaldoAntes;
+
+                _repositoryContext.AlunosRepository.AtualizarAluno(aluno);
+
+                _repositoryContext.ExcluidosRepository.Adicionar(excluidos);
+
+                _repositoryContext.HistoricosRepository.AtualizarHistorico(ObjReferencia);
+
+                 FecharControl?.Invoke();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // tratar os erros aqui
+                MessageBox.Show(ex.Message, "Erro:");
             }
         }
 
@@ -98,7 +136,19 @@ namespace WinFormsApp1.Controls
 
             if (ObjReferencia != null)
             {
-                textBoxUltimoHistorico.Text = ObjReferencia.ToString();
+                var tipoDeMovimentacao = _repositoryContext.TipoMovimentacoesRepository.SelecionarPorCodigo(ObjReferencia.CodigoTipoMovimentacao);
+                textBoxUltimoHistorico.Text = PegarMaisInformacoes(new VisualizarHistorico()
+                {
+                    Codigo = ObjReferencia.Codigo,
+                    CodigoTipoMovimentacao = ObjReferencia.CodigoTipoMovimentacao,
+                    CodigoAluno = ObjReferencia.CodigoAluno,
+                    DataHistorico = ObjReferencia.DataHistorico,
+                    QntdTotal = ObjReferencia.QntdTotal,
+                    SaldoAntes = ObjReferencia.SaldoAntes,
+                    SaldoDepois = ObjReferencia.SaldoDepois,
+                    ValorTotalPago = ObjReferencia.ValorTotalPago,
+                    NomeTipoMovimentacoes = tipoDeMovimentacao.Nome
+                });
                 buttonDeletar.Enabled = true;
             }
             else 
@@ -106,6 +156,34 @@ namespace WinFormsApp1.Controls
                 textBoxUltimoHistorico.Text = "Não existe mais registros para serem deletados!";
                 buttonDeletar.Enabled = false;
             }
+        }
+
+        private string PegarMaisInformacoes(VisualizarHistorico visualizarHistorico)
+        {
+
+            if(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("compra"))
+            {
+                var compraInformacoes = $"""
+                    Data: {visualizarHistorico.DataHistorico}
+                    Tipo de movimentação: {(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("excl") ? "Compra Excluída" : "Compra")}
+                    Quantidade total: {visualizarHistorico.QntdTotal}
+                    Saldo de compra antes: {visualizarHistorico.SaldoAntes}
+                    Saldo de compra depois: {visualizarHistorico.SaldoDepois}
+                    """;
+
+                return compraInformacoes;
+            }
+
+            var impressaoInformacoes = $"""
+                    Data: {visualizarHistorico.DataHistorico}
+                    Tipo de movimentação: {(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("excl") ? "Impressão Excluída" : "Impressão")}
+                    Quantidade total: {visualizarHistorico.QntdTotal}
+                    Saldo de impressões antes: {visualizarHistorico.SaldoAntes}
+                    Saldo de impressões depois: {visualizarHistorico.SaldoDepois}
+
+                    """;
+
+            return impressaoInformacoes;
         }
 
     }

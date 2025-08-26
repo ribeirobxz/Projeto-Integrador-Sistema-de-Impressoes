@@ -51,6 +51,14 @@ namespace WinFormsApp1.Repository
             return true;
         }
 
+        public bool RemoverPacoteCompradoPorCodigoCompra(long codigoCompra)
+        {
+            var sql = "DELETE FROM PacotesComprados WHERE CodigoCompra = @CodigoCompra;";
+            _connection.Execute(sql, new { CodigoCompra = codigoCompra });
+
+            return true;
+        }
+
         public IEnumerable<PacotesComprados>? SelecionarPorCodigo(long codigo)
         {
             var sql = "SELECT * FROM ComprasPacotes WHERE CodigoCompra = @CodigoCompra;";

@@ -77,11 +77,8 @@ namespace WinFormsApp1.Controls
         {
             if (listBoxListagem.SelectedItem != null)
             {
-                var objetoPraTerOquePreencherNoTextBox = listBoxListagem.SelectedItem;
-
-                textBoxHistoricoInfo.Text = "você vai colocar os textos informacionais adicional aqui"; // fazer oque esta escrito no texto.
-
-                // -------- TEM QUE FAZER ISSO AINDA
+                var historicoSelecionado = listBoxListagem.SelectedItem as VisualizarHistorico;
+                textBoxHistoricoInfo.Text = PegarMaisInformacoes(historicoSelecionado);
 
                 splitContainerInfo.Panel2Collapsed = false;
             }
@@ -118,14 +115,10 @@ namespace WinFormsApp1.Controls
 
         private void PrencheListagem() // --FEITO
         {
-            // a listagem muda ao selecionar o aluno ou mudar os check box, para mudar isso, (fazer algo diferente)
-            // no lugar podemos colocar um botão "consultar", dai so muda o conteudo da listagem quando clicar no botão
 
             bool ehTodos = radioButtonTodos.Checked;
             bool ehSoCompras = radioButtonCompras.Checked;
             bool ehSoImpressoes = radioButtonImpressoes.Checked;
-
-            // fazer consulta da listagem de historico e colocar no list box -- FEITO
 
             listBoxListagem.Items.Clear();
 
@@ -141,6 +134,48 @@ namespace WinFormsApp1.Controls
             {
                 listBoxListagem.Items.AddRange(_repositoryContext.HistoricosRepository.ObterListaDeHistoricoVisualizacaoImpressões(_alunoSelecionado.Codigo)?.ToArray() ?? new object[0]);
             }
+        }
+
+        private string PegarMaisInformacoes(VisualizarHistorico visualizarHistorico)
+        {
+            if(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("compra"))
+            {
+                var compraInformacoes = $"""
+                    Data: {visualizarHistorico.DataHistorico}
+                    Tipo de movimentação: {(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("excl") ? "Compra Excluída" : "Compra")}
+                    Quantidade total: {visualizarHistorico.QntdTotal}
+                    Saldo de compra antes: {visualizarHistorico.SaldoAntes}
+                    Saldo de compra depois: {visualizarHistorico.SaldoDepois}
+                    """;
+
+                if(visualizarHistorico.CodigoExcluido != null)
+                {
+                    compraInformacoes += $"""
+                        Data Exclusão: {((DateTime) visualizarHistorico.DataExclusao).ToString("dd/MM/yyyy")}
+                        Motivo da exclusão: {visualizarHistorico.Motivo}
+                        """;
+                }
+
+                return compraInformacoes;
+            }
+
+            var impressaoInformacoes = $"""
+                    Data: {visualizarHistorico.DataHistorico}
+                    Tipo de movimentação: {(visualizarHistorico.NomeTipoMovimentacoes.ToLower().Contains("excl") ? "Impressão Excluída" : "Impressão")}
+                    Quantidade total: {visualizarHistorico.QntdTotal}
+                    Saldo de impressões antes: {visualizarHistorico.SaldoAntes}
+                    Saldo de impressões depois: {visualizarHistorico.SaldoDepois}
+
+                    """;
+            if (visualizarHistorico.CodigoExcluido != null)
+            {
+                impressaoInformacoes += $"""
+                        Data Exclusão: {((DateTime)visualizarHistorico.DataExclusao).ToString("dd/MM/yyyy")}
+                        Motivo da exclusão: {visualizarHistorico.Motivo}
+                        """;
+            }
+
+            return impressaoInformacoes;
         }
     }
 }

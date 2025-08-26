@@ -64,7 +64,7 @@ namespace WinFormsApp1
             }
 
             //deixar assim e coloque o arquivo mdf dentro da pasta que tem o programa com o nome ProjetoIntegrador.mdf
-            return @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Path.Combine(AppContext.BaseDirectory, "ProjetoIntegrador.mdf")};Integrated Security=True;Connect Timeout=30";
+            return @$"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kaua.neto\Desktop\ProjetoIntegrador.mdf;Integrated Security=True;Connect Timeout=30";
         }
 
     }

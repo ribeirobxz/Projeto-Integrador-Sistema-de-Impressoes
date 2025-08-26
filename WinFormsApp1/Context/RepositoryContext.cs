@@ -216,6 +216,7 @@ namespace WinFormsApp1.Context
                 INSERT INTO TipoMovimentacoes (Nome) VALUES ('Impressão');
                 INSERT INTO TipoMovimentacoes (Nome) VALUES ('CompraExcluida');
                 INSERT INTO TipoMovimentacoes (Nome) VALUES ('ImpressãoExcluida');
+                INSERT INTO TipoMovimentacoes (Nome) VALUES ('Excluido');
                 END
                 """;
                 _connection.Execute(INSERT_TIPOS_DE_MOVIMENTACOES_QUERY);
