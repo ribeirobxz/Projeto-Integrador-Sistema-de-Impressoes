@@ -35,7 +35,7 @@ A interface gráfica é feita em **WinForms**, sendo uma aplicação desktop, pr
 * Autenticação de usuário (login).
 * Interface gráfica em WinForms para submissão e gerenciamento de tarefas de impressão.
 * Banco de dados para armazenar usuários, tipos de impressão, histórico.
-* Geração de consultas SQL (há um arquivo `SQLQuery2.sql`) para preparação do banco de dados.
+* Geração de consultas SQL (há um arquivo `codigos_sql.sql`) para preparação do banco de dados.
 * Possibilidade de configurar impressoras, escolher entre impressoras disponíveis.
 * Visualização de histórico de impressões.
 
@@ -46,7 +46,7 @@ A interface gráfica é feita em **WinForms**, sendo uma aplicação desktop, pr
 * Linguagem: **C#** ([GitHub][1])
 * Plataforma: Windows Forms (WinForms) ([GitHub][1])
 * IDE provável: Visual Studio ou equivalente.
-* Banco de dados: via scripts SQL (não identifiquei se é SQL Server, SQLite ou outro, o script SQL está presente no repositório `SQLQuery2.sql`) ([GitHub][1])
+* Banco de dados: via scripts SQL (não identifiquei se é SQL Server, SQLite ou outro, o script SQL está presente no repositório `codigos_sql.sql`) ([GitHub][1])
 
 ---
 
@@ -85,7 +85,7 @@ Siga estes passos para rodar o sistema em sua máquina:
 
 3. **Configurar banco de dados**
 
-   * Executar o script `SQLQuery2.sql` em seu gerenciador de banco de dados (pode ser SQL Server ou outro compatível).
+   * Executar o script `codigos_sql.sql` em seu gerenciador de banco de dados (pode ser SQL Server ou outro compatível).
    * Ajustar connection string no código para apontar para seu servidor de banco e database.
    * Verificar se usuário e senha estão corretos.
 
@@ -103,7 +103,7 @@ Siga estes passos para rodar o sistema em sua máquina:
 
 ## Banco de Dados
 
-* O script `SQLQuery2.sql` contém as instruções para a criação das tabelas necessárias. ([GitHub][1])
+* O script `codigos_sql.sql` contém as instruções para a criação das tabelas necessárias. ([GitHub][1])
 * As tabelas devem contemplar: usuários, registros de impressão, possivelmente tipos ou configurações de impressão.
 * Certifique-se de conceder permissões adequadas de leitura/gravação para a aplicação.
 
