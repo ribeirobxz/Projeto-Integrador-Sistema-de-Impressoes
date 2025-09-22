@@ -12,11 +12,8 @@ Sistema de gerenciamento de impressões, desenvolvido em C#, com interface WinFo
 4. [Estrutura do Projeto](#estrutura-do-projeto)
 5. [Instalação e Uso](#instalação-e-uso)
 6. [Banco de Dados](#banco-de-dados)
-7. [Testes](#testes) *(se aplicável)*
 8. [Possíveis Melhorias](#possíveis-melhorias)
 9. [Contribuição](#contribuição)
-10. [Licença](#licença)
-11. [Autor](#autor)
 
 ---
 
@@ -134,11 +131,5 @@ Se quiser contribuir:
 * Crie uma branch para sua feature ou correção (`git checkout -b minha-feature`).
 * Faça commit das suas alterações.
 * Envie um pull request descrevendo suas mudanças.
-
----
-
-## Licença
-
-*(Não identifiquei licença no repositório — se ainda não houver, escolha uma, por exemplo MIT, GPL etc.)*
 
 [1]: https://github.com/ribeirobxz/Projeto-Integrador-Sistema-de-Impressoes "GitHub - ribeirobxz/Projeto-Integrador-Sistema-de-Impressoes"
